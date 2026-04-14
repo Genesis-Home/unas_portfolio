@@ -41,7 +41,7 @@ export function Hero() {
     >
       {/* Background Animation from React Bits */}
       <Waves
-        lineColor="rgba(37, 99, 235, 0.1)"
+        lineColor="rgba(30, 41, 59, 0.15)"
         backgroundColor="transparent"
         waveSpeedX={0.01}
         waveSpeedY={0.005}
@@ -63,7 +63,7 @@ export function Hero() {
       )}
 
       <div className="container mx-auto px-6 z-10 grid lg:grid-cols-2 gap-16 items-center pt-24 pb-12">
-        <div className="flex flex-col justify-center order-2 lg:order-1 relative z-10">
+        <div className="flex flex-col justify-center order-1 relative z-10">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -158,7 +158,7 @@ export function Hero() {
           </motion.div>
 
           {/* Floating Terminal (Simplified for Desktop) */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5 }}
@@ -175,7 +175,7 @@ export function Hero() {
               <p>Optimizing bundle...</p>
               <p className="text-emerald-400">✓ Deployment ready</p>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* 3D Model Section */}
@@ -183,8 +183,7 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, delay: 0.5 }}
-          className="relative h-[450px] lg:h-[700px] w-full order-1 lg:order-2 z-0 lg:z-10 
-                     absolute lg:relative inset-0 opacity-20 lg:opacity-100 pointer-events-none lg:pointer-events-auto flex items-center justify-center overflow-visible"
+          className="relative h-[450px] lg:h-[700px] w-full order-2 z-0 flex items-center justify-center"
         >
           <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent rounded-[60px] blur-3xl lg:blur-none"></div>
 
