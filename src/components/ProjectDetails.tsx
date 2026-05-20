@@ -232,7 +232,6 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
       {/* alternating sections walkthrough */}
       <div className="space-y-36 relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
         {project.screens.map((screen: ScreenData, idx: number) => {
-          const isLaptop = screen.type === "laptop";
           const isLeft = screen.variant === "left";
 
           return (
@@ -284,59 +283,18 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                 transition={{ duration: 0.6 }}
                 className="w-full lg:w-[50%] flex justify-center"
               >
-                {isLaptop ? (
-                  /* GORGEOUS HIGH-FIDELITY MACBOOK FRAME MOCKUP */
-                  <div className="w-full max-w-[520px] relative group">
-                    {/* Shadow & Glow */}
-                    <div className="absolute inset-0 bg-primary/10 rounded-2xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-                    {/* MacBook Bezel */}
-                    <div className="bg-[#0c101b] border-2 border-white/10 rounded-2xl p-3 shadow-2xl relative overflow-hidden group-hover:border-primary/30 transition-colors duration-300">
-                      {/* Glossy Screen Reflection Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none z-10" />
-
-                      {/* Actual Screen Image */}
-                      <div className="aspect-[16/10] bg-[#02050a] rounded-lg overflow-hidden relative border border-black/40">
-                        <img
-                          src={screen.image}
-                          alt={screen.heading || project.name}
-                          className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
-                        />
-                      </div>
-                    </div>
-                    {/* Metal base hinge */}
-                    <div className="h-2 w-[90%] mx-auto bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 rounded-b-xl border-t border-black" />
+                {/* Direct Image Display - No Frames */}
+                <div className="w-full max-w-3xl group">
+                  <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                    <img
+                      src={screen.image}
+                      alt={screen.heading || project.name}
+                      className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-700"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
-                ) : (
-                  /* GORGEOUS HIGH-FIDELITY IPHONE FRAME MOCKUP */
-                  <div className="w-full max-w-[280px] relative group">
-                    {/* Shadow & Glow */}
-                    <div className="absolute inset-0 bg-accent/15 rounded-[48px] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-                    {/* iPhone body frame */}
-                    <div className="w-full aspect-[9/19.5] bg-[#05070c] border-[5px] border-slate-800 rounded-[44px] shadow-2xl p-2 relative overflow-hidden group-hover:border-accent/40 transition-colors duration-300">
-                      {/* Physical Camera Notch (Dynamic Island) */}
-                      <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-5 bg-[#000] rounded-full z-20 flex items-center justify-end px-3">
-                        <div className="w-1.5 h-1.5 bg-slate-900 rounded-full border border-slate-950" />
-                      </div>
-
-                      {/* Screen reflection */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-transparent rounded-[38px] pointer-events-none z-10" />
-
-                      {/* Screen Content */}
-                      <div className="w-full h-full bg-[#020408] rounded-[36px] overflow-hidden border border-black/60 relative">
-                        <img
-                          src={screen.image}
-                          alt={screen.heading}
-                          className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                        />
-                      </div>
-
-                      {/* Home Indicator Bar */}
-                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/20 rounded-full z-20" />
-                    </div>
-                  </div>
-                )}
+                </div>
               </motion.div>
             </section>
           );
