@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TiltedCard } from "./TiltedCard";
-import { Github, ExternalLink, Cpu, Database, Server, Activity, Smartphone, Globe } from "lucide-react";
+import { ExternalLink, Cpu, Database, Server, Activity, Smartphone, Globe, ArrowRight } from "lucide-react";
 
 interface Metric {
   label: string;
@@ -14,6 +14,7 @@ interface PipelineStep {
 }
 
 interface Project {
+  id?: string; // AppMash case study ID
   title: string;
   category: "web" | "mobile";
   subtitle: string;
@@ -24,6 +25,7 @@ interface Project {
   icon: React.ReactNode;
   url: string;
   flow: PipelineStep[];
+  image: string; // Preview mockup image for project cards
 }
 
 const projectsList: Project[] = [
@@ -41,6 +43,7 @@ const projectsList: Project[] = [
     glowColor: "rgba(59, 130, 246, 0.25)", // Tech Blue
     icon: <Server className="text-blue-400" size={24} />,
     url: "https://www.usahomelistings.com",
+    image: "/why-choose-us-image-1.png",
     flow: [
       { node: "React Dashboard", note: "Search & Export" },
       { node: "RESTful Workflows", note: "Lead Management" },
@@ -50,6 +53,7 @@ const projectsList: Project[] = [
     ]
   },
   {
+    id: "1",
     title: "InspeCasa",
     category: "web",
     subtitle: "Property & Inspection Management System",
@@ -63,6 +67,7 @@ const projectsList: Project[] = [
     glowColor: "rgba(16, 185, 129, 0.25)", // Emerald
     icon: <Cpu className="text-emerald-400" size={24} />,
     url: "https://appmash.org/",
+    image: "/project-1.png",
     flow: [
       { node: "Audit Portal", note: "Auditor Interface" },
       { node: "Offline Store", note: "IndexedDB Cache" },
@@ -72,6 +77,7 @@ const projectsList: Project[] = [
     ]
   },
   {
+    id: "3",
     title: "REELConnect",
     category: "web",
     subtitle: "Film Production & Social Networking",
@@ -85,6 +91,7 @@ const projectsList: Project[] = [
     glowColor: "rgba(139, 92, 246, 0.25)", // Violet
     icon: <Database className="text-violet-400" size={24} />,
     url: "https://appmash.org/",
+    image: "/project-3.png",
     flow: [
       { node: "Media Showcase", note: "Dynamic Reel Feed" },
       { node: "GraphQL Endpoint", note: "Optimized Schema" },
@@ -94,6 +101,7 @@ const projectsList: Project[] = [
     ]
   },
   {
+    id: "2",
     title: "MYSUTRA",
     category: "web",
     subtitle: "Identity Mapping & Legacy Platform",
@@ -107,6 +115,7 @@ const projectsList: Project[] = [
     glowColor: "rgba(245, 158, 11, 0.25)", // Amber/Gold
     icon: <Activity className="text-amber-400" size={24} />,
     url: "https://appmash.org/",
+    image: "/project-2.png",
     flow: [
       { node: "Auth Gateway", note: "JWT / OAuth2" },
       { node: "Verify Engine", note: "NestJS Service" },
@@ -116,9 +125,34 @@ const projectsList: Project[] = [
     ]
   },
   {
+    id: "7",
+    title: "Pakistan Booking",
+    category: "web",
+    subtitle: "Travel Reservation & Hotel System",
+    description: "A centralized travel booking, reservation, and management platform for stays, destinations, and rental properties across Pakistan, featuring live inventory and fast queries.",
+    metrics: [
+      { label: "Stays Listed", value: "1,200+ Hotels" },
+      { label: "Search Latency", value: "< 80ms" },
+      { label: "Total Bookings", value: "80k+ Completed" }
+    ],
+    tech: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "PostgreSQL"],
+    glowColor: "rgba(16, 185, 129, 0.25)", // Emerald
+    icon: <Server className="text-emerald-400" size={24} />,
+    url: "https://appmash.org/",
+    image: "/booking system.png",
+    flow: [
+      { node: "Web Frontend", note: "React / Vite App" },
+      { node: "Geo Filter API", note: "Filtered Search" },
+      { node: "Reserve Handler", note: "ACID Booking Transaction" },
+      { node: "Payment Ingress", note: "Easypaisa & JazzCash" },
+      { node: "SMS Dispatcher", note: "Auto Reservation OTP" }
+    ]
+  },
+  {
+    id: "4",
     title: "Finsusu",
     category: "mobile",
-    subtitle: "Micro-Savings & Personal Wealth App",
+    subtitle: "Micro-Savings & Personal Finance App",
     description: "A modern, gamified personal finance and micro-savings mobile application. Features auto-saves, custom saving pools, and secure banking-grade integrations to build smart financial habits.",
     metrics: [
       { label: "Avg. Savings", value: "+22% / User" },
@@ -129,6 +163,7 @@ const projectsList: Project[] = [
     glowColor: "rgba(16, 185, 129, 0.25)", // Emerald Green
     icon: <Smartphone className="text-emerald-400" size={24} />,
     url: "https://appmash.org/",
+    image: "/finsusu.png",
     flow: [
       { node: "Mobile Frontend", note: "React Native UI" },
       { node: "Plaid Integration", note: "Secure Bank Link" },
@@ -138,30 +173,60 @@ const projectsList: Project[] = [
     ]
   },
   {
-    title: "Mudras",
+    id: "5",
+    title: "Taxi Caller",
     category: "mobile",
-    subtitle: "Yoga Gestures & Wellness Application",
-    description: "A highly engaging mobile wellness app focused on teaching yoga mudras (hand gestures). Features interactive 3D/image guides, session timers, progression logs, and fully offline-capable access.",
+    subtitle: "Real-Time Ride Dispatching Engine",
+    description: "A low-latency, cross-platform ride-hailing and dispatch application featuring high-frequency geospatial tracking, driver match protocols, and real-time mapping dashboards.",
     metrics: [
-      { label: "Wellness Streak", value: "15+ Days Avg" },
-      { label: "Offline Mode", value: "100% Function" },
-      { label: "Daily Active", value: "8k+ Yogis" }
+      { label: "Geo Match Speed", value: "< 1.2s Broadcast" },
+      { label: "Active Network", value: "5k+ Drivers" },
+      { label: "Location Accuracy", value: "< 2m Variance" }
     ],
-    tech: ["React Native", "Expo", "SQLite Offline", "Tailwind Native", "Lottie Animations"],
-    glowColor: "rgba(236, 72, 153, 0.25)", // Pink
-    icon: <Activity className="text-pink-400" size={24} />,
+    tech: ["React Native", "Expo", "Google Maps API", "Socket.io", "Node.js", "Redis"],
+    glowColor: "rgba(245, 158, 11, 0.25)", // Amber
+    icon: <Smartphone className="text-amber-400" size={24} />,
     url: "https://appmash.org/",
+    image: "/taxicaller.png",
     flow: [
-      { node: "Yogi Frontend", note: "React Native / Expo" },
-      { node: "Offline Sync", note: "SQLite Local Store" },
-      { node: "Visual Guides", note: "Lottie Animations" },
-      { node: "Meditation Timer", note: "High-Res Cron" },
-      { node: "Local Notification", note: "Trigger System" }
+      { node: "Client Mobile UI", note: "React Native App" },
+      { node: "Socket Gateway", note: "Socket.io Ingest" },
+      { node: "Dispatch Engine", note: "Geospatial Matching" },
+      { node: "Transit Tracker", note: "Redis Pub/Sub Sync" },
+      { node: "Stripe Ledger", note: "Double-Entry Checkout" }
+    ]
+  },
+  {
+    id: "6",
+    title: "Care Connect",
+    category: "mobile",
+    subtitle: "HIPAA Compliant Telehealth Portal",
+    description: "A highly secure mobile healthcare application supporting encrypted video consultations, patient medical history tracking, digital prescriptions, and direct clinic integrations.",
+    metrics: [
+      { label: "Video Latency", value: "< 120ms Agora" },
+      { label: "Provider Panel", value: "1.5k+ MDs" },
+      { label: "Security Standard", value: "100% HIPAA" }
+    ],
+    tech: ["React Native", "Tailwind Native", "Agora RTC", "Express", "Node.js", "MongoDB"],
+    glowColor: "rgba(59, 130, 246, 0.25)", // Blue
+    icon: <Smartphone className="text-blue-400" size={24} />,
+    url: "https://appmash.org/",
+    image: "/careconnect.png",
+    flow: [
+      { node: "Patient Video App", note: "Agora Consult Platform" },
+      { node: "Signaling Server", note: "WebSockets Connect" },
+      { node: "Prescription Gen", note: "Express API -> PDF Mail" },
+      { node: "EHR Ingress", note: "Secure Patient Sync" },
+      { node: "Database Storage", note: "MongoDB Encrypted" }
     ]
   }
 ];
 
-export function Projects() {
+interface ProjectsProps {
+  onSelectProject: (id: string) => void;
+}
+
+export function Projects({ onSelectProject }: ProjectsProps) {
   const [activeTab, setActiveTab] = useState<"web" | "mobile">("web");
 
   const filteredProjects = projectsList.filter(p => p.category === activeTab);
@@ -207,7 +272,7 @@ export function Projects() {
               }}
               transition={{ type: "spring", stiffness: 350, damping: 28 }}
             />
-
+            
             <motion.button
               whileHover={{ scale: 1.05, y: -1 }}
               whileTap={{ scale: 0.95 }}
@@ -234,9 +299,9 @@ export function Projects() {
         </div>
 
         {/* Project Grid */}
-        <motion.div
+        <motion.div 
           layout
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center animate-glow"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
@@ -250,37 +315,41 @@ export function Projects() {
                 className="h-full"
               >
                 <TiltedCard glowColor={project.glowColor} className="h-full">
-                  <div className="p-8 h-full flex flex-col justify-between relative bg-[#090d16]/80 backdrop-blur-xl border border-white/5 rounded-[40px] overflow-hidden">
-
-                    {/* Top Header */}
+                  <div 
+                    onClick={() => project.id ? onSelectProject(project.id) : window.open(project.url, "_blank")}
+                    className="p-6 h-full flex flex-col justify-between relative bg-[#090d16]/80 backdrop-blur-xl border border-white/5 rounded-[40px] overflow-hidden group cursor-pointer hover:border-primary/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-300 text-left"
+                  >
                     <div>
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10">
-                          {project.icon}
+                      {/* Visual Showroom Area */}
+                      <div className="relative aspect-[16/10] w-full bg-[#030712]/80 border border-white/5 rounded-3xl overflow-hidden mb-6 flex items-center justify-center">
+                        {/* Background glow matching the project style */}
+                        <div 
+                          className="absolute inset-0 opacity-10 blur-xl transition-opacity group-hover:opacity-25 duration-500 pointer-events-none"
+                          style={{ backgroundColor: project.glowColor }}
+                        />
+                        
+                        {/* Floating Mockup Screen */}
+                        <div className="relative z-10 w-[88%] h-[88%] flex items-center justify-center">
+                          <img 
+                            src={project.image} 
+                            alt={project.title}
+                            className="max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-transform duration-500 group-hover:scale-105"
+                          />
                         </div>
-                        <div className="flex gap-3 text-slate-400">
-                          <a
-                            href="https://github.com/appmashcode"
-                            id={`project-git-${project.title.toLowerCase().replace(/\s+/g, "-")}`}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="hover:text-primary transition-colors"
-                          >
-                            <Github size={18} />
-                          </a>
-                          <a
-                            href={project.url}
-                            id={`project-link-${project.title.toLowerCase().replace(/\s+/g, "-")}`}
-                            target={project.url.startsWith("http") ? "_blank" : "_self"}
-                            rel="noreferrer"
-                            className="hover:text-primary transition-colors"
-                          >
-                            <ExternalLink size={18} />
-                          </a>
+                        
+                        {/* Glass overlay badge for category */}
+                        <span className="absolute top-3.5 left-3.5 z-20 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-xl border border-white/5 text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">
+                          {project.category === "web" ? "Web App" : "Mobile App"}
+                        </span>
+                        
+                        {/* Top right icon badge */}
+                        <div className="absolute top-3.5 right-3.5 z-20 w-8 h-8 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 text-slate-300">
+                          {project.icon}
                         </div>
                       </div>
 
-                      <h3 className="text-2xl font-bold text-white mb-2 font-outfit">
+                      {/* Project Info */}
+                      <h3 className="text-2xl font-bold text-white mb-1.5 font-outfit">
                         {project.title}
                       </h3>
                       <p className="text-xs font-semibold text-primary uppercase tracking-wider font-mono mb-4">
@@ -290,33 +359,11 @@ export function Projects() {
                       <p className="text-slate-400 text-sm leading-relaxed mb-6 font-light">
                         {project.description}
                       </p>
-
-                      {/* Visual Architecture Flow Panel */}
-                      <div className="bg-[#030712] rounded-2xl p-4 border border-white/5 mb-6 font-mono text-[10px] text-left">
-                        <div className="flex items-center gap-1.5 text-slate-500 mb-3 border-b border-white/5 pb-2">
-                          <Activity size={10} className="text-primary animate-pulse" />
-                          <span className="font-bold uppercase tracking-wider text-[8px]">Data Transit Pipeline</span>
-                        </div>
-
-                        <div className="space-y-3.5 relative pl-4 border-l border-primary/20">
-                          {project.flow.map((step, sIdx) => (
-                            <div key={sIdx} className="relative">
-                              {/* Bullet */}
-                              <div className="absolute -left-[20.5px] top-1 w-2.5 h-2.5 rounded-full bg-primary/30 border border-primary flex items-center justify-center">
-                                <div className="w-1 h-1 bg-primary rounded-full" />
-                              </div>
-                              <div className="flex flex-col">
-                                <span className="text-slate-300 font-bold leading-none">{step.node}</span>
-                                <span className="text-slate-500 text-[8px] mt-0.5">{step.note}</span>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
                     </div>
 
-                    {/* Telemetry Metrics Panel */}
+                    {/* Footer Panel */}
                     <div>
+                      {/* Telemetry Metrics Panel */}
                       <div className="grid grid-cols-3 gap-2.5 py-4 border-y border-white/5 mb-6 text-left">
                         {project.metrics.map((metric, mIdx) => (
                           <div key={mIdx}>
@@ -325,6 +372,23 @@ export function Projects() {
                           </div>
                         ))}
                       </div>
+
+                      {/* Dynamic CTA Button */}
+                      {project.id ? (
+                        <div
+                          className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-primary/10 to-accent/10 border border-white/10 group-hover:border-primary/30 text-white font-outfit text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all hover:shadow-neon-blue/20 mb-6"
+                        >
+                          View Case Study
+                          <ArrowRight size={14} className="text-primary group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      ) : (
+                        <div
+                          className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-primary/10 to-accent/10 border border-white/10 group-hover:border-primary/30 text-white font-outfit text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all hover:shadow-neon-blue/20 mb-6"
+                        >
+                          Visit Live Site
+                          <ExternalLink size={14} className="text-primary" />
+                        </div>
+                      )}
 
                       {/* Tech Pills */}
                       <div className="flex flex-wrap gap-1.5">
@@ -349,4 +413,5 @@ export function Projects() {
     </section>
   );
 }
+
 
