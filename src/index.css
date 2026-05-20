@@ -12,6 +12,7 @@
   --font-sans: "Outfit", "Inter", system-ui, sans-serif;
 
   --animate-float: float 8s ease-in-out infinite;
+  --animate-scanline: scanline 6s linear infinite;
   
   --color-neon-blue: #3b82f6;
   --color-neon-violet: #8b5cf6;

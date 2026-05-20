@@ -70,10 +70,14 @@ export const TiltedCard: React.FC<TiltedCardProps> = ({
         }}
       />
       
-      {/* Content Container (Layered for 3D depth) */}
+      {/* Content Container (Layered for 3D depth - Optimized for razor-sharp text rendering) */}
       <div 
-        className="relative z-10 w-full h-full bg-[#090d16]/55 backdrop-blur-xl border border-white/5 shadow-2xl overflow-hidden rounded-[40px]"
-        style={{ transform: "translateZ(50px)" }}
+        className="relative z-10 w-full h-full bg-[#0b101b] border border-white/5 shadow-2xl overflow-hidden rounded-[40px]"
+        style={{ 
+          transform: "translateZ(1px)",
+          WebkitFontSmoothing: "subpixel-antialiased",
+          backfaceVisibility: "hidden"
+        }}
       >
         {children}
       </div>

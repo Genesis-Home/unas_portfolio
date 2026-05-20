@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import unasProfile from "../assets/unas_profile.png";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -73,8 +72,8 @@ export function Navbar() {
           id="nav-brand-logo"
           className="group flex items-center gap-3 select-none"
         >
-          <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center border border-primary/30 group-hover:border-primary/60 shadow-[0_0_8px_rgba(59,130,246,0.2)] transition-all">
-            <img src={unasProfile} alt="Syed Unas Profile" className="w-full h-full object-cover" />
+          <div className="w-10 h-10 rounded-xl bg-white/5 border border-primary/20 group-hover:border-primary/50 flex items-center justify-center text-primary group-hover:text-white transition-all shadow-[0_0_12px_rgba(59,130,246,0.1)] font-mono text-sm font-bold">
+            &lt;/&gt;
           </div>
           <span className="text-lg font-extrabold font-outfit text-white group-hover:text-primary transition-colors tracking-tight select-none">
             Syed Unas

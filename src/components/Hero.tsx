@@ -1,11 +1,9 @@
-import { Canvas } from "@react-three/fiber";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Scene } from "./Scene";
 import { SplitText } from "./SplitText";
 import { ShinyText } from "./ShinyText";
 import Waves from "./Waves";
-import unasProfile from "../assets/unas_profile.png";
+import unasImage from "../assets/unas_profile.png";
 
 export function Hero() {
   const mouseX = useMotionValue(0);
@@ -71,7 +69,7 @@ export function Hero() {
               <div className="relative group">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary to-accent opacity-30 blur-md group-hover:opacity-75 transition duration-500"></div>
                 <div className="relative w-16 h-16 rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center bg-[#090d16]/80 p-0.5">
-                  <img src={unasProfile} alt="Syed Unas Systems Architect" className="w-full h-full object-cover rounded-[14px]" />
+                  <img src={unasImage} alt="Syed Unas Systems Architect" className="w-full h-full object-cover rounded-[14px]" />
                 </div>
                 <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-[#030712] flex items-center justify-center shadow-[0_0_8px_#10b981]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#030712] animate-pulse"></span>
@@ -211,35 +209,76 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Right Side: 3D Workspace Scene */}
+        {/* Right Side: Showcase Portrait Container (Replacing 3D Workspace Scene) */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.4 }}
-          className="relative h-[480px] lg:h-[750px] w-full order-2 z-0 flex items-center justify-center"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.0, delay: 0.4 }}
+          className="relative w-full order-2 z-0 flex items-center justify-center py-6"
         >
-          {/* Neon backlighting panel blur */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-accent/5 to-transparent rounded-[60px] blur-3xl lg:blur-none pointer-events-none"></div>
+          {/* Neon backlighting panels */}
+          <div className="absolute w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] pointer-events-none z-0" />
+          <div className="absolute w-[350px] h-[350px] bg-accent/10 rounded-full blur-[90px] pointer-events-none z-0" />
 
-          {/* Canvas Wrapper */}
-          <div className="w-full h-full min-h-[480px] relative select-none">
-            <Canvas
-              camera={{ position: [0, 0, 8.5], fov: 42 }}
-              className="w-full h-full"
-            >
-              <Scene />
-            </Canvas>
+          {/* Premium Glassmorphic Frame with Unas's Actual Portrait */}
+          <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[48px] overflow-hidden border border-white/10 bg-[#090d16]/80 p-3.5 shadow-2xl group z-10 backdrop-blur-xl">
+            {/* Ambient Tech Border Glow */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-accent/15 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700 rounded-[48px] pointer-events-none" />
+            
+            {/* Floating Bezel Ambient Shadow */}
+            <div className="absolute -inset-1.5 bg-gradient-to-r from-primary to-accent rounded-[52px] blur-3xl opacity-10 group-hover:opacity-20 transition duration-1000" />
+            
+            {/* Inner Portrait Screen */}
+            <div className="relative w-full h-full rounded-[36px] overflow-hidden border border-white/5 bg-[#030712]">
+              <img 
+                src={unasImage} 
+                alt="Syed Unas - Senior Systems Architect & Full-Stack Engineer" 
+                className="w-full h-full object-cover scale-100 group-hover:scale-[1.04] transition-transform duration-[1200ms] ease-out"
+              />
+              
+              {/* High-tech overlay filters */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/90 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-accent/5 pointer-events-none" />
+              
+              {/* Glowing horizontal scanline animation */}
+              <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-40 shadow-[0_0_12px_#3b82f6] animate-[scanline_4s_linear_infinite] pointer-events-none" />
+            </div>
+
+            {/* Futuristic Tech Overlay HUD badges */}
+            <div className="absolute bottom-10 left-10 right-10 flex flex-col gap-2.5 z-20 text-left">
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-[#030712]/80 border border-white/10 shadow-lg backdrop-blur-md w-fit">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 shadow-[0_0_6px_#10b981]"></span>
+                </span>
+                <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-slate-300">
+                  SYSTEM STATUS: OPERATIONAL
+                </span>
+              </div>
+              
+              <div className="p-4 rounded-2xl bg-[#030712]/85 border border-white/10 shadow-xl backdrop-blur-md">
+                <p className="font-mono text-[8px] text-slate-500 uppercase tracking-widest leading-none mb-1.5 font-bold">CORE_ARCHITECT_IDENTITY</p>
+                <h3 className="text-lg font-black text-white font-outfit leading-none mb-1">Syed Unas</h3>
+                <p className="text-[10px] font-bold text-primary font-mono uppercase tracking-wider leading-none">Senior Full-Stack Engineer & Systems Architect</p>
+              </div>
+            </div>
+            
+            {/* Fine Corner Ornamental Brackets */}
+            <div className="absolute top-7 left-7 w-5 h-5 border-t-2 border-l-2 border-primary/50 rounded-tl-sm pointer-events-none" />
+            <div className="absolute top-7 right-7 w-5 h-5 border-t-2 border-r-2 border-primary/50 rounded-tr-sm pointer-events-none" />
+            <div className="absolute bottom-7 left-7 w-5 h-5 border-b-2 border-l-2 border-primary/50 rounded-bl-sm pointer-events-none" />
+            <div className="absolute bottom-7 right-7 w-5 h-5 border-b-2 border-r-2 border-primary/50 rounded-br-sm pointer-events-none" />
           </div>
 
-          {/* Dashboard Telemetry Live Feed Pod */}
-          <div className="hidden lg:block absolute top-[18%] -right-[3%] p-5 bg-[#090d16]/90 backdrop-blur-md rounded-2xl border border-white/5 shadow-2xl z-20 w-52 hover:-translate-y-1 hover:border-primary/30 transition-all duration-300">
+          {/* Active Status Pod floating to the side */}
+          <div className="hidden lg:block absolute top-[12%] -right-[3%] p-5 bg-[#090d16]/90 backdrop-blur-md rounded-2xl border border-white/5 shadow-2xl z-20 w-52 hover:-translate-y-1 hover:border-primary/30 transition-all duration-300 text-left">
             <div className="flex items-center gap-2 mb-3">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#3b82f6]"></div>
               <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">
                 TELEMETRY LOG
               </span>
             </div>
-            <div className="text-xs font-bold text-white mb-2 text-left font-mono">
+            <div className="text-xs font-bold text-white mb-2 font-mono">
               AutoScaling Core Node
             </div>
             <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden mb-3">
