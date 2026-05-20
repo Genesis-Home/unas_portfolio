@@ -1,11 +1,12 @@
-import { useEffect } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
   Smartphone,
   Globe,
   Terminal,
   ShieldAlert,
+  ArrowUp,
 } from "lucide-react";
 
 // Import all local PortfolioData files
@@ -116,6 +117,7 @@ interface ProjectDetailsProps {
 
 export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
   const project = getProjectById(projectId);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Scroll to top of project details (only within the modal, not page)
   useEffect(() => {
@@ -124,6 +126,20 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
       detailsSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [projectId]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show button when user scrolls down 400px from top
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   if (!project) {
     return (
@@ -324,6 +340,23 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
           );
         })}
       </div>
+
+      {/* Scroll to Top Button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center shadow-2xl hover:shadow-neon-blue transition-all duration-300 cursor-pointer"
+          >
+            <ArrowUp size={20} className="text-white animate-bounce" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
