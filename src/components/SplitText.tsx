@@ -51,12 +51,12 @@ export const SplitText: React.FC<SplitTextProps> = ({
       from: animationFrom,
       to: inView
         ? async (next: (arg: { opacity: number; transform: string }) => Promise<void>) => {
-            await next(animationTo);
-            animatedCount.current += 1;
-            if (animatedCount.current === words.length && onAnimationComplete) {
-              onAnimationComplete();
-            }
+          await next(animationTo);
+          animatedCount.current += 1;
+          if (animatedCount.current === words.length && onAnimationComplete) {
+            onAnimationComplete();
           }
+        }
         : animationFrom,
       delay: i * delay,
       config: easing ? { easing } : config.stiff,

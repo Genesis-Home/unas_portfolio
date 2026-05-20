@@ -117,29 +117,42 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-wrap gap-5 items-center mb-12"
+            className="flex flex-wrap gap-4 items-center mb-12"
           >
             <motion.a
               href="#contact"
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.98 }}
               id="hero-action-contact"
-              className="px-8 py-4.5 bg-gradient-to-r from-primary to-accent text-white rounded-2xl font-bold shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/45 transition-all duration-300 flex items-center gap-3"
+              className="px-6 py-4 bg-gradient-to-r from-primary to-accent text-white rounded-2xl font-bold shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/45 transition-all duration-300 flex items-center gap-2.5"
             >
               <span>Initialize Connection</span>
               <span className="text-lg">→</span>
+            </motion.a>
+            <motion.a
+              href="https://drive.google.com/file/d/1x5c6jODLmzYdqkSqke9oXYEmdS0gI7zM/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              id="hero-action-resume"
+              className="px-6 py-4 bg-[#090d16]/80 hover:bg-[#3b82f6]/10 text-white border border-[#3b82f6]/30 hover:border-[#3b82f6]/70 rounded-2xl font-bold transition-all duration-300 shadow-md backdrop-blur-sm flex items-center gap-2.5 group"
+            >
+              <svg className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <span>View Resume</span>
             </motion.a>
             <motion.a
               href="#projects"
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.98 }}
               id="hero-action-projects"
-              className="px-8 py-4.5 bg-white/5 text-white border border-white/10 hover:border-primary/50 hover:bg-white/10 rounded-2xl font-bold transition-all duration-300 shadow-sm backdrop-blur-sm"
+              className="px-6 py-4 bg-white/5 text-white border border-white/10 hover:border-primary/50 hover:bg-white/10 rounded-2xl font-bold transition-all duration-300 shadow-sm backdrop-blur-sm"
             >
               Inspect Deployments
             </motion.a>
           </motion.div>
-
           {/* Senior Telemetry Metrics */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -188,7 +201,7 @@ export function Hero() {
           </motion.div>
 
           {/* Floating Telemetry Terminal (Uncommented & Redesigned) */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.6, duration: 0.8 }}
@@ -206,7 +219,7 @@ export function Hero() {
               <p className="text-violet-400">⚡ Distributed database sync: 100%</p>
               <p className="text-emerald-400">✓ Systems operational (Latency: 12ms)</p>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Right Side: Showcase Portrait Container (Replacing 3D Workspace Scene) */}
@@ -224,22 +237,22 @@ export function Hero() {
           <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[48px] overflow-hidden border border-white/10 bg-[#090d16]/80 p-3.5 shadow-2xl group z-10 backdrop-blur-xl">
             {/* Ambient Tech Border Glow */}
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-accent/15 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700 rounded-[48px] pointer-events-none" />
-            
+
             {/* Floating Bezel Ambient Shadow */}
             <div className="absolute -inset-1.5 bg-gradient-to-r from-primary to-accent rounded-[52px] blur-3xl opacity-10 group-hover:opacity-20 transition duration-1000" />
-            
+
             {/* Inner Portrait Screen */}
             <div className="relative w-full h-full rounded-[36px] overflow-hidden border border-white/5 bg-[#030712]">
-              <img 
-                src={unasImage} 
-                alt="Syed Unas - Senior Systems Architect & Full-Stack Engineer" 
+              <img
+                src={unasImage}
+                alt="Syed Unas - Senior Systems Architect & Full-Stack Engineer"
                 className="w-full h-full object-cover scale-100 group-hover:scale-[1.04] transition-transform duration-[1200ms] ease-out"
               />
-              
+
               {/* High-tech overlay filters */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/90 via-transparent to-transparent pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-accent/5 pointer-events-none" />
-              
+
               {/* Glowing horizontal scanline animation */}
               <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-40 shadow-[0_0_12px_#3b82f6] animate-[scanline_4s_linear_infinite] pointer-events-none" />
             </div>
@@ -255,14 +268,14 @@ export function Hero() {
                   SYSTEM STATUS: OPERATIONAL
                 </span>
               </div>
-              
+
               <div className="p-4 rounded-2xl bg-[#030712]/85 border border-white/10 shadow-xl backdrop-blur-md">
                 <p className="font-mono text-[8px] text-slate-500 uppercase tracking-widest leading-none mb-1.5 font-bold">CORE_ARCHITECT_IDENTITY</p>
                 <h3 className="text-lg font-black text-white font-outfit leading-none mb-1">Syed Unas</h3>
                 <p className="text-[10px] font-bold text-primary font-mono uppercase tracking-wider leading-none">Senior Full-Stack Engineer & Systems Architect</p>
               </div>
             </div>
-            
+
             {/* Fine Corner Ornamental Brackets */}
             <div className="absolute top-7 left-7 w-5 h-5 border-t-2 border-l-2 border-primary/50 rounded-tl-sm pointer-events-none" />
             <div className="absolute top-7 right-7 w-5 h-5 border-t-2 border-r-2 border-primary/50 rounded-tr-sm pointer-events-none" />

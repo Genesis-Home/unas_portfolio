@@ -80,9 +80,9 @@ export function Experience() {
   return (
     <section id="experience" className="py-32 bg-background relative overflow-hidden tech-grid">
       <div className="absolute inset-0 tech-radial-glow pointer-events-none z-0" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
-        
+
         {/* Section Header */}
         <div className="flex flex-col items-center mb-24">
           <motion.span
@@ -106,7 +106,7 @@ export function Experience() {
 
         {/* Timeline List */}
         <div className="max-w-5xl mx-auto relative pl-6 md:pl-10">
-          
+
           {/* Vertical Glowing Connector Line */}
           <div className="absolute left-[30px] md:left-[38px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-primary via-accent to-slate-800 pointer-events-none" />
 
@@ -119,7 +119,7 @@ export function Experience() {
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               className="relative mb-16 last:mb-0 group"
             >
-              
+
               {/* Timeline LED Checkpoint Node */}
               <div className="absolute -left-[30px] md:-left-[38px] top-7 z-20 flex items-center justify-center">
                 <span className="relative flex h-5 w-5">
@@ -130,7 +130,7 @@ export function Experience() {
 
               {/* Glassmorphic Project Brief Container */}
               <div className={`grid lg:grid-cols-[1fr_2.2fr] gap-8 bg-[#090d16]/75 border p-8 md:p-12 rounded-[40px] shadow-2xl transition-all duration-500 backdrop-blur-xl ${exp.glowColor}`}>
-                
+
                 {/* Left Block: Identity & Stack */}
                 <div className="flex flex-col text-left">
                   <div
@@ -138,15 +138,15 @@ export function Experience() {
                   >
                     <Terminal size={26} />
                   </div>
-                  
+
                   <h3 className="text-2xl font-black text-white mb-1.5 font-outfit uppercase tracking-tight">
                     {exp.company}
                   </h3>
-                  
+
                   <p className="text-primary font-bold text-sm mb-4 font-mono">
                     {exp.role}
                   </p>
-                  
+
                   <div className="flex items-center gap-2 text-slate-500 text-xs font-bold uppercase tracking-wider font-mono mb-6">
                     <Calendar size={12} className="text-slate-500" />
                     {exp.period}
@@ -167,7 +167,7 @@ export function Experience() {
 
                 {/* Right Block: Telemetry and Key Achievements */}
                 <div className="flex flex-col justify-center text-left">
-                  
+
                   {/* Brief Terminal Box */}
                   <div className="bg-[#030712] p-6 rounded-3xl border border-white/5 mb-8">
                     <div className="flex items-center gap-2 text-primary mb-3">

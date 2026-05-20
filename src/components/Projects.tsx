@@ -72,9 +72,9 @@ export function Projects() {
   return (
     <section id="projects" className="py-32 bg-background relative overflow-hidden tech-grid">
       <div className="absolute inset-0 tech-radial-glow pointer-events-none z-0" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
-        
+
         {/* Section Header */}
         <div className="flex flex-col items-center mb-24">
           <motion.span
@@ -109,7 +109,7 @@ export function Projects() {
             >
               <TiltedCard glowColor={project.glowColor} className="h-full">
                 <div className="p-8 h-full flex flex-col justify-between relative bg-[#090d16]/80 backdrop-blur-xl border border-white/5 rounded-[40px] overflow-hidden">
-                  
+
                   {/* Top Header */}
                   <div>
                     <div className="flex items-center justify-between mb-6">
@@ -143,7 +143,7 @@ export function Projects() {
                         <Activity size={10} className="text-primary animate-pulse" />
                         <span className="font-bold uppercase tracking-wider text-[8px]">Data Transit Pipeline</span>
                       </div>
-                      
+
                       <div className="space-y-3.5 relative pl-4 border-l border-primary/20">
                         {project.flow.map((step, sIdx) => (
                           <div key={sIdx} className="relative">

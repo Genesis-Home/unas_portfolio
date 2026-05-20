@@ -52,17 +52,17 @@ export function CodeEditor() {
 
     return tokens.map((token, i) => {
       const trimmed = token.trim();
-      
+
       // Keywords (Blue/Purple)
       if (['import', 'export', 'const', 'return', 'function', 'if', 'from'].includes(trimmed)) {
         return <span key={i} className="text-[#ff7b72] font-semibold">{token}</span>;
       }
-      
+
       // Built-in React/Hooks (Orange)
       if (['useEffect', 'useState', 'useTelemetry', 'useSystemMesh'].includes(trimmed)) {
         return <span key={i} className="text-[#d2a6ff] font-semibold">{token}</span>;
       }
-      
+
       // Strings (Green)
       if ((token.startsWith("'") && token.endsWith("'")) || (token.startsWith('"') && token.endsWith('"'))) {
         return <span key={i} className="text-[#a5d6ff]">{token}</span>;
@@ -98,7 +98,7 @@ export function CodeEditor() {
         </div>
         <div className="w-10" />
       </div>
-      
+
       {/* Main Workspace */}
       <div className="flex-1 flex bg-[#0d1117]">
         {/* Editor Sidebar */}
@@ -107,7 +107,7 @@ export function CodeEditor() {
           <div className="w-5 h-5 bg-white/5 rounded-sm" />
           <div className="w-5 h-5 bg-white/5 rounded-sm" />
         </div>
-        
+
         {/* Code Content */}
         <div className="flex-1 p-6 relative overflow-hidden flex flex-col items-start justify-start">
           {visibleLines.map((line, i) => (
@@ -125,14 +125,14 @@ export function CodeEditor() {
             </motion.div>
           ))}
           {/* Typing Blinking Cursor */}
-          <motion.div 
+          <motion.div
             animate={{ opacity: [1, 0, 1] }}
             transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
             className="inline-block w-1.5 h-4 bg-[#3b82f6] shadow-[0_0_8px_#3b82f6] ml-12 mt-1 shrink-0"
           />
         </div>
       </div>
-      
+
       {/* Bottom Status Bar */}
       <div className="bg-[#3b82f6] px-4 py-1.5 flex items-center justify-between text-[10px] text-white font-bold uppercase tracking-wider shadow-lg shadow-blue-500/20">
         <div className="flex gap-4">

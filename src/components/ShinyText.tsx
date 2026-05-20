@@ -5,11 +5,11 @@ interface ShinyTextProps {
   className?: string;
 }
 
-export const ShinyText: React.FC<ShinyTextProps> = ({ 
-  text, 
-  disabled = false, 
-  speed = 5, 
-  className = "" 
+export const ShinyText: React.FC<ShinyTextProps> = ({
+  text,
+  disabled = false,
+  speed = 5,
+  className = ""
 }) => {
   const animationDuration = `${speed}s`;
 

@@ -7,10 +7,10 @@ interface TiltedCardProps {
   className?: string;
 }
 
-export const TiltedCard: React.FC<TiltedCardProps> = ({ 
-  children, 
+export const TiltedCard: React.FC<TiltedCardProps> = ({
+  children,
   glowColor = "rgba(37, 99, 235, 0.2)",
-  className = "" 
+  className = ""
 }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -30,14 +30,14 @@ export const TiltedCard: React.FC<TiltedCardProps> = ({
     const rect = e.currentTarget.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
-    
+
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
-    
+
     // Normalize coordinates for rotation
     x.set(mouseX / width - 0.5);
     y.set(mouseY / height - 0.5);
-    
+
     // Update glow position in pixels
     setGlowPos({ x: mouseX, y: mouseY });
     setOpacity(1);
@@ -62,18 +62,18 @@ export const TiltedCard: React.FC<TiltedCardProps> = ({
       className={`relative group rounded-[40px] transition-all duration-300 ${className}`}
     >
       {/* Dynamic Glow Layer */}
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-0 rounded-[40px] overflow-hidden"
         style={{
           opacity,
           background: `radial-gradient(600px circle at ${glowPos.x}px ${glowPos.y}px, ${glowColor}, transparent 40%)`
         }}
       />
-      
+
       {/* Content Container (Layered for 3D depth - Optimized for razor-sharp text rendering) */}
-      <div 
+      <div
         className="relative z-10 w-full h-full bg-[#0b101b] border border-white/5 shadow-2xl overflow-hidden rounded-[40px]"
-        style={{ 
+        style={{
           transform: "translateZ(1px)",
           WebkitFontSmoothing: "subpixel-antialiased",
           backfaceVisibility: "hidden"
@@ -81,7 +81,7 @@ export const TiltedCard: React.FC<TiltedCardProps> = ({
       >
         {children}
       </div>
-      
+
       {/* Outer Border Glow (Subtle) */}
       <div className="absolute -inset-px bg-gradient-to-br from-primary/10 to-accent/10 rounded-[40px] -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
     </motion.div>

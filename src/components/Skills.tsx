@@ -125,9 +125,9 @@ export function Skills() {
   return (
     <section id="skills" className="py-32 bg-background relative overflow-hidden tech-grid">
       <div className="absolute inset-0 tech-radial-glow pointer-events-none z-0" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
-        
+
         {/* Section Header */}
         <div className="flex flex-col items-center mb-24">
           <motion.span
@@ -191,7 +191,7 @@ export function Skills() {
             <motion.div key={idx} variants={itemVariants} className="h-full">
               <TiltedCard glowColor={category.glowColor} className="h-full">
                 <div className="p-8 h-full flex flex-col justify-between relative overflow-hidden rounded-[40px] bg-[#090d16]/70 border border-white/5">
-                  
+
                   {/* Floating Graphic Indicator */}
                   <div className="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.06] transition-opacity select-none pointer-events-none">
                     <span className="text-9xl font-black text-white leading-none">

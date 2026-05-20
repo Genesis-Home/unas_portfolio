@@ -25,11 +25,11 @@ function App() {
 
       {/* Sections */}
       <Hero />
-      
+
       <Skills />
-      
+
       <Projects />
-      
+
       <Experience />
 
       {/* Premium Obsidian Footer / Contact Protocol Section */}
@@ -38,11 +38,11 @@ function App() {
         className="py-32 bg-[#050811] relative overflow-hidden border-t border-white/5 tech-grid"
       >
         <div className="absolute inset-0 tech-radial-glow pointer-events-none z-0" />
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-[1fr_1.5fr] gap-16 lg:gap-20 items-center">
-              
+
               {/* Left Side: Contact Pitch and Info */}
               <div>
                 <motion.span
@@ -57,13 +57,13 @@ function App() {
                   Initialize <span className="text-gradient-primary">Connection</span>
                 </h2>
                 <p className="text-slate-400 text-lg mb-12 leading-relaxed font-light text-left">
-                  Currently open to senior-level architectural opportunities, engineering leadership, 
+                  Currently open to senior-level architectural opportunities, engineering leadership,
                   and high-impact full-stack consulting worldwide. Let's engineer something outstanding.
                 </p>
 
                 {/* Primary Sockets */}
                 <div className="flex flex-col gap-6">
-                  
+
                   {/* Email Socket */}
                   <motion.div
                     whileHover={{ x: 6 }}

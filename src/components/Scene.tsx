@@ -85,7 +85,7 @@ export function Scene() {
 
       {/* Active Workstation Group */}
       <group ref={groupRef} scale={0.7} position={[0, 0.6, 0]}>
-        
+
         {/* Large Carbon Desk Surface */}
         <Box args={[11, 0.08, 5]} position={[0, -2.0, 0.5]}>
           <meshPhysicalMaterial
@@ -99,7 +99,7 @@ export function Scene() {
 
         {/* 1. Curved Ultra-Wide Monitor */}
         <group position={[0, 0.1, 0.2]}>
-          
+
           {/* Monitor Screen Frame & Back Bezel */}
           <Box args={[4.84, 2.44, 0.08]} position={[0, 0, 0]}>
             <meshPhysicalMaterial
@@ -170,7 +170,7 @@ export function Scene() {
 
         {/* 2. Premium Dual-Chamber PC Tower Case */}
         <group position={[3.6, -0.4, -0.6]} rotation={[0, -0.35, 0]}>
-          
+
           {/* Outer Black Case Frame */}
           <Box args={[1.4, 3.0, 2.4]} position={[0, 0, 0]}>
             <meshPhysicalMaterial
@@ -214,7 +214,7 @@ export function Scene() {
           {/* PC Core Internal Component Board */}
           <Box args={[0.1, 2.6, 2.0]} position={[0, 0, 0]}>
             <meshStandardMaterial color="#0f172a" />
-            
+
             {/* Glowing Ram Sticks (Emissive Neon Blue) */}
             {Array.from({ length: 4 }).map((_, i) => (
               <Box
@@ -273,7 +273,7 @@ export function Scene() {
 
         {/* 3. Glowing Custom Mechanical Keyboard */}
         <group position={[0, -1.94, 1.1]}>
-          
+
           {/* Brushed Metal Keyboard Base Frame */}
           <Box args={[2.6, 0.06, 1.0]}>
             <meshPhysicalMaterial
@@ -312,7 +312,7 @@ export function Scene() {
 
         {/* 4. Ergonomic Gaming Mouse */}
         <group position={[2.0, -1.94, 1.1]} rotation={[0, -0.2, 0]}>
-          
+
           {/* Main Mouse Body */}
           <Sphere args={[0.18, 16, 16]} scale={[1, 0.6, 1.6]}>
             <meshPhysicalMaterial
