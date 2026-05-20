@@ -6,18 +6,18 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-      },
-    },
     rollupOptions: {
       output: {
-        manualChunks: {
-          'three-fiber': ['@react-three/fiber', '@react-three/drei', 'three'],
-          'animation': ['framer-motion', 'gsap', '@react-spring/web'],
-          'vendor': ['react', 'react-dom'],
+        manualChunks(id) {
+          if (id.includes('three')) {
+            return 'three-fiber';
+          }
+          if (id.includes('framer-motion') || id.includes('gsap')) {
+            return 'animation';
+          }
+          if (id.includes('react')) {
+            return 'vendor';
+          }
         },
       },
     },
