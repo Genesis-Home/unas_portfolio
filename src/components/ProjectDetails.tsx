@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Smartphone, Globe, Terminal, ShieldAlert } from "lucide-react";
 
 // Import all local PortfolioData files
-import InspeCasa from "./PortfolioData/InspeCasa";
-import MysturaData from "./PortfolioData/MysturaData";
-import REELConnect from "./PortfolioData/REELConnect";
-import Finsusu from "./PortfolioData/Finsusu";
-import TaxiCaller from "./PortfolioData/TaxiCaller";
-import CareConnect from "./PortfolioData/CareConnect";
-import PakistanBooking from "./PortfolioData/PakistanBooking";
+import InspeCasaScreens from "./PortfolioData/InspeCasa";
+import MysturaScreens from "./PortfolioData/MysturaData";
+import REELConnectScreens from "./PortfolioData/REELConnect";
+import FinsususScreens from "./PortfolioData/Finsusu";
+import TaxiCallerScreens from "./PortfolioData/TaxiCaller";
+import CareConnectScreens from "./PortfolioData/CareConnect";
+import PakistanBookingScreens from "./PortfolioData/PakistanBooking";
 
 interface ScreenData {
   type: "mobile" | "laptop";
@@ -21,70 +21,86 @@ interface ScreenData {
   hero?: boolean;
 }
 
-const dataMap: Record<string, ScreenData[]> = {
-  "1": InspeCasa as ScreenData[],
-  "2": MysturaData as ScreenData[],
-  "3": REELConnect as ScreenData[],
-  "4": Finsusu as ScreenData[],
-  "5": TaxiCaller as ScreenData[],
-  "6": CareConnect as ScreenData[],
-  "7": PakistanBooking as ScreenData[],
-};
+interface Project {
+  id: string;
+  name: string;
+  category: string;
+  description: string;
+  glow: string;
+  type: "web" | "mobile";
+  screens: ScreenData[];
+}
 
-const projectMeta: Record<
-  string,
-  { name: string; category: string; description: string; glow: string; type: "web" | "mobile" }
-> = {
-  "1": {
+const projects: Project[] = [
+  {
+    id: "1",
     name: "InspeCasa",
     category: "Web Application UI",
     description: "Property Inspections & Compliance Verification Core",
     glow: "from-emerald-500/20 to-teal-500/20",
-    type: "web"
+    type: "web",
+    screens: InspeCasaScreens as ScreenData[]
   },
-  "2": {
+  {
+    id: "2",
     name: "MYSUTRA",
     category: "Web Service Platform",
     description: "Distributed Identity Mapping & Legacy Services Engine",
     glow: "from-amber-500/20 to-orange-500/20",
-    type: "web"
+    type: "web",
+    screens: MysturaScreens as ScreenData[]
   },
-  "3": {
+  {
+    id: "3",
     name: "REELConnect",
     category: "Web Networking System",
     description: "Film Industry Creative Social & Casting Operations Hub",
     glow: "from-violet-500/20 to-fuchsia-500/20",
-    type: "web"
+    type: "web",
+    screens: REELConnectScreens as ScreenData[]
   },
-  "4": {
+  {
+    id: "4",
     name: "Finsusu",
     category: "Mobile Application",
     description: "Algorithmic Micro-Savings & Personal Financial Intelligence",
     glow: "from-emerald-500/20 to-cyan-500/20",
-    type: "mobile"
+    type: "mobile",
+    screens: FinsususScreens as ScreenData[]
   },
-  "5": {
+  {
+    id: "5",
     name: "Taxi Caller",
     category: "Mobile Dispatch Software",
     description: "Geospatial Ride Matching & Driver Coordination Network",
     glow: "from-yellow-500/20 to-amber-500/20",
-    type: "mobile"
+    type: "mobile",
+    screens: TaxiCallerScreens as ScreenData[]
   },
-  "6": {
+  {
+    id: "6",
     name: "Care Connect",
     category: "Mobile Health Platform",
     description: "HIPAA-Compliant Video Telehealth & Encrypted EHR Conduit",
     glow: "from-blue-500/20 to-indigo-500/20",
-    type: "mobile"
+    type: "mobile",
+    screens: CareConnectScreens as ScreenData[]
   },
-  "7": {
+  {
+    id: "7",
     name: "Pakistan Booking",
     category: "Web Reservation Core",
     description: "Centralized Hospitality Inventory & Regional Booking Ingress",
     glow: "from-emerald-500/20 to-green-500/20",
-    type: "web"
-  },
-};
+    type: "web",
+    screens: PakistanBookingScreens as ScreenData[]
+  }
+];
+
+// Helper functions for easy filtering
+export const getWebProjects = () => projects.filter(p => p.type === "web");
+export const getMobileProjects = () => projects.filter(p => p.type === "mobile");
+export const getProjectById = (id: string) => projects.find(p => p.id === id);
 
 interface ProjectDetailsProps {
   projectId: string;
@@ -92,15 +108,14 @@ interface ProjectDetailsProps {
 }
 
 export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
-  const screens = dataMap[projectId];
-  const meta = projectMeta[projectId];
+  const project = getProjectById(projectId);
 
   // Auto-scroll to top when screen loads
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [projectId]);
 
-  if (!screens || !meta) {
+  if (!project) {
     return (
       <div className="min-h-screen bg-background flex flex-col items-center justify-center text-center p-8">
         <ShieldAlert size={64} className="text-rose-500 mb-6 animate-pulse" />
@@ -119,7 +134,7 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden tech-grid pb-24">
       {/* Global Background Ambient Glow Lights */}
-      <div className={`fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b ${meta.glow} rounded-full blur-[140px] pointer-events-none z-0`} />
+      <div className={`fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b ${project.glow} rounded-full blur-[140px] pointer-events-none z-0`} />
 
       {/* Futuristic Floating Navigation Header */}
       <header className="sticky top-6 z-50 max-w-5xl mx-auto px-6 mb-16">
@@ -139,7 +154,7 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
               Walkthrough Mode
             </span>
             <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse shadow-neon-emerald" />
-            <span className="text-xs font-black text-white font-mono uppercase tracking-wider">{meta.name}</span>
+            <span className="text-xs font-black text-white font-mono uppercase tracking-wider">{project.name}</span>
           </div>
         </div>
       </header>
@@ -152,8 +167,8 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
           transition={{ duration: 0.5 }}
           className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-6 font-mono inline-flex items-center gap-1.5"
         >
-          {meta.type === "web" ? <Globe size={12} /> : <Smartphone size={12} />}
-          {meta.category}
+          {project.type === "web" ? <Globe size={12} /> : <Smartphone size={12} />}
+          {project.category}
         </motion.span>
         <motion.h1
           initial={{ opacity: 0, y: 15 }}
@@ -161,7 +176,7 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl md:text-7xl font-extrabold font-outfit text-white tracking-tight leading-none mb-6"
         >
-          Project <span className="text-gradient-primary">{meta.name}</span>
+          Project <span className="text-gradient-primary">{project.name}</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 15 }}
@@ -169,13 +184,13 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-slate-400 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed"
         >
-          {meta.description}
+          {project.description}
         </motion.p>
       </section>
 
       {/* alternating sections walkthrough */}
       <div className="space-y-36 relative z-10 max-w-6xl mx-auto px-6">
-        {screens.map((screen, idx) => {
+        {project.screens.map((screen: ScreenData, idx: number) => {
           const isLaptop = screen.type === "laptop";
           const isLeft = screen.variant === "left";
 
@@ -240,7 +255,7 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
                       <div className="aspect-[16/10] bg-[#02050a] rounded-lg overflow-hidden relative border border-black/40">
                         <img
                           src={screen.image}
-                          alt={screen.heading || meta.name}
+                          alt={screen.heading || project.name}
                           className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
                         />
                       </div>
