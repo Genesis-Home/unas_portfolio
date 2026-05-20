@@ -248,7 +248,7 @@ export function Projects({ onSelectProject }: ProjectsProps) {
             SYSTEM ARCHITECTURES
           </motion.span>
           <h2 className="text-4xl md:text-6xl font-extrabold font-outfit text-white text-center">
-            Selected <span className="text-gradient-primary">Deployments</span>
+            Selected <span className="text-gradient-primary">Projects</span>
           </h2>
           <motion.div
             initial={{ width: 0 }}
