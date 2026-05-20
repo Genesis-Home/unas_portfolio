@@ -17,10 +17,11 @@ export const ShinyText: React.FC<ShinyTextProps> = ({
     <div
       className={`shiny-text ${disabled ? "disabled" : ""} ${className}`}
       style={{
-        backgroundImage: 'linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 60%)',
+        backgroundImage: 'linear-gradient(120deg, rgba(148, 163, 184, 0.6) 40%, rgba(255, 255, 255, 1) 50%, rgba(148, 163, 184, 0.6) 60%)',
         backgroundSize: '200% 100%',
         WebkitBackgroundClip: 'text',
         backgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
         display: 'inline-block',
         animation: disabled ? 'none' : `shiny ${animationDuration} linear infinite`,
       }}
@@ -34,8 +35,10 @@ export const ShinyText: React.FC<ShinyTextProps> = ({
         .shiny-text.disabled {
           background-image: none;
           color: #64748b;
+          -webkit-text-fill-color: initial;
         }
       `}</style>
     </div>
   );
 };
+

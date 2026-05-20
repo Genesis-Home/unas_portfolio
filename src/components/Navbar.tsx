@@ -8,7 +8,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 40);
 
       // Calculate scroll progress
       const windowHeight =
@@ -18,8 +18,8 @@ export function Navbar() {
       setScrollProgress(progress);
 
       // Detect which section is in view
-      const sections = ["hero", "skills", "experience", "contact"];
-      const scrollPosition = window.scrollY + 100;
+      const sections = ["hero", "skills", "projects", "experience", "contact"];
+      const scrollPosition = window.scrollY + 120;
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -47,6 +47,7 @@ export function Navbar() {
   const navLinks = [
     { id: "hero", label: "Architecture" },
     { id: "skills", label: "Tech Stack" },
+    { id: "projects", label: "Deployments" },
     { id: "experience", label: "Operations" },
   ];
 
@@ -55,25 +56,31 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-nav py-3" : "bg-transparent py-5"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300"
     >
-      <div className="container mx-auto px-6 flex justify-between items-center">
+      {/* Floating Glass Capsule Wrapper */}
+      <div
+        className={`mx-auto flex justify-between items-center transition-all duration-500 rounded-3xl ${
+          scrolled
+            ? "glass-nav py-3.5 px-8 max-w-5xl shadow-2xl shadow-black/40 border border-white/5"
+            : "bg-transparent py-4 px-4 max-w-7xl border-none"
+        }`}
+      >
         <a
           href="#hero"
           onClick={() => handleNavClick("hero")}
-          className="group flex items-center gap-3"
+          className="group flex items-center gap-3 select-none"
         >
-          <div className="w-11 h-11 bg-primary/10 rounded-2xl flex items-center justify-center border border-primary/20 group-hover:bg-primary/20 transition-all font-outfit">
-            <span className="text-xl font-black text-primary">SU</span>
+          <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20 group-hover:bg-primary/20 group-hover:border-primary/40 transition-all font-outfit">
+            <span className="text-lg font-black text-primary select-none">SU</span>
           </div>
-          <span className="text-xl font-extrabold font-outfit text-slate-900 group-hover:text-primary transition-colors tracking-tight">
+          <span className="text-lg font-extrabold font-outfit text-white group-hover:text-primary transition-colors tracking-tight select-none">
             Syed Unas
           </span>
         </a>
 
-        <div className="hidden md:flex items-center gap-10 text-[13px] font-bold uppercase tracking-widest leading-none">
+        {/* Desktop Nav Items */}
+        <div className="hidden md:flex items-center gap-10 text-[12px] font-bold uppercase tracking-widest leading-none">
           {navLinks.map((link) => (
             <motion.a
               key={link.id}
@@ -81,11 +88,11 @@ export function Navbar() {
               onClick={() => handleNavClick(link.id)}
               className={`transition-all duration-300 ${
                 activeSection === link.id
-                  ? "text-primary font-black"
-                  : "text-slate-500 hover:text-primary"
+                  ? "text-[#3b82f6] font-black"
+                  : "text-slate-400 hover:text-white"
               }`}
               animate={{
-                color: activeSection === link.id ? "#2563eb" : "#64748b",
+                color: activeSection === link.id ? "#3b82f6" : "#94a3b8",
               }}
               transition={{ duration: 0.2 }}
             >
@@ -95,21 +102,26 @@ export function Navbar() {
           <motion.a
             href="#contact"
             onClick={() => handleNavClick("contact")}
-            className="px-8 py-3.5 bg-primary text-white rounded-[20px] hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 flex items-center gap-2"
+            className="px-6 py-3 bg-gradient-to-r from-primary to-accent text-white rounded-xl hover:shadow-lg hover:shadow-primary/20 transition-all text-xs font-bold uppercase tracking-wider"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Build Project
+            Deploy Node
           </motion.a>
         </div>
       </div>
 
-      {/* Scroll Progress Bar */}
-      <motion.div
-        className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary via-blue-500 to-cyan-500 shadow-lg shadow-primary/50"
-        style={{ width: `${scrollProgress}%` }}
-        transition={{ duration: 0.1 }}
-      />
+      {/* Futuristic Scroll Progress bar integrated into bottom of capsule */}
+      <div className="max-w-5xl mx-auto px-8 relative">
+        <motion.div
+          className="absolute bottom-0 left-8 right-8 h-[2px] bg-gradient-to-r from-primary via-blue-400 to-cyan-400 shadow-[0_0_8px_#3b82f6]"
+          style={{ 
+            width: `calc(${scrollProgress}% - 64px)`,
+            transformOrigin: "left"
+          }}
+          transition={{ duration: 0.1 }}
+        />
+      </div>
     </motion.nav>
   );
 }

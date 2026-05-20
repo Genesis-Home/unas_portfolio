@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 interface TiltedCardProps {
@@ -72,7 +72,7 @@ export const TiltedCard: React.FC<TiltedCardProps> = ({
       
       {/* Content Container (Layered for 3D depth) */}
       <div 
-        className="relative z-10 w-full h-full bg-white/40 backdrop-blur-xl border border-white/50 shadow-xl overflow-hidden rounded-[40px]"
+        className="relative z-10 w-full h-full bg-[#090d16]/55 backdrop-blur-xl border border-white/5 shadow-2xl overflow-hidden rounded-[40px]"
         style={{ transform: "translateZ(50px)" }}
       >
         {children}

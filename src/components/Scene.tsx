@@ -1,175 +1,363 @@
 import { useRef, useMemo } from "react";
+import { useFrame } from "@react-three/fiber";
 import {
   Box,
   Sphere,
-  MeshDistortMaterial,
+  Cylinder,
+  Html,
   Points,
   PointMaterial,
-  Html,
 } from "@react-three/drei";
 import * as THREE from "three";
 import { CodeEditor } from "./CodeEditor";
 
 export function Scene() {
   const groupRef = useRef<THREE.Group>(null);
+  const particlesRef = useRef<THREE.Points>(null);
+  const fanRef = useRef<THREE.Mesh>(null);
+  const fan2Ref = useRef<THREE.Mesh>(null);
 
   // Generating random points for data particles
   const particles = useMemo(() => {
-    const count = 500;
+    const count = 250;
     const positions = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 8;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 8;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
+      // Create a cylindrical distribution around the workspace
+      const angle = Math.random() * Math.PI * 2;
+      const radius = 3.0 + Math.random() * 4.0;
+      positions[i * 3] = Math.cos(angle) * radius;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 6;
+      positions[i * 3 + 2] = Math.sin(angle) * radius;
     }
     return positions;
   }, []);
 
-  return (
-    <group ref={groupRef}>
-      <ambientLight intensity={1.0} />
-      <spotLight
-        position={[10, 10, 10]}
-        angle={0.15}
-        penumbra={1}
-        intensity={1.5}
-        color="#2563eb"
-      />
-      <pointLight position={[-10, -10, -10]} intensity={0.5} color="#4f46e5" />
+  // Frame animations loop
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
 
-      {/* Static Workstation Group */}
-      <group scale={0.65} position={[0, 0.8, 0]}>
-        {/* Modern Ultra-Wide Monitor */}
-        <group position={[0, 0, 0]}>
-          {/* Screen Body */}
-          <Box args={[4.6, 2.3, 0.1]}>
+    // Workstation floating idle
+    if (groupRef.current) {
+      groupRef.current.position.y = Math.sin(t * 0.4) * 0.08 + 0.6;
+      groupRef.current.rotation.y = Math.sin(t * 0.15) * 0.03;
+    }
+
+    // Spin PC Tower fans
+    if (fanRef.current) {
+      fanRef.current.rotation.z = t * 8;
+    }
+    if (fan2Ref.current) {
+      fan2Ref.current.rotation.z = t * 8;
+    }
+
+    // Spin data particles
+    if (particlesRef.current) {
+      particlesRef.current.rotation.y = t * 0.02;
+    }
+  });
+
+  return (
+    <group>
+      {/* Ambient Lighting */}
+      <ambientLight intensity={0.4} />
+
+      {/* Dramatic Backlight Wall Glow (Purple/Magenta) */}
+      <spotLight
+        position={[0, 2, -4]}
+        angle={0.6}
+        penumbra={1}
+        intensity={3.5}
+        color="#8b5cf6"
+      />
+
+      {/* Key Light (Cyan) */}
+      <spotLight
+        position={[-6, 6, 6]}
+        angle={0.4}
+        penumbra={1}
+        intensity={3.0}
+        color="#06b6d4"
+        castShadow
+      />
+
+      {/* Warm Fill Light */}
+      <pointLight position={[6, -4, 4]} intensity={0.6} color="#3b82f6" />
+
+      {/* Active Workstation Group */}
+      <group ref={groupRef} scale={0.7} position={[0, 0.6, 0]}>
+        
+        {/* Large Carbon Desk Surface */}
+        <Box args={[11, 0.08, 5]} position={[0, -2.0, 0.5]}>
+          <meshPhysicalMaterial
+            color="#080c14"
+            roughness={0.4}
+            metalness={0.8}
+            clearcoat={0.6}
+            clearcoatRoughness={0.2}
+          />
+        </Box>
+
+        {/* 1. Curved Ultra-Wide Monitor */}
+        <group position={[0, 0.1, 0.2]}>
+          
+          {/* Monitor Screen Frame & Back Bezel */}
+          <Box args={[4.84, 2.44, 0.08]} position={[0, 0, 0]}>
+            <meshPhysicalMaterial
+              color="#0b0f19"
+              roughness={0.2}
+              metalness={0.9}
+              clearcoat={1}
+            />
+          </Box>
+
+          {/* Glowing Back Bezel (LED backlight effect) */}
+          <Box args={[4.88, 2.48, 0.02]} position={[0, 0, -0.05]}>
+            <meshStandardMaterial
+              color="#3b82f6"
+              emissive="#3b82f6"
+              emissiveIntensity={1.5}
+            />
+          </Box>
+
+          {/* Screen Front Surface Panel */}
+          <Box args={[4.8, 2.4, 0.02]} position={[0, 0, 0.041]}>
             <meshPhysicalMaterial
               color="#0d1117"
-              roughness={0.5}
-              metalness={0.7}
-              clearcoat={1}
-              clearcoatRoughness={0.1}
+              roughness={0.1}
+              metalness={0.2}
             />
-
-            {/* Screen Front Surface (Correct Centered Position) */}
-            <group position={[-0.72, -0.35, 1]}>
-              <Html
-                transform
-                center
-                distanceFactor={1.2}
-                className="pointer-events-none select-none w-full h-full flex items-center justify-center"
-              >
-                <div style={{ width: "1280px", height: "640px" }}>
-                  <CodeEditor />
-                </div>
-              </Html>
-            </group>
           </Box>
 
-          {/* Monitor Stand */}
-          <Box
-            args={[0.3, 1.2, 0.1]}
-            position={[0, -1.2, -0.4]}
-            rotation={[Math.PI / 10, 0, 0]}
+          {/* FIX SCREEN ALIGNMENT: Pixel-perfect nested HTML screen */}
+          {/* Pos Z is 0.052 (slightly in front of bezel/screen surface to prevent z-fighting) */}
+          {/* Scale 0.00375 maps 1280px exactly to 4.8 units width: 1280 * 0.00375 = 4.8 */}
+          {/* We do NOT set distanceFactor. This locks the component scale relative to 3D units. */}
+          <group position={[0, 0, 0.052]} scale={[0.00375, 0.00375, 0.00375]}>
+            <Html
+              transform
+              center
+              className="pointer-events-none select-none w-full h-full flex items-center justify-center"
+            >
+              <div style={{ width: "1280px", height: "640px" }}>
+                <CodeEditor />
+              </div>
+            </Html>
+          </group>
+
+          {/* Heavy Chrome Monitor Stand Column */}
+          <Cylinder
+            args={[0.08, 0.08, 1.4, 16]}
+            position={[0, -1.3, -0.3]}
+            rotation={[Math.PI / 16, 0, 0]}
           >
             <meshPhysicalMaterial
-              color="#475569"
-              metalness={1}
-              roughness={0.2}
-              clearcoat={1}
+              color="#4b5563"
+              metalness={1.0}
+              roughness={0.1}
+              clearcoat={1.0}
             />
-          </Box>
-          <Box args={[1.8, 0.05, 1.2]} position={[0, -1.8, -0.4]}>
+          </Cylinder>
+
+          {/* Sturdy Monitor Stand Base */}
+          <Box args={[1.5, 0.04, 1.0]} position={[0, -1.96, -0.2]}>
             <meshPhysicalMaterial
-              color="#475569"
-              metalness={1}
+              color="#374151"
+              metalness={0.9}
               roughness={0.2}
-              clearcoat={1}
             />
           </Box>
         </group>
 
-        {/* Minimalist PC Tower */}
-        <group position={[4.0, -0.5, -1.5]} rotation={[0, -0.4, 0]}>
-          <Box args={[1.3, 3.2, 2.6]}>
+        {/* 2. Premium Dual-Chamber PC Tower Case */}
+        <group position={[3.6, -0.4, -0.6]} rotation={[0, -0.35, 0]}>
+          
+          {/* Outer Black Case Frame */}
+          <Box args={[1.4, 3.0, 2.4]} position={[0, 0, 0]}>
             <meshPhysicalMaterial
-              color="#020617"
-              roughness={0.5}
-              metalness={0.7}
+              color="#090d16"
+              roughness={0.3}
+              metalness={0.8}
               clearcoat={0.5}
             />
+          </Box>
 
-            {/* Front Vent Pattern */}
-            {Array.from({ length: 12 }).map((_, i) => (
+          {/* High-Gloss Front Grille */}
+          <Box args={[1.36, 2.9, 0.04]} position={[0, 0, 1.21]}>
+            <meshPhysicalMaterial
+              color="#020617"
+              roughness={0.1}
+              metalness={0.9}
+            />
+            {/* Front LED Accent Strip */}
+            <Box args={[0.04, 2.8, 0.01]} position={[0, 0, 0.02]}>
+              <meshStandardMaterial
+                color="#06b6d4"
+                emissive="#06b6d4"
+                emissiveIntensity={3}
+              />
+            </Box>
+          </Box>
+
+          {/* Tempered Glass Side Window */}
+          <Box args={[0.02, 2.8, 2.2]} position={[0.71, 0, 0]}>
+            <meshPhysicalMaterial
+              color="#0f172a"
+              transparent
+              opacity={0.25}
+              roughness={0.0}
+              metalness={1.0}
+              transmission={0.95}
+              thickness={0.2}
+            />
+          </Box>
+
+          {/* PC Core Internal Component Board */}
+          <Box args={[0.1, 2.6, 2.0]} position={[0, 0, 0]}>
+            <meshStandardMaterial color="#0f172a" />
+            
+            {/* Glowing Ram Sticks (Emissive Neon Blue) */}
+            {Array.from({ length: 4 }).map((_, i) => (
               <Box
                 key={i}
-                args={[0.8, 0.02, 0.02]}
-                position={[0, 1.2 - i * 0.2, 1.31]}
+                args={[0.02, 0.5, 0.06]}
+                position={[0.1, 0.6, 0.2 + i * 0.1]}
               >
-                <meshStandardMaterial color="#1e293b" />
+                <meshStandardMaterial
+                  color="#3b82f6"
+                  emissive="#3b82f6"
+                  emissiveIntensity={2.5}
+                />
               </Box>
             ))}
 
-            {/* Side Circuit Glow Texture */}
-            <Box args={[0.02, 0.05, 1.8]} position={[0.66, 0.5, 0]}>
+            {/* Glowing CPU Liquid Cooler Pump Block */}
+            <Cylinder
+              args={[0.2, 0.2, 0.1, 16]}
+              position={[0.1, 0.6, -0.4]}
+              rotation={[0, 0, Math.PI / 2]}
+            >
               <meshStandardMaterial
-                color="#2563eb"
-                emissive="#3b82f6"
+                color="#8b5cf6"
+                emissive="#8b5cf6"
                 emissiveIntensity={2}
               />
-            </Box>
+            </Cylinder>
 
-            {/* Side Glass Panel */}
-            <Box args={[0.03, 2.8, 2.2]} position={[0.66, 0, 0]}>
-              <meshPhysicalMaterial
-                color="#0f172a"
-                transparent
-                opacity={0.3}
-                roughness={0}
-                metalness={1}
-                transmission={0.5}
-                thickness={0.1}
-              />
-            </Box>
+            {/* PC Cooler Fan 1 (Active Spinning) */}
+            <group position={[0.1, 0.6, -0.4]}>
+              <mesh ref={fanRef}>
+                <boxGeometry args={[0.01, 0.35, 0.04]} />
+                <meshStandardMaterial color="#ffffff" />
+              </mesh>
+            </group>
+
+            {/* PC Case Exhaust Fan 2 (Back Case - Active Spinning) */}
+            <group position={[-0.1, 0.8, -1.0]}>
+              <Cylinder
+                args={[0.3, 0.3, 0.08, 16]}
+                rotation={[0, 0, Math.PI / 2]}
+              >
+                <meshStandardMaterial color="#1e293b" />
+              </Cylinder>
+              <mesh ref={fan2Ref} position={[-0.05, 0, 0]}>
+                <boxGeometry args={[0.01, 0.5, 0.05]} />
+                <meshStandardMaterial
+                  color="#06b6d4"
+                  emissive="#06b6d4"
+                  emissiveIntensity={1.5}
+                />
+              </mesh>
+            </group>
           </Box>
         </group>
 
-        {/* Sleek Mouse */}
-        <group position={[-2.5, -1.6, 1]} rotation={[0, 0.5, 0]}>
-          <Sphere args={[0.3, 32, 32]} scale={[1, 0.6, 1.5]}>
-            <MeshDistortMaterial
-              color="#ffffff"
-              speed={1}
-              distort={0.1}
-              radius={1}
-              roughness={0}
+        {/* 3. Glowing Custom Mechanical Keyboard */}
+        <group position={[0, -1.94, 1.1]}>
+          
+          {/* Brushed Metal Keyboard Base Frame */}
+          <Box args={[2.6, 0.06, 1.0]}>
+            <meshPhysicalMaterial
+              color="#1f2937"
+              roughness={0.3}
+              metalness={0.7}
+            />
+          </Box>
+
+          {/* Underglow LED strip (Cyan base underglow) */}
+          <Box args={[2.64, 0.02, 1.04]} position={[0, -0.03, 0]}>
+            <meshStandardMaterial
+              color="#06b6d4"
+              emissive="#06b6d4"
+              emissiveIntensity={1.5}
+            />
+          </Box>
+
+          {/* Keycap Rows (Individual tactile rows) */}
+          {[-0.35, -0.18, 0, 0.18, 0.35].map((zPos, rowIdx) => (
+            <Box
+              key={rowIdx}
+              args={[2.4, 0.05, 0.12]}
+              position={[0, 0.05, zPos]}
+            >
+              {/* Emissive keyboard illumination */}
+              <meshStandardMaterial
+                color="#090d16"
+                emissive={rowIdx % 2 === 0 ? "#3b82f6" : "#8b5cf6"}
+                emissiveIntensity={1.2}
+                roughness={0.6}
+              />
+            </Box>
+          ))}
+        </group>
+
+        {/* 4. Ergonomic Gaming Mouse */}
+        <group position={[2.0, -1.94, 1.1]} rotation={[0, -0.2, 0]}>
+          
+          {/* Main Mouse Body */}
+          <Sphere args={[0.18, 16, 16]} scale={[1, 0.6, 1.6]}>
+            <meshPhysicalMaterial
+              color="#090d16"
+              roughness={0.4}
               metalness={0.5}
             />
           </Sphere>
-        </group>
 
-        {/* Floating Data Particles */}
-        {/* <Points positions={particles}>
-          <PointMaterial
-            transparent
-            color="#2563eb"
-            size={0.04}
-            sizeAttenuation={true}
-            depthWrite={false}
-            blending={THREE.AdditiveBlending}
-          />
-        </Points> */}
+          {/* Glowing Active Scroll Wheel */}
+          <Cylinder
+            args={[0.04, 0.04, 0.02, 8]}
+            position={[0, 0.07, 0.12]}
+            rotation={[0, 0, Math.PI / 2]}
+          >
+            <meshStandardMaterial
+              color="#06b6d4"
+              emissive="#06b6d4"
+              emissiveIntensity={2.5}
+            />
+          </Cylinder>
+        </group>
       </group>
 
-      {/* Surface Reflection */}
-      <mesh position={[0, -0.3, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[20, 20]} />
-        <meshStandardMaterial
-          color="#f8fafc"
+      {/* Dynamic Floating Data Particles */}
+      <Points ref={particlesRef} positions={particles}>
+        <PointMaterial
           transparent
-          opacity={0.3}
-          roughness={0.05}
-          metalness={0.1}
+          color="#3b82f6"
+          size={0.06}
+          sizeAttenuation={true}
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
+        />
+      </Points>
+
+      {/* Sleek Ambient Studio Floor Reflection */}
+      <mesh position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[25, 25]} />
+        <meshStandardMaterial
+          color="#030712"
+          transparent
+          opacity={0.6}
+          roughness={0.1}
+          metalness={0.9}
         />
       </mesh>
     </group>

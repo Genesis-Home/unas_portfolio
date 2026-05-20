@@ -43,7 +43,7 @@ export const BlurText: React.FC<BlurTextProps> = ({
       filter: "blur(0px)",
       y: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 12,
         stiffness: 100,
       },

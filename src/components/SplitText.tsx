@@ -67,7 +67,7 @@ export const SplitText: React.FC<SplitTextProps> = ({
     <span
       ref={ref}
       className={`split-parent overflow-hidden inline-flex flex-wrap ${className}`}
-      style={{ textAlign: 'center' }}
+      style={{ textAlign: 'inherit' }}
     >
       {springs.map((props, index) => (
         <animated.span

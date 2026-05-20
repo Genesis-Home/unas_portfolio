@@ -27,22 +27,26 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-slate-50"
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background tech-grid"
     >
-      {/* Background Animation from React Bits */}
+      {/* Radial Theme Glow */}
+      <div className="absolute inset-0 tech-radial-glow pointer-events-none z-0" />
+      <div className="absolute inset-0 tech-radial-glow-violet pointer-events-none z-0" />
+
+      {/* Cyberpunk Tech Waves Background */}
       <Waves
-        lineColor="rgba(30, 41, 59, 0.15)"
+        lineColor="rgba(59, 130, 246, 0.08)"
         backgroundColor="transparent"
-        waveSpeedX={0.01}
-        waveSpeedY={0.005}
-        waveAmpX={30}
-        waveAmpY={15}
+        waveSpeedX={0.008}
+        waveSpeedY={0.004}
+        waveAmpX={25}
+        waveAmpY={12}
       />
 
-      {/* Dynamic Cursor Blob */}
+      {/* Dynamic Cursor Spotlight Blob */}
       {isMounted && (
         <motion.div
-          className="absolute w-64 h-64 bg-primary/5 rounded-full blur-[80px] pointer-events-none z-0"
+          className="absolute w-80 h-80 bg-primary/10 rounded-full blur-[100px] pointer-events-none z-0"
           style={{
             x: cursorX,
             y: cursorY,
@@ -52,52 +56,50 @@ export function Hero() {
         />
       )}
 
-      <div className="container mx-auto px-6 z-10 grid lg:grid-cols-2 gap-16 items-center pt-24 pb-12">
-        <div className="flex flex-col justify-center order-1 relative z-10">
+      <div className="container mx-auto px-6 z-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center pt-28 pb-12">
+
+        {/* Left Side: Professional Copy & Metrics */}
+        <div className="flex flex-col justify-center order-1 relative z-10 text-left">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white border border-slate-100 shadow-sm mb-8">
-              <span className="relative flex h-2 w-2">
+            {/* Senior Architect Tag Pod */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/5 border border-white/10 shadow-lg shadow-black/30 mb-8 backdrop-blur-md">
+              <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary shadow-[0_0_8px_#3b82f6]"></span>
               </span>
               <ShinyText
                 text="System Architect & Full-Stack Engineer"
-                className="text-xs font-bold uppercase tracking-widest text-slate-600"
+                className="text-xs font-bold uppercase tracking-widest text-slate-400"
               />
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-black font-outfit mb-6 tracking-tight leading-[1.05] text-slate-950">
+            {/* Impact Title */}
+            <h1 className="text-5xl md:text-7xl font-black font-outfit mb-20 tracking-tight leading-[1.08] text-white">
               <SplitText
-                text="Engineering"
-                delay={50}
-                className="text-slate-950"
-              />{" "}
-              <br />
-              <SplitText text="Future Proof" delay={80} className="" /> <br />
-              <SplitText
-                text="Scalability"
-                delay={100}
-                className="text-slate-950"
+                text="I'm Syed Unas,"
+                delay={40}
+                className="text-white"
               />
             </h1>
 
+            {/* Senior Core Pitch */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="text-slate-600 text-xl max-w-xl mb-12 leading-relaxed font-light"
+              className="text-slate-400 text-lg md:text-3xl max-w-xxl mb-24 leading-relaxed font-light"
             >
-              I'm <span className="text-slate-950 font-bold">Syed Unas</span>, a
-              Senior Full-Stack Engineer with 7+ years of experience building
-              scalable enterprise solutions. Specialized in microservices
-              architecture, AI/ML integration, and cloud technologies.
+              A Senior Full-Stack Engineer & Systems Architect with <span className="text-primary font-bold">7+ years</span> of production experience.
+              I build resilient cloud infrastructures, high-throughput microservices,
+              and low-latency distributed APIs for global organizations.
             </motion.p>
           </motion.div>
 
+          {/* Action CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -106,55 +108,62 @@ export function Hero() {
           >
             <motion.a
               href="#contact"
-              whileHover={{ scale: 1.05, y: -2 }}
+              whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="px-10 py-5 bg-gradient-to-r from-primary to-blue-600 text-white rounded-3xl font-bold shadow-2xl shadow-primary/30 flex items-center gap-3 hover:shadow-2xl hover:shadow-primary/40 transition-all duration-300"
+              className="px-8 py-4.5 bg-gradient-to-r from-primary to-accent text-white rounded-2xl font-bold shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/45 transition-all duration-300 flex items-center gap-3"
             >
-              <span>Let's Connect</span>
-              <span className="text-xl">→</span>
+              <span>Initialize Connection</span>
+              <span className="text-lg">→</span>
             </motion.a>
             <motion.a
-              href="#experience"
-              whileHover={{ scale: 1.05, y: -2 }}
+              href="#projects"
+              whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="px-10 py-5 bg-white text-slate-800 border-2 border-slate-200 rounded-3xl font-bold hover:border-primary/50 hover:bg-slate-50 transition-all duration-300 shadow-sm"
+              className="px-8 py-4.5 bg-white/5 text-white border border-white/10 hover:border-primary/50 hover:bg-white/10 rounded-2xl font-bold transition-all duration-300 shadow-sm backdrop-blur-sm"
             >
-              View Work
+              Inspect Deployments
             </motion.a>
           </motion.div>
 
-          {/* Performance Metrics */}
+          {/* Senior Telemetry Metrics */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.8 }}
-            className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-12"
+            className="grid grid-cols-3 gap-4 mb-4 max-w-xl"
           >
             {[
               {
-                label: "Experience",
+                label: "Total Experience",
                 value: "7+ Years",
-                color: "text-blue-600",
+                color: "text-primary",
+                shadow: "shadow-neon-blue",
               },
-              { label: "Projects", value: "50+", color: "text-emerald-600" },
               {
-                label: "Status",
-                value: "Available",
-                color: "text-amber-600",
+                label: "System SLA",
+                value: "99.99%",
+                color: "text-emerald-400",
+                shadow: "shadow-neon-emerald"
+              },
+              {
+                label: "Deployments",
+                value: "50+ Global",
+                color: "text-violet-400",
+                shadow: "shadow-neon-violet",
               },
             ].map((metric, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.93 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.3 + i * 0.1, duration: 0.6 }}
-                className="group bg-white/60 backdrop-blur-sm border border-slate-100 p-4 rounded-2xl hover:bg-white hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
+                className={`group bg-white/5 border border-white/10 p-5 rounded-2xl hover:bg-white/10 hover:border-primary/40 transition-all duration-400 flex flex-col justify-between h-28 backdrop-blur-md`}
               >
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 group-hover:text-primary transition-colors">
+                <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-none group-hover:text-primary transition-colors mb-2">
                   {metric.label}
                 </p>
                 <p
-                  className={`text-lg font-black ${metric.color} group-hover:scale-110 transition-transform duration-300 origin-left`}
+                  className={`text-xl font-black ${metric.color} leading-none group-hover:scale-105 transition-transform duration-300 origin-left`}
                 >
                   {metric.value}
                 </p>
@@ -162,71 +171,80 @@ export function Hero() {
             ))}
           </motion.div>
 
-          {/* Floating Terminal (Simplified for Desktop) */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 20 }}
+          {/* Floating Telemetry Terminal (Uncommented & Redesigned) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5 }}
-            className="hidden xl:block absolute -left-32 top-1/2 -translate-y-1/2 w-64 bg-slate-900 rounded-2xl p-4 shadow-2xl border border-white/10"
+            transition={{ delay: 1.6, duration: 0.8 }}
+            className="hidden xl:block absolute -left-36 bottom-6 w-72 bg-[#090d16]/95 rounded-2xl p-4 shadow-2xl border border-white/5 backdrop-blur-xl"
           >
-            <div className="flex gap-1.5 mb-3">
-              <div className="w-2 h-2 rounded-full bg-rose-500"></div>
-              <div className="w-2 h-2 rounded-full bg-amber-500"></div>
-              <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+            <div className="flex gap-1.5 mb-3 border-b border-white/5 pb-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-rose-500"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+              <span className="text-[8px] font-mono text-slate-500 ml-auto uppercase tracking-widest font-bold">system_daemon.sh</span>
             </div>
-            <div className="font-mono text-[10px] space-y-1 text-slate-400">
-              <p className="text-primary">$ npm run deploy</p>
-              <p>Fetching assets...</p>
-              <p>Optimizing bundle...</p>
-              <p className="text-emerald-400">✓ Deployment ready</p>
+            <div className="font-mono text-[9px] space-y-1.5 text-slate-400 text-left">
+              <p className="text-primary font-bold">$ nexus-cli telemetry --live</p>
+              <p className="text-slate-500">Connecting node: katy-tx-edge-01...</p>
+              <p className="text-violet-400">⚡ Distributed database sync: 100%</p>
+              <p className="text-emerald-400">✓ Systems operational (Latency: 12ms)</p>
             </div>
-          </motion.div> */}
+          </motion.div>
         </div>
 
-        {/* 3D Model Section */}
+        {/* Right Side: 3D Workspace Scene */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, delay: 0.5 }}
-          className="relative h-[450px] lg:h-[700px] w-full order-2 z-0 flex items-center justify-center"
+          transition={{ duration: 1.2, delay: 0.4 }}
+          className="relative h-[480px] lg:h-[750px] w-full order-2 z-0 flex items-center justify-center"
         >
-          <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent rounded-[60px] blur-3xl lg:blur-none"></div>
+          {/* Neon backlighting panel blur */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-accent/5 to-transparent rounded-[60px] blur-3xl lg:blur-none pointer-events-none"></div>
 
-          <div className="w-full h-full min-h-[450px] relative">
+          {/* Canvas Wrapper */}
+          <div className="w-full h-full min-h-[480px] relative select-none">
             <Canvas
-              camera={{ position: [0, 0, 8], fov: 45 }}
+              camera={{ position: [0, 0, 8.5], fov: 42 }}
               className="w-full h-full"
             >
               <Scene />
             </Canvas>
           </div>
 
-          {/* Dashboard Status Cards */}
-          <div className="hidden lg:block absolute top-[15%] -right-[5%] p-5 bg-white/90 backdrop-blur-md rounded-3xl border border-slate-100 shadow-2xl z-20 w-48 hover:-translate-y-1 transition-transform">
+          {/* Dashboard Telemetry Live Feed Pod */}
+          <div className="hidden lg:block absolute top-[18%] -right-[3%] p-5 bg-[#090d16]/90 backdrop-blur-md rounded-2xl border border-white/5 shadow-2xl z-20 w-52 hover:-translate-y-1 hover:border-primary/30 transition-all duration-300">
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                Active Process
+              <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#3b82f6]"></div>
+              <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">
+                TELEMETRY LOG
               </span>
             </div>
-            <div className="text-xs font-bold text-slate-800 mb-2">
-              Architecting Scale
+            <div className="text-xs font-bold text-white mb-2 text-left font-mono">
+              AutoScaling Core Node
             </div>
-            <div className="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+            <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden mb-3">
               <motion.div
-                className="h-full bg-primary"
-                animate={{ width: ["0%", "85%"] }}
+                className="h-full bg-gradient-to-r from-primary to-accent"
+                animate={{ width: ["0%", "92%"] }}
                 transition={{
-                  duration: 2,
+                  duration: 2.5,
                   repeat: Infinity,
                   repeatType: "reverse",
+                  ease: "easeInOut",
                 }}
               />
+            </div>
+            <div className="flex justify-between font-mono text-[8px] text-slate-500">
+              <span>LOAD: OPTIMAL</span>
+              <span>92% RESILIENCE</span>
             </div>
           </div>
         </motion.div>
       </div>
 
+      {/* Down Scroll Prompt */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -237,16 +255,16 @@ export function Hero() {
           if (target) target.scrollIntoView({ behavior: "smooth" });
         }}
       >
-        <span className="text-[10px] uppercase tracking-[0.4em] mb-4 font-bold text-slate-500">
-          Inspect Architecture
+        <span className="text-[9px] uppercase tracking-[0.4em] mb-4 font-bold text-slate-500 font-mono">
+          Inspect Infrastructure
         </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="w-1 h-8 rounded-full bg-slate-200 overflow-hidden"
+          className="w-1 h-8 rounded-full bg-white/5 border border-white/10 overflow-hidden"
         >
           <motion.div
-            className="w-full h-1/2 bg-primary rounded-full"
+            className="w-full h-1/2 bg-primary rounded-full shadow-[0_0_4px_#3b82f6]"
             animate={{ transform: ["translateY(0%)", "translateY(100%)"] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
           />
