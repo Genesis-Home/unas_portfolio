@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Skills } from "./components/Skills";
@@ -17,6 +17,21 @@ import {
 
 function App() {
   const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
+  const [savedScrollPosition, setSavedScrollPosition] = useState(0);
+
+  const handleSelectProject = (projectId: string) => {
+    // Save current scroll position before opening project
+    setSavedScrollPosition(window.scrollY);
+    setActiveProjectId(projectId);
+  };
+
+  const handleCloseProject = () => {
+    setActiveProjectId(null);
+    // Restore scroll position after closing project
+    setTimeout(() => {
+      window.scrollTo({ top: savedScrollPosition, behavior: "smooth" });
+    }, 0);
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-white overflow-x-hidden">
@@ -35,7 +50,7 @@ function App() {
           >
             <ProjectDetails
               projectId={activeProjectId}
-              onClose={() => setActiveProjectId(null)}
+              onClose={handleCloseProject}
             />
           </motion.div>
         ) : (
@@ -54,7 +69,7 @@ function App() {
 
             <Skills />
 
-            <Projects onSelectProject={setActiveProjectId} />
+            <Projects onSelectProject={handleSelectProject} />
 
             <Experience />
 
