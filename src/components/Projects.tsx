@@ -55,7 +55,7 @@ const projectsList: Project[] = [
   {
     id: "1",
     title: "InspeCasa",
-    category: "web",
+    category: "mobile",
     subtitle: "Property & Inspection Management System",
     description: "A high-performance property audit and digital inspection platform. Streamlines building walkthroughs, automates compliance reporting, and manages offline-first data capture for auditors.",
     metrics: [
@@ -79,7 +79,7 @@ const projectsList: Project[] = [
   {
     id: "3",
     title: "REELConnect",
-    category: "web",
+    category: "mobile",
     subtitle: "Film Production & Social Networking",
     description: "A social hub and collaboration platform tailored for filmmakers, cast, and crew. Facilitates role matching, production portfolio showcases, and real-time community chat.",
     metrics: [
@@ -103,7 +103,7 @@ const projectsList: Project[] = [
   {
     id: "2",
     title: "MYSUTRA",
-    category: "web",
+    category: "mobile",
     subtitle: "Identity Mapping & Legacy Platform",
     description: "An enterprise-grade services ecosystem and secure identity mapping tool, providing advanced digital verification, custom workflows, and decentralized metadata management.",
     metrics: [
@@ -175,7 +175,7 @@ const projectsList: Project[] = [
   {
     id: "5",
     title: "Taxi Caller",
-    category: "mobile",
+    category: "web",
     subtitle: "Real-Time Ride Dispatching Engine",
     description: "A low-latency, cross-platform ride-hailing and dispatch application featuring high-frequency geospatial tracking, driver match protocols, and real-time mapping dashboards.",
     metrics: [
@@ -199,7 +199,7 @@ const projectsList: Project[] = [
   {
     id: "6",
     title: "Care Connect",
-    category: "mobile",
+    category: "web",
     subtitle: "HIPAA Compliant Telehealth Portal",
     description: "A highly secure mobile healthcare application supporting encrypted video consultations, patient medical history tracking, digital prescriptions, and direct clinic integrations.",
     metrics: [

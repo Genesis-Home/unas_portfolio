@@ -1,6 +1,12 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Smartphone, Globe, Terminal, ShieldAlert } from "lucide-react";
+import {
+  ArrowLeft,
+  Smartphone,
+  Globe,
+  Terminal,
+  ShieldAlert,
+} from "lucide-react";
 
 // Import all local PortfolioData files
 import InspeCasaScreens from "./PortfolioData/InspeCasa";
@@ -38,8 +44,8 @@ const projects: Project[] = [
     category: "Web Application UI",
     description: "Property Inspections & Compliance Verification Core",
     glow: "from-emerald-500/20 to-teal-500/20",
-    type: "web",
-    screens: InspeCasaScreens as ScreenData[]
+    type: "mobile",
+    screens: InspeCasaScreens as ScreenData[],
   },
   {
     id: "2",
@@ -47,8 +53,8 @@ const projects: Project[] = [
     category: "Web Service Platform",
     description: "Distributed Identity Mapping & Legacy Services Engine",
     glow: "from-amber-500/20 to-orange-500/20",
-    type: "web",
-    screens: MysturaScreens as ScreenData[]
+    type: "mobile",
+    screens: MysturaScreens as ScreenData[],
   },
   {
     id: "3",
@@ -56,8 +62,8 @@ const projects: Project[] = [
     category: "Web Networking System",
     description: "Film Industry Creative Social & Casting Operations Hub",
     glow: "from-violet-500/20 to-fuchsia-500/20",
-    type: "web",
-    screens: REELConnectScreens as ScreenData[]
+    type: "mobile",
+    screens: REELConnectScreens as ScreenData[],
   },
   {
     id: "4",
@@ -66,7 +72,7 @@ const projects: Project[] = [
     description: "Algorithmic Micro-Savings & Personal Financial Intelligence",
     glow: "from-emerald-500/20 to-cyan-500/20",
     type: "mobile",
-    screens: FinsususScreens as ScreenData[]
+    screens: FinsususScreens as ScreenData[],
   },
   {
     id: "5",
@@ -74,8 +80,8 @@ const projects: Project[] = [
     category: "Mobile Dispatch Software",
     description: "Geospatial Ride Matching & Driver Coordination Network",
     glow: "from-yellow-500/20 to-amber-500/20",
-    type: "mobile",
-    screens: TaxiCallerScreens as ScreenData[]
+    type: "web",
+    screens: TaxiCallerScreens as ScreenData[],
   },
   {
     id: "6",
@@ -83,8 +89,8 @@ const projects: Project[] = [
     category: "Mobile Health Platform",
     description: "HIPAA-Compliant Video Telehealth & Encrypted EHR Conduit",
     glow: "from-blue-500/20 to-indigo-500/20",
-    type: "mobile",
-    screens: CareConnectScreens as ScreenData[]
+    type: "web",
+    screens: CareConnectScreens as ScreenData[],
   },
   {
     id: "7",
@@ -93,14 +99,15 @@ const projects: Project[] = [
     description: "Centralized Hospitality Inventory & Regional Booking Ingress",
     glow: "from-emerald-500/20 to-green-500/20",
     type: "web",
-    screens: PakistanBookingScreens as ScreenData[]
-  }
+    screens: PakistanBookingScreens as ScreenData[],
+  },
 ];
 
 // Helper functions for easy filtering
-export const getWebProjects = () => projects.filter(p => p.type === "web");
-export const getMobileProjects = () => projects.filter(p => p.type === "mobile");
-export const getProjectById = (id: string) => projects.find(p => p.id === id);
+export const getWebProjects = () => projects.filter((p) => p.type === "web");
+export const getMobileProjects = () =>
+  projects.filter((p) => p.type === "mobile");
+export const getProjectById = (id: string) => projects.find((p) => p.id === id);
 
 interface ProjectDetailsProps {
   projectId: string;
@@ -119,8 +126,13 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
     return (
       <div className="min-h-screen bg-background flex flex-col items-center justify-center text-center p-8">
         <ShieldAlert size={64} className="text-rose-500 mb-6 animate-pulse" />
-        <h2 className="text-3xl font-bold font-outfit text-white mb-2">Systems Pipeline Fault</h2>
-        <p className="text-slate-400 mb-8 max-w-md">Project data node with ID "{projectId}" could not be resolved in central memory.</p>
+        <h2 className="text-3xl font-bold font-outfit text-white mb-2">
+          Systems Pipeline Fault
+        </h2>
+        <p className="text-slate-400 mb-8 max-w-md">
+          Project data node with ID "{projectId}" could not be resolved in
+          central memory.
+        </p>
         <button
           onClick={onClose}
           className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary text-white cursor-pointer transition-colors"
@@ -134,7 +146,9 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden tech-grid pb-24">
       {/* Global Background Ambient Glow Lights */}
-      <div className={`fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b ${project.glow} rounded-full blur-[140px] pointer-events-none z-0`} />
+      <div
+        className={`fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b ${project.glow} rounded-full blur-[140px] pointer-events-none z-0`}
+      />
 
       {/* Futuristic Floating Navigation Header */}
       <header className="sticky top-6 z-50 max-w-5xl mx-auto px-6 mb-16">
@@ -154,7 +168,9 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
               Walkthrough Mode
             </span>
             <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse shadow-neon-emerald" />
-            <span className="text-xs font-black text-white font-mono uppercase tracking-wider">{project.name}</span>
+            <span className="text-xs font-black text-white font-mono uppercase tracking-wider">
+              {project.name}
+            </span>
           </div>
         </div>
       </header>
@@ -167,7 +183,11 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
           transition={{ duration: 0.5 }}
           className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-6 font-mono inline-flex items-center gap-1.5"
         >
-          {project.type === "web" ? <Globe size={12} /> : <Smartphone size={12} />}
+          {project.type === "web" ? (
+            <Globe size={12} />
+          ) : (
+            <Smartphone size={12} />
+          )}
           {project.category}
         </motion.span>
         <motion.h1
@@ -214,17 +234,20 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
                     {screen.heading}
                   </h3>
                 )}
-                
+
                 <div className="bg-[#030712]/50 p-6 rounded-2xl border border-white/5 backdrop-blur-xl relative overflow-hidden">
                   <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-accent" />
                   <p className="text-slate-300 text-base md:text-lg leading-relaxed font-light font-outfit">
                     {screen.description}
                   </p>
-                  
+
                   {/* Cyber telemetry footprint */}
                   <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between font-mono text-[9px] text-slate-500">
                     <span className="flex items-center gap-1.5">
-                      <Terminal size={10} className="text-primary animate-pulse" />
+                      <Terminal
+                        size={10}
+                        className="text-primary animate-pulse"
+                      />
                       SECURE_RENDER_FOOTPRINT
                     </span>
                     <span>FRAME_0{idx + 1} // OK</span>
@@ -245,12 +268,12 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
                   <div className="w-full max-w-[520px] relative group">
                     {/* Shadow & Glow */}
                     <div className="absolute inset-0 bg-primary/10 rounded-2xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                    
+
                     {/* MacBook Bezel */}
                     <div className="bg-[#0c101b] border-2 border-white/10 rounded-2xl p-3 shadow-2xl relative overflow-hidden group-hover:border-primary/30 transition-colors duration-300">
                       {/* Glossy Screen Reflection Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none z-10" />
-                      
+
                       {/* Actual Screen Image */}
                       <div className="aspect-[16/10] bg-[#02050a] rounded-lg overflow-hidden relative border border-black/40">
                         <img
@@ -268,17 +291,17 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
                   <div className="w-full max-w-[280px] relative group">
                     {/* Shadow & Glow */}
                     <div className="absolute inset-0 bg-accent/15 rounded-[48px] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                    
+
                     {/* iPhone body frame */}
                     <div className="w-full aspect-[9/19.5] bg-[#05070c] border-[5px] border-slate-800 rounded-[44px] shadow-2xl p-2 relative overflow-hidden group-hover:border-accent/40 transition-colors duration-300">
                       {/* Physical Camera Notch (Dynamic Island) */}
                       <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-5 bg-[#000] rounded-full z-20 flex items-center justify-end px-3">
                         <div className="w-1.5 h-1.5 bg-slate-900 rounded-full border border-slate-950" />
                       </div>
-                      
+
                       {/* Screen reflection */}
                       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-transparent rounded-[38px] pointer-events-none z-10" />
-                      
+
                       {/* Screen Content */}
                       <div className="w-full h-full bg-[#020408] rounded-[36px] overflow-hidden border border-black/60 relative">
                         <img
@@ -287,7 +310,7 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
                           className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                         />
                       </div>
-                      
+
                       {/* Home Indicator Bar */}
                       <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/20 rounded-full z-20" />
                     </div>
