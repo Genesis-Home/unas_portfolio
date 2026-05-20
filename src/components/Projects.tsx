@@ -4,23 +4,24 @@ import { Github, ExternalLink, Cpu, Database, Server, Activity } from "lucide-re
 
 const projectsList = [
   {
-    title: "SaaS Nexus",
-    subtitle: "Enterprise Multi-Tenant E-Commerce Core",
-    description: "Architected a high-performance, multi-tenant e-commerce backend engine designed for sub-50ms global edge delivery. Implemented distributed transactional models with strict event sourcing rules.",
+    title: "USA Home Listings",
+    subtitle: "Lead Gen & Marketing Automation Platform",
+    description: "Developed a real-time lead generation and marketing automation platform for moving companies featuring verified homeowner data, AI-based vacancy filtering, and automated outreach campaigns to improve lead quality.",
     metrics: [
-      { label: "Throughput", value: "150,000+ req/sec" },
-      { label: "Edge Latency", value: "< 45ms Avg" },
-      { label: "Availability", value: "99.999% SLA" }
+      { label: "Supported Orgs", value: "500+ Companies" },
+      { label: "Database Scale", value: "10M+ Listings" },
+      { label: "System SLA", value: "99.99% Uptime" }
     ],
-    tech: ["React", "NestJS", "Kafka", "Redis", "PostgreSQL", "AWS ECS"],
+    tech: ["React", "Node.js", "Django", "Python", "Stripe API", "PostgreSQL"],
     glowColor: "rgba(59, 130, 246, 0.25)", // Tech Blue
     icon: <Server className="text-blue-400" size={24} />,
+    url: "https://www.usahomelistings.com",
     flow: [
-      { node: "Client", note: "HTTP/3" },
-      { node: "Cloudflare Edge", note: "Geo-Routing" },
-      { node: "API Gateway", note: "NestJS Core" },
-      { node: "Kafka Queue", note: "Pub/Sub" },
-      { node: "Order Worker", note: "PgSQL Cluster" }
+      { node: "React Dashboard", note: "Search & Export" },
+      { node: "RESTful Workflows", note: "Lead Management" },
+      { node: "AI Recommendation", note: "Collaborative Filter" },
+      { node: "Outreach Engine", note: "Direct Mail / Email" },
+      { node: "Data Tier", note: "PostgreSQL Sync" }
     ]
   },
   {
@@ -35,6 +36,7 @@ const projectsList = [
     tech: ["Python", "FastAPI", "PyTorch", "GCP Vertex AI", "React", "Docker"],
     glowColor: "rgba(139, 92, 246, 0.25)", // Violet
     icon: <Cpu className="text-violet-400" size={24} />,
+    url: "#contact",
     flow: [
       { node: "IoT Sensors", note: "MQTT Data" },
       { node: "FastAPI Ingestion", note: "Low-Latency" },
@@ -55,6 +57,7 @@ const projectsList = [
     tech: ["TypeScript", "Node.js", "WebSockets", "Redis", "PostgreSQL", "Docker"],
     glowColor: "rgba(16, 185, 129, 0.25)", // Emerald
     icon: <Database className="text-emerald-400" size={24} />,
+    url: "#contact",
     flow: [
       { node: "Clients", note: "WS Conns" },
       { node: "WS Gateway Cluster", note: "Node.js" },
@@ -114,10 +117,10 @@ export function Projects() {
                         {project.icon}
                       </div>
                       <div className="flex gap-3 text-slate-400">
-                        <a href="https://github.com/appmashcode" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
+                        <a href="https://github.com/appmashcode" id={`project-git-${idx}`} target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
                           <Github size={18} />
                         </a>
-                        <a href="#contact" className="hover:text-primary transition-colors">
+                        <a href={project.url} id={`project-link-${idx}`} target={project.url.startsWith("http") ? "_blank" : "_self"} rel="noreferrer" className="hover:text-primary transition-colors">
                           <ExternalLink size={18} />
                         </a>
                       </div>

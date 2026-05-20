@@ -28,15 +28,14 @@ const itemVariants = {
 
 const skillCategories = [
   {
-    title: "Frontend Architecture",
+    title: "Web Architecture",
     tagline: "System UI Core",
     icon: <Layers className="text-blue-400" size={20} />,
     skills: [
       "React",
       "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
       "Angular",
+      "Tailwind CSS",
       "Redux Toolkit",
       "HTML5 / CSS3",
       "WebGL / Three.js"
@@ -44,84 +43,81 @@ const skillCategories = [
     glowColor: "rgba(59, 130, 246, 0.2)", // Blue
   },
   {
-    title: "Backend & Systems",
-    tagline: "Low-Latency Execution",
-    icon: <Terminal className="text-violet-400" size={20} />,
-    skills: [
-      "Node.js",
-      "NestJS",
-      "Python (FastAPI)",
-      "Django",
-      "Java / Spring Boot",
-      "RESTful APIs",
-      "Microservices",
-      "ASP.NET Core"
-    ],
-    glowColor: "rgba(139, 92, 246, 0.2)", // Purple
-  },
-  {
-    title: "Distributed Databases",
-    tagline: "Event Streaming & ACID",
-    icon: <Database className="text-emerald-400" size={20} />,
-    skills: [
-      "PostgreSQL",
-      "Redis Caching",
-      "Apache Kafka",
-      "MongoDB",
-      "Elasticsearch",
-      "MySQL",
-      "Distributed Sync",
-      "SQL Tuning"
-    ],
-    glowColor: "rgba(16, 185, 129, 0.2)", // Green
-  },
-  {
-    title: "DevOps & Cloud",
-    tagline: "High-Availability Edge",
-    icon: <Cloud className="text-amber-400" size={20} />,
-    skills: [
-      "AWS (ECS/Lambda)",
-      "GCP Services",
-      "Docker Containers",
-      "Kubernetes",
-      "CI/CD Pipelines",
-      "Git / GitOps",
-      "Terraform",
-      "Azure Cloud"
-    ],
-    glowColor: "rgba(245, 158, 11, 0.2)", // Amber
-  },
-  {
-    title: "AI/ML & Data Pipelines",
-    tagline: "Active Predictive Analytics",
-    icon: <Brain className="text-indigo-400" size={20} />,
-    skills: [
-      "TensorFlow",
-      "PyTorch",
-      "OpenCV Integration",
-      "Pandas / NumPy",
-      "Data Ingestion",
-      "Predictive Models",
-      "Feature Pipelines",
-      "Supervised ML"
-    ],
-    glowColor: "rgba(99, 102, 241, 0.2)", // Indigo
-  },
-  {
     title: "Mobile Architecture",
-    tagline: "Scalable Hybrid Pods",
+    tagline: "Cross-Platform Hubs",
     icon: <Smartphone className="text-rose-400" size={20} />,
     skills: [
       "React Native",
       "Flutter Core",
-      "Cross-Platform",
+      "Cross-Platform Dev",
+      "iOS Deployment",
+      "Android Sync",
       "Mobile State Sync",
-      "App Store Deploy",
-      "Offline Cache",
-      "Mobile SDKs",
-      "UI/UX Adapters"
+      "Offline Storage"
     ],
     glowColor: "rgba(244, 63, 94, 0.2)", // Rose
+  },
+  {
+    title: "Backend & Systems",
+    tagline: "High-Throughput Core",
+    icon: <Terminal className="text-violet-400" size={20} />,
+    skills: [
+      "Node.js",
+      "NestJS",
+      "Python / Django",
+      "PHP",
+      "Java Core",
+      "ASP.NET Core",
+      "Redis Caching",
+      "RESTful APIs"
+    ],
+    glowColor: "rgba(139, 92, 246, 0.2)", // Purple
+  },
+  {
+    title: "Databases & Sync",
+    tagline: "Event Streaming & Storage",
+    icon: <Database className="text-emerald-400" size={20} />,
+    skills: [
+      "PostgreSQL",
+      "SQL Optimization",
+      "MongoDB",
+      "Elasticsearch",
+      "Apache Kafka",
+      "Distributed Sync",
+      "ACID Transactions"
+    ],
+    glowColor: "rgba(16, 185, 129, 0.2)", // Green
+  },
+  {
+    title: "Cloud & DevOps",
+    tagline: "High-Availability Edge",
+    icon: <Cloud className="text-amber-400" size={20} />,
+    skills: [
+      "AWS Services",
+      "Azure Cloud",
+      "GCP Platform",
+      "Docker Containers",
+      "Kubernetes Clusters",
+      "Microservices Architecture",
+      "CI/CD Pipelines",
+      "Git / Version Control"
+    ],
+    glowColor: "rgba(245, 158, 11, 0.2)", // Amber
+  },
+  {
+    title: "AI/ML & Data Science",
+    tagline: "Predictive Intelligence",
+    icon: <Brain className="text-indigo-400" size={20} />,
+    skills: [
+      "TensorFlow",
+      "Pandas Library",
+      "NumPy Module",
+      "OpenCV Computer Vision",
+      "Generative AI",
+      "Predictive Modeling",
+      "Data Science Pipelines"
+    ],
+    glowColor: "rgba(99, 102, 241, 0.2)", // Indigo
   },
 ];
 
@@ -152,6 +148,36 @@ export function Skills() {
             className="h-1 bg-gradient-to-r from-primary to-accent mt-8 rounded-full"
           />
         </div>
+
+        {/* Certification Highlight Pod */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-3xl mx-auto mb-20 p-6 rounded-3xl bg-[#090d16]/80 border border-amber-500/25 hover:border-amber-500/50 shadow-lg shadow-amber-500/5 backdrop-blur-xl transition-all duration-300 flex flex-col sm:flex-row items-center gap-6 text-left"
+        >
+          <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 shadow-[0_0_12px_rgba(245,158,11,0.15)]">
+            <span className="text-2xl font-black font-outfit select-none">AI</span>
+          </div>
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500 shadow-[0_0_6px_#f59e0b]"></span>
+              </span>
+              <span className="text-[9px] font-mono text-amber-400 uppercase tracking-widest font-bold">
+                ACTIVE ENGINEERING CREDENTIAL
+              </span>
+            </div>
+            <h4 className="text-lg font-black text-white font-outfit">
+              AI Fluent Tech Professional
+            </h4>
+            <p className="text-slate-400 text-xs mt-1 leading-relaxed">
+              Certified by <span className="text-amber-400 font-bold">Calyptus (2026)</span>. Proven capability in advanced LLM prompt engineering, agentic systems deployment, neural network libraries integration, and generative model engineering.
+            </p>
+          </div>
+        </motion.div>
 
         {/* Capabilities Grid */}
         <motion.div

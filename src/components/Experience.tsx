@@ -5,67 +5,74 @@ const experiences = [
   {
     company: "Muhammad Labs",
     role: "Senior Full-Stack Developer",
-    period: "Nov 2024 - Present",
+    period: "Nov 2024 - Present (Remote)",
     description:
-      "Directing structural architectural plans and delivering highly scalable enterprise systems for Real Estate and Retail clients. Driving microservices synchronization, transactional integrity, and AI pipelines.",
+      "Delivered scalable enterprise solutions for Real Estate and Retail clients using React, Next.js, Node.js, Python, and cloud platforms (AWS, Azure). Implemented microservices architecture, RESTful APIs, and AI/ML capabilities to drive business efficiency and measurable outcomes.",
     achievements: [
-      "Engineered real-time inventory management backend with NestJS and PostgreSQL for multi-warehouse inventory, reducing stock discrepancies by 31% and automating supply logs.",
-      "Built resilient cloud-based property gateway platform with React and NestJS featuring Stripe API and custom routing, cutting support tickets by 35% through modular API architecture.",
-      "Deployed event-driven analytics pipelines on AWS Lambda and Azure with Python (Pandas, Boto3), delivering telemetry charts via React dashboards for commercial intelligence."
+      "Engineered real-time inventory management system with React, Node.js, and PostgreSQL for multi-warehouse tracking, reducing stockouts by 31% and optimizing supply chain operations.",
+      "Built cloud-based property management platform using React and NestJS with Stripe and Google Maps integration, reducing maintenance response time by 35% through modular API architecture.",
+      "Deployed event-driven analytics platform on AWS Lambda and Azure using Python (Pandas, Boto3), delivering real-time dashboards with Chart.js for sales insights and customer behavior analysis."
     ],
     glowColor: "border-blue-500/30 hover:border-blue-500/70 shadow-blue-500/5 hover:shadow-blue-500/15",
     color: "bg-blue-500 shadow-blue-500/50",
-    tech: ["React", "NestJS", "Node.js", "Python", "AWS", "Azure"],
+    tech: ["React", "Next.js", "Node.js", "NestJS", "Python", "AWS", "Azure", "PostgreSQL", "Pandas", "Chart.js"],
   },
   {
     company: "Techneeqs",
     role: "Full-Stack Developer",
-    period: "Jan 2021 - May 2024",
+    period: "Jan 2021 - May 2024 (On-site)",
     description:
-      "Architected secure, enterprise-grade web backends and micro-frontends for global Automotive and E-commerce organizations using React, TypeScript, and Django.",
+      "Architected enterprise-grade web solutions for global Automotive and E-commerce clients using React, TypeScript, Node.js, Python/Django, and PostgreSQL/MySQL databases.",
     achievements: [
-      "Built a high-performance luxury e-commerce platform with React, TypeScript, and Node.js featuring real-time inventory via WebSockets and PostgreSQL-backed security layers.",
-      "Developed interactive automotive configure engines with React and Three.js including 3D vehicle configurators, Google Maps nodes, and booking services.",
-      "Designed a transactional custom checkout pipeline integrating Stripe billing and AI recommendation microservices powered by Django collaborative filtering."
+      "Built a luxury e-commerce platform with React, TypeScript, and Node.js featuring member-only access, real-time inventory via WebSockets, and PostgreSQL-based loyalty system.",
+      "Developed automotive website with React, TypeScript, and Three.js including 3D vehicle configurator, Google Maps dealer locator, and Node.js backend for test drive bookings.",
+      "Designed a custom checkout system with React and Stripe API, implementing personalized pricing and AI-driven recommendations using Django and Python collaborative filtering."
     ],
     glowColor: "border-violet-500/30 hover:border-violet-500/70 shadow-violet-500/5 hover:shadow-violet-500/15",
     color: "bg-violet-500 shadow-violet-500/50",
-    tech: [
-      "React",
-      "TypeScript",
-      "Node.js",
-      "Django",
-      "Three.js",
-      "PostgreSQL",
-    ],
+    tech: ["React", "TypeScript", "Node.js", "Django", "Three.js", "WebSockets", "Stripe API", "PostgreSQL", "MySQL"],
   },
   {
     company: "Freelance",
     role: "React & React Native Engineer",
-    period: "Jan 2019 - Nov 2020",
+    period: "Jan 2019 - Nov 2020 (Remote)",
     description:
-      "Delivered production-grade cross-platform mobile systems for travel, fitness, and health clients using React Native and structured Redux pipelines.",
+      "Delivered cross-platform mobile applications for travel, fitness, and healthcare clients using React Native, JavaScript, and API integrations.",
     achievements: [
-      "Engineered highly reusable mobile components, integrating secure hardware bridges, merchant payment gateways, and resilient offline syncing protocols.",
-      "Collaborated with remote distributed engineering squads to execute testing scripts and maximize user ratings across Android and iOS systems."
+      "Developed reusable UI components and integrated third-party libraries, payment gateways, and APIs to enhance application scalability and performance across Android and iOS platforms.",
+      "Collaborated with cross-functional teams to implement features, conduct testing, and optimize user experience for enterprise-grade mobile applications."
     ],
     glowColor: "border-emerald-500/30 hover:border-emerald-500/70 shadow-emerald-500/5 hover:shadow-emerald-500/15",
     color: "bg-emerald-500 shadow-emerald-500/50",
-    tech: ["React Native", "JavaScript", "REST APIs", "Redux"],
+    tech: ["React Native", "JavaScript", "REST APIs", "Redux", "Android", "iOS"],
   },
   {
     company: "BluePeak Solutions",
     role: "React & React Native Intern",
-    period: "Jul 2018 - Nov 2018",
+    period: "Jul 2018 - Nov 2018 (On-site)",
     description:
-      "Supported core engineering teams by developing modular interface panels and testing cross-platform features across React and mobile targets.",
+      "Developed cross-platform web and mobile applications using React, React Native, JavaScript, and Redux. Integrated REST APIs and collaborated with senior developers using Git and Firebase.",
     achievements: [
-      "Built interface modules and solved styling glitches based on design specifications, speeding up client delivery milestones.",
-      "Conducted automated linting, troubleshooting, and debugging iterations to verify seamless rendering on mobile devices."
+      "Built reusable UI components and implemented new features based on design requirements, improving application responsiveness and user experience.",
+      "Conducted testing and debugging to ensure stable performance across Android and iOS platforms."
     ],
     glowColor: "border-slate-500/30 hover:border-slate-500/70 shadow-slate-500/5 hover:shadow-slate-500/15",
     color: "bg-slate-500 shadow-slate-500/50",
-    tech: ["React", "React Native", "JavaScript", "Redux"],
+    tech: ["React", "React Native", "JavaScript", "Redux", "REST APIs", "Git", "Firebase"],
+  },
+  {
+    company: "Dallas Christian College",
+    role: "Bachelor of Science in Computer Science",
+    period: "Class of 2018 (Dallas, TX)",
+    description:
+      "Completed rigorous computer science theory and applications foundations, focusing on algorithms, complex systems, software lifecycle development, and databases.",
+    achievements: [
+      "Specialized in data structures, systems architecture, object-oriented programming, and SQL relational database engineering.",
+      "Graduated in 2018, bridging direct academic foundations to advanced React and enterprise-grade full-stack engineering."
+    ],
+    glowColor: "border-amber-500/30 hover:border-amber-500/70 shadow-amber-500/5 hover:shadow-amber-500/15",
+    color: "bg-amber-500 shadow-amber-500/50",
+    tech: ["Algorithms", "Data Structures", "OOP", "Relational Databases", "Software Engineering"],
   },
 ];
 

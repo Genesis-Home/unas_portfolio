@@ -5,6 +5,7 @@ import { Scene } from "./Scene";
 import { SplitText } from "./SplitText";
 import { ShinyText } from "./ShinyText";
 import Waves from "./Waves";
+import unasProfile from "../assets/unas_profile.png";
 
 export function Hero() {
   const mouseX = useMotionValue(0);
@@ -65,20 +66,36 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* Senior Architect Tag Pod */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/5 border border-white/10 shadow-lg shadow-black/30 mb-8 backdrop-blur-md">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary shadow-[0_0_8px_#3b82f6]"></span>
-              </span>
-              <ShinyText
-                text="System Architect & Full-Stack Engineer"
-                className="text-xs font-bold uppercase tracking-widest text-slate-400"
-              />
+            {/* Biometric Profile Tag Row */}
+            <div className="flex items-center gap-5 mb-8">
+              <div className="relative group">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary to-accent opacity-30 blur-md group-hover:opacity-75 transition duration-500"></div>
+                <div className="relative w-16 h-16 rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center bg-[#090d16]/80 p-0.5">
+                  <img src={unasProfile} alt="Syed Unas Systems Architect" className="w-full h-full object-cover rounded-[14px]" />
+                </div>
+                <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-[#030712] flex items-center justify-center shadow-[0_0_8px_#10b981]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#030712] animate-pulse"></span>
+                </div>
+              </div>
+              <div className="text-left">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 shadow-sm backdrop-blur-md">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary shadow-[0_0_6px_#3b82f6]"></span>
+                  </span>
+                  <ShinyText
+                    text="Senior Systems Architect & Full-Stack Engineer"
+                    className="text-[10px] font-bold uppercase tracking-widest text-slate-400"
+                  />
+                </div>
+                <p className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mt-2 pl-1">
+                  EDGE NODE: KATY-TX-77449 // SYNC_OK
+                </p>
+              </div>
             </div>
 
             {/* Impact Title */}
-            <h1 className="text-5xl md:text-7xl font-black font-outfit mb-20 tracking-tight leading-[1.08] text-white">
+            <h1 className="text-5xl md:text-7xl font-black font-outfit mb-12 tracking-tight leading-[1.08] text-white">
               <SplitText
                 text="I'm Syed Unas,"
                 delay={40}
@@ -91,11 +108,9 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="text-slate-400 text-lg md:text-3xl max-w-xxl mb-24 leading-relaxed font-light"
+              className="text-slate-400 text-lg md:text-2xl max-w-xxl mb-16 leading-relaxed font-light"
             >
-              A Senior Full-Stack Engineer & Systems Architect with <span className="text-primary font-bold">7+ years</span> of production experience.
-              I build resilient cloud infrastructures, high-throughput microservices,
-              and low-latency distributed APIs for global organizations.
+              A Senior Full-Stack Engineer & Systems Architect with <span className="text-primary font-bold">7+ years</span> of experience developing scalable enterprise solutions, real-time microservices, and AI/ML integrations across Real Estate, E-commerce, and Automotive domains.
             </motion.p>
           </motion.div>
 
@@ -110,6 +125,7 @@ export function Hero() {
               href="#contact"
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.98 }}
+              id="hero-action-contact"
               className="px-8 py-4.5 bg-gradient-to-r from-primary to-accent text-white rounded-2xl font-bold shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/45 transition-all duration-300 flex items-center gap-3"
             >
               <span>Initialize Connection</span>
@@ -119,6 +135,7 @@ export function Hero() {
               href="#projects"
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.98 }}
+              id="hero-action-projects"
               className="px-8 py-4.5 bg-white/5 text-white border border-white/10 hover:border-primary/50 hover:bg-white/10 rounded-2xl font-bold transition-all duration-300 shadow-sm backdrop-blur-sm"
             >
               Inspect Deployments
@@ -146,8 +163,8 @@ export function Hero() {
                 shadow: "shadow-neon-emerald"
               },
               {
-                label: "Deployments",
-                value: "50+ Global",
+                label: "Companies Supported",
+                value: "500+ Org",
                 color: "text-violet-400",
                 shadow: "shadow-neon-violet",
               },
@@ -157,6 +174,7 @@ export function Hero() {
                 initial={{ opacity: 0, scale: 0.93 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.3 + i * 0.1, duration: 0.6 }}
+                id={`hero-metric-${i}`}
                 className={`group bg-white/5 border border-white/10 p-5 rounded-2xl hover:bg-white/10 hover:border-primary/40 transition-all duration-400 flex flex-col justify-between h-28 backdrop-blur-md`}
               >
                 <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-none group-hover:text-primary transition-colors mb-2">

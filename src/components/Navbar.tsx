@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import unasProfile from "../assets/unas_profile.png";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -69,10 +70,11 @@ export function Navbar() {
         <a
           href="#hero"
           onClick={() => handleNavClick("hero")}
+          id="nav-brand-logo"
           className="group flex items-center gap-3 select-none"
         >
-          <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20 group-hover:bg-primary/20 group-hover:border-primary/40 transition-all font-outfit">
-            <span className="text-lg font-black text-primary select-none">SU</span>
+          <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center border border-primary/30 group-hover:border-primary/60 shadow-[0_0_8px_rgba(59,130,246,0.2)] transition-all">
+            <img src={unasProfile} alt="Syed Unas Profile" className="w-full h-full object-cover" />
           </div>
           <span className="text-lg font-extrabold font-outfit text-white group-hover:text-primary transition-colors tracking-tight select-none">
             Syed Unas
@@ -86,6 +88,7 @@ export function Navbar() {
               key={link.id}
               href={`#${link.id}`}
               onClick={() => handleNavClick(link.id)}
+              id={`nav-link-${link.id}`}
               className={`transition-all duration-300 ${
                 activeSection === link.id
                   ? "text-[#3b82f6] font-black"
@@ -102,6 +105,7 @@ export function Navbar() {
           <motion.a
             href="#contact"
             onClick={() => handleNavClick("contact")}
+            id="nav-action-contact"
             className="px-6 py-3 bg-gradient-to-r from-primary to-accent text-white rounded-xl hover:shadow-lg hover:shadow-primary/20 transition-all text-xs font-bold uppercase tracking-wider"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
