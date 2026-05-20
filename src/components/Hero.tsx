@@ -2,16 +2,6 @@ import { Canvas } from "@react-three/fiber";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Scene } from "./Scene";
-import {
-  Mail,
-  MapPin,
-  Phone,
-  Github as GitHub,
-  Linkedin as LinkedIn,
-  Terminal,
-  Code2,
-  Database,
-} from "lucide-react";
 import { SplitText } from "./SplitText";
 import { ShinyText } from "./ShinyText";
 import Waves from "./Waves";
@@ -101,9 +91,10 @@ export function Hero() {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="text-slate-600 text-xl max-w-xl mb-12 leading-relaxed font-light"
             >
-              I'm <span className="text-slate-950 font-bold">Syed Unas</span>. I
-              bridge the gap between complex backend architectures and
-              high-performance frontend interfaces.
+              I'm <span className="text-slate-950 font-bold">Syed Unas</span>, a
+              Senior Full-Stack Engineer with 7+ years of experience building
+              scalable enterprise solutions. Specialized in microservices
+              architecture, AI/ML integration, and cloud technologies.
             </motion.p>
           </motion.div>
 
