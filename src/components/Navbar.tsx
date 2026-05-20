@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Phone } from "lucide-react";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -112,6 +113,16 @@ export function Navbar() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
             <span>Resume</span>
+          </motion.a>
+          <motion.a
+            href="tel:+1-608-715-7408"
+            id="nav-action-phone"
+            className="px-4 py-3 border border-slate-400/20 hover:border-primary/60 bg-slate-400/5 hover:bg-primary/10 text-slate-300 hover:text-primary rounded-xl hover:shadow-[0_0_12px_rgba(59,130,246,0.15)] transition-all text-xs font-bold uppercase tracking-wider flex items-center gap-2"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Phone size={14} />
+            <span>+1-608-715-7408</span>
           </motion.a>
           <motion.a
             href="#contact"
