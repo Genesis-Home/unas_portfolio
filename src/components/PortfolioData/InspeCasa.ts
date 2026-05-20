@@ -3,168 +3,184 @@ const InspeCasa = [
     type: "mobile",
     variant: "left",
     heading: "InspeCasa",
-    description: "Your smart solution to streamline property inspections, enhance reporting accuracy, and keep every inspection detail at your fingertips — anytime, anywhere.",
+    description:
+      "Your smart solution to streamline property inspections, enhance reporting accuracy, and keep every inspection detail at your fingertips — anytime, anywhere.",
     image: "/inspecasa-mobile-0.png",
     bgImage: "/bg-4.png",
-    hero:true,
+    hero: true,
   },
   {
     type: "mobile",
     variant: "right",
     heading: "Logo & Welcome Screen",
-    description: "Displays the InspeCasa logo and a clean welcome screen with login/signup options for a smooth start.",
+    description:
+      "Displays the InspeCasa logo and a clean welcome screen with login/signup options for a smooth start.",
     image: "/inspecasa-mobile-1.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
   {
     type: "mobile",
     variant: "left",
     heading: "Login & Sign up",
-    description: "Secure login for existing users and easy sign-up for new users to access InspeCasa services.",
+    description:
+      "Secure login for existing users and easy sign-up for new users to access InspeCasa services.",
     image: "/inspecasa-mobile-2.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
   {
     type: "mobile",
     variant: "right",
     heading: "Reset Password",
-    description: "Helps users securely reset their password in case they forget their login credentials.",
+    description:
+      "Helps users securely reset their password in case they forget their login credentials.",
     image: "/inspecasa-mobile-3.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
   {
     type: "mobile",
     variant: "left",
     heading: "Home & Filter Property",
-    description: "Save and manage all rental contacts in one place for quick access and smooth coordination.",
+    description:
+      "Save and manage all rental contacts in one place for quick access and smooth coordination.",
     image: "/inspecasa-mobile-4.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
   {
     type: "mobile",
     variant: "right",
     heading: "Properties & Signature",
-    description: "Start your journey with a smarter, simpler, and more efficient way to handle your rental tasks — all in one place.",
+    description:
+      "Start your journey with a smarter, simpler, and more efficient way to handle your rental tasks — all in one place.",
     image: "/inspecasa-mobile-5.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
   {
     type: "mobile",
     variant: "left",
     heading: "History & Report Details",
-    description: "Shows a record of past property visits and provides in-depth inspection report details including notes, images, and signatures — all for easy tracking and reference.",
+    description:
+      "Shows a record of past property visits and provides in-depth inspection report details including notes, images, and signatures — all for easy tracking and reference.",
     image: "/inspecasa-mobile-6.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
   {
     type: "mobile",
     variant: "right",
     heading: "Support & Notification",
-    description: "Provides users with helpful support options and keeps them informed through real-time notifications about bookings, inspections, and app updates.",
+    description:
+      "Provides users with helpful support options and keeps them informed through real-time notifications about bookings, inspections, and app updates.",
     image: "/inspecasa-mobile-7.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
   {
     type: "mobile",
     variant: "left",
     heading: "Assigned Property Details & Setting",
-    description: "View complete details of assigned properties, including inspection status and visit info, while managing your experience through customizable settings, account controls, and notification preferences.",
+    description:
+      "View complete details of assigned properties, including inspection status and visit info, while managing your experience through customizable settings, account controls, and notification preferences.",
     image: "/inspecasa-mobile-8.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
 
-    {
+  {
     type: "mobile",
     variant: "right",
     heading: "Premium Price Table",
-    description: "Compare Basic, Standard, and Premium plans to pick the right inspection package.",
+    description:
+      "Compare Basic, Standard, and Premium plans to pick the right inspection package.",
     image: "/inspecasa-mobile-9.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
 
-  
-   {
+  {
     type: "laptop",
     variant: "left",
     heading: "Login Page",
-    description: "Login to manage user monitor booking and control with authorize Access",
+    description:
+      "Login to manage user monitor booking and control with authorize Access",
     image: "/inspecasa-laptop-1.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
   {
     type: "laptop",
     variant: "right",
     heading: "Add User Page",
-    description: "Enables admins to create and register new users by filling in essential information, assigning specific roles, and managing access rights within the system.",
+    description:
+      "Enables admins to create and register new users by filling in essential information, assigning specific roles, and managing access rights within the system.",
     image: "/inspecasa-laptop-2.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
   {
     type: "laptop",
     variant: "left",
     heading: "Property Management Page",
-    description: "Allows admins to efficiently manage all properties by adding, editing, or removing listings, assigning them to users, and tracking their inspection status and availability.",
+    description:
+      "Allows admins to efficiently manage all properties by adding, editing, or removing listings, assigning them to users, and tracking their inspection status and availability.",
     image: "/inspecasa-laptop-3.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
   {
     type: "laptop",
     variant: "right",
     heading: "Property View Page",
-    description: "View complete property details with images, location, and inspection status.",
+    description:
+      "View complete property details with images, location, and inspection status.",
     image: "/inspecasa-laptop-4.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
   {
     type: "laptop",
     variant: "left",
     heading: "Add New Property Page",
-    description: "Allows admins to add new properties by entering key details such as title, location, images, and assigning them to users for inspection and management.",
+    description:
+      "Allows admins to add new properties by entering key details such as title, location, images, and assigning them to users for inspection and management.",
     image: "/inspecasa-laptop-5.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
   {
     type: "laptop",
     variant: "right",
     heading: "Reports Page",
-    description: "Displays comprehensive inspection reports for each property, including notes, images, digital signatures, and status updates — all in an organized format.",
+    description:
+      "Displays comprehensive inspection reports for each property, including notes, images, digital signatures, and status updates — all in an organized format.",
     image: "/inspecasa-laptop-6.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
   {
     type: "laptop",
     variant: "left",
     heading: "Services Full View Page",
-    description: "Login to manage user monitor booking and control with authorize Access",
+    description:
+      "Login to manage user monitor booking and control with authorize Access",
     image: "/inspecasa-laptop-7.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
   {
     type: "laptop",
     variant: "right",
     heading: "Support Page",
-    description: "Provides users with quick access to help through FAQs, contact options, and support requests to resolve issues efficiently.",
+    description:
+      "Provides users with quick access to help through FAQs, contact options, and support requests to resolve issues efficiently.",
     image: "/inspecasa-laptop-8.png",
     bgImage: "/bg-2.png",
-    hero:false,
+    hero: false,
   },
-  
 ];
 
 export default InspeCasa;

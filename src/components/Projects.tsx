@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TiltedCard } from "./TiltedCard";
 import {
@@ -272,25 +272,31 @@ interface ProjectsProps {
   onSelectProject: (id: string) => void;
 }
 
-export function Projects({ onSelectProject }: ProjectsProps) {
+export const Projects = ({ onSelectProject }: ProjectsProps) => {
   const [activeTab, setActiveTab] = useState<"web" | "mobile">("web");
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  const filteredProjects = projectsList.filter((p) => p.category === activeTab);
+  const filteredProjects = useMemo(
+    () => projectsList.filter((p) => p.category === activeTab),
+    [activeTab],
+  );
+
+  const handleTabChange = useCallback((tab: "web" | "mobile") => {
+    setActiveTab(tab);
+  }, []);
+
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show button when user scrolls down 400px from top
       setShowScrollTop(window.scrollY > 400);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   return (
     <section
@@ -339,7 +345,7 @@ export function Projects({ onSelectProject }: ProjectsProps) {
             <motion.button
               whileHover={{ scale: 1.05, y: -1 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveTab("web")}
+              onClick={() => handleTabChange("web")}
               className={`relative z-10 px-8 py-3 rounded-xl font-outfit text-xs font-bold tracking-widest transition-all duration-300 uppercase flex items-center gap-2 font-mono cursor-pointer ${
                 activeTab === "web"
                   ? "text-white"
@@ -359,7 +365,7 @@ export function Projects({ onSelectProject }: ProjectsProps) {
             <motion.button
               whileHover={{ scale: 1.05, y: -1 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveTab("mobile")}
+              onClick={() => handleTabChange("mobile")}
               className={`relative z-10 px-8 py-3 rounded-xl font-outfit text-xs font-bold tracking-widest transition-all duration-300 uppercase flex items-center gap-2 font-mono cursor-pointer ${
                 activeTab === "mobile"
                   ? "text-white"
@@ -509,7 +515,11 @@ export function Projects({ onSelectProject }: ProjectsProps) {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            whileHover={{ scale: 1.15, y: -5, boxShadow: "0 0 30px rgba(59,130,246,0.5)" }}
+            whileHover={{
+              scale: 1.15,
+              y: -5,
+              boxShadow: "0 0 30px rgba(59,130,246,0.5)",
+            }}
             whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
             className="fixed bottom-8 right-8 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center shadow-lg transition-all duration-300 cursor-pointer"
@@ -520,4 +530,4 @@ export function Projects({ onSelectProject }: ProjectsProps) {
       </AnimatePresence>
     </section>
   );
-}
+};

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import React, { useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 interface TiltedCardProps {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ interface TiltedCardProps {
 export const TiltedCard: React.FC<TiltedCardProps> = ({
   children,
   glowColor = "rgba(37, 99, 235, 0.2)",
-  className = ""
+  className = "",
 }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -66,7 +66,7 @@ export const TiltedCard: React.FC<TiltedCardProps> = ({
         className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-0 rounded-[40px] overflow-hidden"
         style={{
           opacity,
-          background: `radial-gradient(600px circle at ${glowPos.x}px ${glowPos.y}px, ${glowColor}, transparent 40%)`
+          background: `radial-gradient(600px circle at ${glowPos.x}px ${glowPos.y}px, ${glowColor}, transparent 40%)`,
         }}
       />
 
@@ -76,7 +76,7 @@ export const TiltedCard: React.FC<TiltedCardProps> = ({
         style={{
           transform: "translateZ(1px)",
           WebkitFontSmoothing: "subpixel-antialiased",
-          backfaceVisibility: "hidden"
+          backfaceVisibility: "hidden",
         }}
       >
         {children}

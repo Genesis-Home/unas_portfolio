@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
+    target: 'esnext',
     rollupOptions: {
       output: {
         manualChunks(id) {
@@ -18,13 +19,21 @@ export default defineConfig({
           if (id.includes('react')) {
             return 'vendor';
           }
+          if (id.includes('lucide-react')) {
+            return 'icons';
+          }
         },
       },
     },
     chunkSizeWarningLimit: 1000,
     reportCompressedSize: false,
+    cssCodeSplit: true,
+    cssMinify: true,
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'framer-motion'],
+    include: ['react', 'react-dom', 'framer-motion', 'lucide-react'],
+    rolldownOptions: {
+      external: [],
+    },
   },
 })

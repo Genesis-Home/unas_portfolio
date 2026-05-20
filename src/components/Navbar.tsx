@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Menu, X } from "lucide-react";
 
-export function Navbar() {
+export const Navbar = ({}: Record<string, never>) => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -42,17 +42,20 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (sectionId: string) => {
+  const handleNavClick = useCallback((sectionId: string) => {
     setActiveSection(sectionId);
     setMobileMenuOpen(false);
-  };
+  }, []);
 
-  const navLinks = [
-    { id: "hero", label: "Architecture" },
-    { id: "skills", label: "Tech Stack" },
-    { id: "projects", label: "Projects" },
-    { id: "experience", label: "Experience" },
-  ];
+  const navLinks = useMemo(
+    () => [
+      { id: "hero", label: "Architecture" },
+      { id: "skills", label: "Tech Stack" },
+      { id: "projects", label: "Projects" },
+      { id: "experience", label: "Experience" },
+    ],
+    [],
+  );
 
   return (
     <motion.nav
@@ -108,7 +111,11 @@ export function Navbar() {
                   className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/20 via-accent/10 to-primary/20 -z-10"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileHover={{ opacity: 1, scale: 1 }}
-                  whileInView={activeSection === link.id ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                  whileInView={
+                    activeSection === link.id
+                      ? { opacity: 1, scale: 1 }
+                      : { opacity: 0, scale: 0.8 }
+                  }
                   transition={{ duration: 0.4 }}
                 />
 
@@ -116,7 +123,11 @@ export function Navbar() {
                 <motion.div
                   className="absolute inset-0 rounded-lg border border-primary/0"
                   whileHover={{ borderColor: "rgba(59,130,246,0.6)" }}
-                  animate={activeSection === link.id ? { borderColor: "rgba(59,130,246,0.4)" } : { borderColor: "rgba(59,130,246,0)" }}
+                  animate={
+                    activeSection === link.id
+                      ? { borderColor: "rgba(59,130,246,0.4)" }
+                      : { borderColor: "rgba(59,130,246,0)" }
+                  }
                   transition={{ duration: 0.3 }}
                 />
 
@@ -126,7 +137,9 @@ export function Navbar() {
                 <motion.div
                   className="absolute bottom-0 left-2 right-2 h-1.5 bg-gradient-to-r from-primary via-blue-400 to-accent rounded-full"
                   initial={{ scaleX: 0 }}
-                  animate={activeSection === link.id ? { scaleX: 1 } : { scaleX: 0 }}
+                  animate={
+                    activeSection === link.id ? { scaleX: 1 } : { scaleX: 0 }
+                  }
                   whileHover={{ scaleX: 1 }}
                   transition={{ type: "spring", stiffness: 350, damping: 25 }}
                   style={{ originX: 0.5 }}
@@ -307,4 +320,4 @@ export function Navbar() {
       </div>
     </motion.nav>
   );
-}
+};

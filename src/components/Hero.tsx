@@ -1,27 +1,31 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { SplitText } from "./SplitText";
 import { ShinyText } from "./ShinyText";
 import Waves from "./Waves";
 import unasImage from "../assets/unas_profile.png";
 
-export function Hero() {
+export const Hero = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springConfig = { damping: 25, stiffness: 150 };
+  const springConfig = useMemo(() => ({ damping: 25, stiffness: 150 }), []);
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
   const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-    const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
-    };
+    },
+    [mouseX, mouseY],
+  );
+
+  useEffect(() => {
+    setIsMounted(true);
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
+  }, [handleMouseMove]);
 
   return (
     <section
@@ -56,7 +60,6 @@ export function Hero() {
       )}
 
       <div className="container mx-auto px-6 z-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center pt-28 pb-12">
-
         {/* Left Side: Professional Copy & Metrics */}
         <div className="flex flex-col justify-center order-1 relative z-10 text-left">
           <motion.div
@@ -69,7 +72,11 @@ export function Hero() {
               <div className="relative group">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary to-accent opacity-30 blur-md group-hover:opacity-75 transition duration-500"></div>
                 <div className="relative w-16 h-16 rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center bg-[#090d16]/80 p-0.5">
-                  <img src={unasImage} alt="Syed Unas Systems Architect" className="w-full h-full object-cover rounded-[14px]" />
+                  <img
+                    src={unasImage}
+                    alt="Syed Unas Systems Architect"
+                    className="w-full h-full object-cover rounded-[14px]"
+                  />
                 </div>
                 <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-[#030712] flex items-center justify-center shadow-[0_0_8px_#10b981]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#030712] animate-pulse"></span>
@@ -108,7 +115,11 @@ export function Hero() {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="text-slate-400 text-lg md:text-2xl max-w-xxl mb-16 leading-relaxed font-light"
             >
-              A Senior Full-Stack Engineer & Systems Architect with <span className="text-primary font-bold">7+ years</span> of experience developing scalable enterprise solutions, real-time microservices, and AI/ML integrations across Real Estate, E-commerce, and Automotive domains.
+              A Senior Full-Stack Engineer & Systems Architect with{" "}
+              <span className="text-primary font-bold">7+ years</span> of
+              experience developing scalable enterprise solutions, real-time
+              microservices, and AI/ML integrations across Real Estate,
+              E-commerce, and Automotive domains.
             </motion.p>
           </motion.div>
 
@@ -138,8 +149,19 @@ export function Hero() {
               id="hero-action-resume"
               className="px-6 py-4 bg-[#090d16]/80 hover:bg-[#3b82f6]/10 text-white border border-[#3b82f6]/30 hover:border-[#3b82f6]/70 rounded-2xl font-bold transition-all duration-300 shadow-md backdrop-blur-sm flex items-center gap-2.5 group"
             >
-              <svg className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              <svg
+                className="w-5 h-5 text-primary group-hover:scale-110 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
               </svg>
               <span>View Resume</span>
             </motion.a>
@@ -171,7 +193,7 @@ export function Hero() {
                 label: "System SLA",
                 value: "99.99%",
                 color: "text-emerald-400",
-                shadow: "shadow-neon-emerald"
+                shadow: "shadow-neon-emerald",
               },
               {
                 label: "Companies Supported",
@@ -270,9 +292,15 @@ export function Hero() {
               </div>
 
               <div className="p-4 rounded-2xl bg-[#030712]/85 border border-white/10 shadow-xl backdrop-blur-md">
-                <p className="font-mono text-[8px] text-slate-500 uppercase tracking-widest leading-none mb-1.5 font-bold">CORE_ARCHITECT_IDENTITY</p>
-                <h3 className="text-lg font-black text-white font-outfit leading-none mb-1">Syed Unas</h3>
-                <p className="text-[10px] font-bold text-primary font-mono uppercase tracking-wider leading-none">Senior Full-Stack Engineer & Systems Architect</p>
+                <p className="font-mono text-[8px] text-slate-500 uppercase tracking-widest leading-none mb-1.5 font-bold">
+                  CORE_ARCHITECT_IDENTITY
+                </p>
+                <h3 className="text-lg font-black text-white font-outfit leading-none mb-1">
+                  Syed Unas
+                </h3>
+                <p className="text-[10px] font-bold text-primary font-mono uppercase tracking-wider leading-none">
+                  Senior Full-Stack Engineer & Systems Architect
+                </p>
               </div>
             </div>
 
@@ -342,4 +370,4 @@ export function Hero() {
       </motion.div>
     </section>
   );
-}
+};

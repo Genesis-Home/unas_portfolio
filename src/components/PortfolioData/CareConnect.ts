@@ -10,8 +10,8 @@ const CareConnect = [
     hero: true,
     category: "web",
   },
- 
-    {
+
+  {
     type: "laptop",
     variant: "right",
     heading: "",

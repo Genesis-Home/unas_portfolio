@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, lazy, Suspense, useCallback } from "react";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
 import { Experience } from "./components/Experience";
-import { ProjectDetails } from "./components/ProjectDetails";
 import { motion, AnimatePresence } from "framer-motion";
+const ProjectDetails = lazy(() =>
+  import("./components/ProjectDetails").then((m) => ({
+    default: m.ProjectDetails,
+  })),
+);
 import {
   Mail,
   MapPin,
@@ -19,19 +23,17 @@ function App() {
   const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
   const [savedScrollPosition, setSavedScrollPosition] = useState(0);
 
-  const handleSelectProject = (projectId: string) => {
-    // Save current scroll position before opening project
+  const handleSelectProject = useCallback((projectId: string) => {
     setSavedScrollPosition(window.scrollY);
     setActiveProjectId(projectId);
-  };
+  }, []);
 
-  const handleCloseProject = () => {
+  const handleCloseProject = useCallback(() => {
     setActiveProjectId(null);
-    // Restore scroll position after closing project
     setTimeout(() => {
       window.scrollTo({ top: savedScrollPosition, behavior: "smooth" });
     }, 0);
-  };
+  }, [savedScrollPosition]);
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-white overflow-x-hidden">
@@ -48,10 +50,12 @@ function App() {
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.5 }}
           >
-            <ProjectDetails
-              projectId={activeProjectId}
-              onClose={handleCloseProject}
-            />
+            <Suspense fallback={<div className="min-h-screen bg-background" />}>
+              <ProjectDetails
+                projectId={activeProjectId}
+                onClose={handleCloseProject}
+              />
+            </Suspense>
           </motion.div>
         ) : (
           <motion.div

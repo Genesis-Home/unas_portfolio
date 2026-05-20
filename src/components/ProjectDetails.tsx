@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
@@ -115,11 +115,10 @@ interface ProjectDetailsProps {
   onClose: () => void;
 }
 
-export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
-  const project = getProjectById(projectId);
+export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
+  const project = useMemo(() => getProjectById(projectId), [projectId]);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // Scroll to top of project details (only within the modal, not page)
   useEffect(() => {
     const detailsSection = document.querySelector(".project-details-container");
     if (detailsSection) {
@@ -129,7 +128,6 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show button when user scrolls down 400px from top
       setShowScrollTop(window.scrollY > 400);
     };
 
@@ -137,9 +135,9 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, []);
 
   if (!project) {
     return (
@@ -367,4 +365,4 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
       </AnimatePresence>
     </div>
   );
-}
+};

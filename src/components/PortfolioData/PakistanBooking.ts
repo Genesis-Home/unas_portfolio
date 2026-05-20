@@ -8,13 +8,14 @@ const PakistanBooking = [
     image: "/booking-1.png",
     bgImage: "/bg-9.png",
     hero: true,
-    category:'web'
+    category: "web",
   },
   {
     type: "laptop",
     variant: "right",
     heading: "",
-    description: "Search and explore top destinations, hotels, and rentals across Pakistan. Begin your journey with a simple and intuitive interface.",
+    description:
+      "Search and explore top destinations, hotels, and rentals across Pakistan. Begin your journey with a simple and intuitive interface.",
     image: "/booking-2.png",
     bgImage: "/bg-2.png",
     hero: false,
@@ -49,7 +50,6 @@ const PakistanBooking = [
     bgImage: "/bg-2.png",
     hero: false,
   },
- 
 ];
 
 export default PakistanBooking;

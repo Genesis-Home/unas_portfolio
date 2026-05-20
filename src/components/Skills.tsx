@@ -1,6 +1,13 @@
 import { motion } from "framer-motion";
 import { TiltedCard } from "./TiltedCard";
-import { Layers, Terminal, Database, Cloud, Brain, Smartphone } from "lucide-react";
+import {
+  Layers,
+  Terminal,
+  Database,
+  Cloud,
+  Brain,
+  Smartphone,
+} from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -38,7 +45,7 @@ const skillCategories = [
       "Tailwind CSS",
       "Redux Toolkit",
       "HTML5 / CSS3",
-      "WebGL / Three.js"
+      "WebGL / Three.js",
     ],
     glowColor: "rgba(59, 130, 246, 0.2)", // Blue
   },
@@ -53,7 +60,7 @@ const skillCategories = [
       "iOS Deployment",
       "Android Sync",
       "Mobile State Sync",
-      "Offline Storage"
+      "Offline Storage",
     ],
     glowColor: "rgba(244, 63, 94, 0.2)", // Rose
   },
@@ -69,7 +76,7 @@ const skillCategories = [
       "Java Core",
       "ASP.NET Core",
       "Redis Caching",
-      "RESTful APIs"
+      "RESTful APIs",
     ],
     glowColor: "rgba(139, 92, 246, 0.2)", // Purple
   },
@@ -84,7 +91,7 @@ const skillCategories = [
       "Elasticsearch",
       "Apache Kafka",
       "Distributed Sync",
-      "ACID Transactions"
+      "ACID Transactions",
     ],
     glowColor: "rgba(16, 185, 129, 0.2)", // Green
   },
@@ -100,7 +107,7 @@ const skillCategories = [
       "Kubernetes Clusters",
       "Microservices Architecture",
       "CI/CD Pipelines",
-      "Git / Version Control"
+      "Git / Version Control",
     ],
     glowColor: "rgba(245, 158, 11, 0.2)", // Amber
   },
@@ -115,19 +122,21 @@ const skillCategories = [
       "OpenCV Computer Vision",
       "Generative AI",
       "Predictive Modeling",
-      "Data Science Pipelines"
+      "Data Science Pipelines",
     ],
     glowColor: "rgba(99, 102, 241, 0.2)", // Indigo
   },
 ];
 
-export function Skills() {
+export const Skills = () => {
   return (
-    <section id="skills" className="py-32 bg-background relative overflow-hidden tech-grid">
+    <section
+      id="skills"
+      className="py-32 bg-background relative overflow-hidden tech-grid"
+    >
       <div className="absolute inset-0 tech-radial-glow pointer-events-none z-0" />
 
       <div className="container mx-auto px-6 relative z-10">
-
         {/* Section Header */}
         <div className="flex flex-col items-center mb-24">
           <motion.span
@@ -158,7 +167,9 @@ export function Skills() {
           className="max-w-3xl mx-auto mb-20 p-6 rounded-3xl bg-[#090d16]/80 border border-amber-500/25 hover:border-amber-500/50 shadow-lg shadow-amber-500/5 backdrop-blur-xl transition-all duration-300 flex flex-col sm:flex-row items-center gap-6 text-left"
         >
           <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 shadow-[0_0_12px_rgba(245,158,11,0.15)]">
-            <span className="text-2xl font-black font-outfit select-none">AI</span>
+            <span className="text-2xl font-black font-outfit select-none">
+              AI
+            </span>
           </div>
           <div>
             <div className="flex items-center gap-2 mb-1">
@@ -174,7 +185,11 @@ export function Skills() {
               AI Fluent Tech Professional
             </h4>
             <p className="text-slate-400 text-xs mt-1 leading-relaxed">
-              Certified by <span className="text-amber-400 font-bold">Calyptus (2026)</span>. Proven capability in advanced LLM prompt engineering, agentic systems deployment, neural network libraries integration, and generative model engineering.
+              Certified by{" "}
+              <span className="text-amber-400 font-bold">Calyptus (2026)</span>.
+              Proven capability in advanced LLM prompt engineering, agentic
+              systems deployment, neural network libraries integration, and
+              generative model engineering.
             </p>
           </div>
         </motion.div>
@@ -191,7 +206,6 @@ export function Skills() {
             <motion.div key={idx} variants={itemVariants} className="h-full">
               <TiltedCard glowColor={category.glowColor} className="h-full">
                 <div className="p-8 h-full flex flex-col justify-between relative overflow-hidden rounded-[40px] bg-[#090d16]/70 border border-white/5">
-
                   {/* Floating Graphic Indicator */}
                   <div className="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.06] transition-opacity select-none pointer-events-none">
                     <span className="text-9xl font-black text-white leading-none">
@@ -229,7 +243,6 @@ export function Skills() {
                       </motion.span>
                     ))}
                   </div>
-
                 </div>
               </TiltedCard>
             </motion.div>
@@ -238,4 +251,4 @@ export function Skills() {
       </div>
     </section>
   );
-}
+};

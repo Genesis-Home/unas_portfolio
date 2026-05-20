@@ -146,7 +146,8 @@ const TaxiCaller = [
     type: "laptop",
     variant: "left",
     heading: "",
-    description: "This screen offers support options where users or drivers can contact help, report issues, or read FAQs.",
+    description:
+      "This screen offers support options where users or drivers can contact help, report issues, or read FAQs.",
     image: "/taxicaller15.png",
     bgImage: "/bg-2.png",
     hero: false,

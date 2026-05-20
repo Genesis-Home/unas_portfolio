@@ -9,7 +9,7 @@ export const ShinyText: React.FC<ShinyTextProps> = ({
   text,
   disabled = false,
   speed = 5,
-  className = ""
+  className = "",
 }) => {
   const animationDuration = `${speed}s`;
 
@@ -17,13 +17,16 @@ export const ShinyText: React.FC<ShinyTextProps> = ({
     <div
       className={`shiny-text ${disabled ? "disabled" : ""} ${className}`}
       style={{
-        backgroundImage: 'linear-gradient(120deg, rgba(148, 163, 184, 0.6) 40%, rgba(255, 255, 255, 1) 50%, rgba(148, 163, 184, 0.6) 60%)',
-        backgroundSize: '200% 100%',
-        WebkitBackgroundClip: 'text',
-        backgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        display: 'inline-block',
-        animation: disabled ? 'none' : `shiny ${animationDuration} linear infinite`,
+        backgroundImage:
+          "linear-gradient(120deg, rgba(148, 163, 184, 0.6) 40%, rgba(255, 255, 255, 1) 50%, rgba(148, 163, 184, 0.6) 60%)",
+        backgroundSize: "200% 100%",
+        WebkitBackgroundClip: "text",
+        backgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        display: "inline-block",
+        animation: disabled
+          ? "none"
+          : `shiny ${animationDuration} linear infinite`,
       }}
     >
       {text}
@@ -41,4 +44,3 @@ export const ShinyText: React.FC<ShinyTextProps> = ({
     </div>
   );
 };
-

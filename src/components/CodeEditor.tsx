@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const codeLines = [
   "import { useSystemMesh, EdgeRuntime } from '@nexus/core';",
@@ -21,7 +21,7 @@ const codeLines = [
   "  }, [latency]);",
   " ",
   "  return <ServiceNode active={true} load={latency} />;",
-  "}"
+  "}",
 ];
 
 export function CodeEditor() {
@@ -31,8 +31,8 @@ export function CodeEditor() {
   useEffect(() => {
     if (currentIndex < codeLines.length) {
       const timer = setTimeout(() => {
-        setVisibleLines(prev => [...prev, codeLines[currentIndex]]);
-        setCurrentIndex(prev => prev + 1);
+        setVisibleLines((prev) => [...prev, codeLines[currentIndex]]);
+        setCurrentIndex((prev) => prev + 1);
       }, 350); // Live coding typing speed
       return () => clearTimeout(timer);
     } else {
@@ -48,38 +48,85 @@ export function CodeEditor() {
     if (line.trim() === "") return <span className="h-4 block" />;
 
     // Split words or parse simple tokens
-    const tokens = line.split(/(\s+|=|>|<|\(|\)|\{|\}|\[|\]|,|;|'[^']*'|"[^"]*")/g);
+    const tokens = line.split(
+      /(\s+|=|>|<|\(|\)|\{|\}|\[|\]|,|;|'[^']*'|"[^"]*")/g,
+    );
 
     return tokens.map((token, i) => {
       const trimmed = token.trim();
 
       // Keywords (Blue/Purple)
-      if (['import', 'export', 'const', 'return', 'function', 'if', 'from'].includes(trimmed)) {
-        return <span key={i} className="text-[#ff7b72] font-semibold">{token}</span>;
+      if (
+        [
+          "import",
+          "export",
+          "const",
+          "return",
+          "function",
+          "if",
+          "from",
+        ].includes(trimmed)
+      ) {
+        return (
+          <span key={i} className="text-[#ff7b72] font-semibold">
+            {token}
+          </span>
+        );
       }
 
       // Built-in React/Hooks (Orange)
-      if (['useEffect', 'useState', 'useTelemetry', 'useSystemMesh'].includes(trimmed)) {
-        return <span key={i} className="text-[#d2a6ff] font-semibold">{token}</span>;
+      if (
+        ["useEffect", "useState", "useTelemetry", "useSystemMesh"].includes(
+          trimmed,
+        )
+      ) {
+        return (
+          <span key={i} className="text-[#d2a6ff] font-semibold">
+            {token}
+          </span>
+        );
       }
 
       // Strings (Green)
-      if ((token.startsWith("'") && token.endsWith("'")) || (token.startsWith('"') && token.endsWith('"'))) {
-        return <span key={i} className="text-[#a5d6ff]">{token}</span>;
+      if (
+        (token.startsWith("'") && token.endsWith("'")) ||
+        (token.startsWith('"') && token.endsWith('"'))
+      ) {
+        return (
+          <span key={i} className="text-[#a5d6ff]">
+            {token}
+          </span>
+        );
       }
 
       // XML/HTML tags (Green-cyan)
-      if (['ServiceNode', '<ServiceNode', '/>'].includes(trimmed) || trimmed.startsWith('<') || trimmed.endsWith('/>')) {
-        return <span key={i} className="text-[#7ee787] font-medium">{token}</span>;
+      if (
+        ["ServiceNode", "<ServiceNode", "/>"].includes(trimmed) ||
+        trimmed.startsWith("<") ||
+        trimmed.endsWith("/>")
+      ) {
+        return (
+          <span key={i} className="text-[#7ee787] font-medium">
+            {token}
+          </span>
+        );
       }
 
       // Numbers & Booleans (Teal)
-      if (['true', 'false', '5', '120', '24'].includes(trimmed)) {
-        return <span key={i} className="text-[#79c0ff]">{token}</span>;
+      if (["true", "false", "5", "120", "24"].includes(trimmed)) {
+        return (
+          <span key={i} className="text-[#79c0ff]">
+            {token}
+          </span>
+        );
       }
 
       // Plain Code
-      return <span key={i} className="text-[#c9d1d9]">{token}</span>;
+      return (
+        <span key={i} className="text-[#c9d1d9]">
+          {token}
+        </span>
+      );
     });
   };
 
@@ -103,7 +150,9 @@ export function CodeEditor() {
       <div className="flex-1 flex bg-[#0d1117]">
         {/* Editor Sidebar */}
         <div className="w-12 bg-[#090d16] border-r border-white/5 flex flex-col items-center py-4 gap-5 text-slate-600">
-          <div className="w-5 h-5 bg-white/5 border border-white/10 rounded flex items-center justify-center text-[10px] text-[#3b82f6]">⌨</div>
+          <div className="w-5 h-5 bg-white/5 border border-white/10 rounded flex items-center justify-center text-[10px] text-[#3b82f6]">
+            ⌨
+          </div>
           <div className="w-5 h-5 bg-white/5 rounded-sm" />
           <div className="w-5 h-5 bg-white/5 rounded-sm" />
         </div>
@@ -118,7 +167,9 @@ export function CodeEditor() {
               transition={{ duration: 0.15 }}
               className="flex whitespace-pre mb-1 w-full text-xs"
             >
-              <span className="w-8 text-slate-600 text-[10px] text-right mr-4 select-none shrink-0 font-medium">{i + 1}</span>
+              <span className="w-8 text-slate-600 text-[10px] text-right mr-4 select-none shrink-0 font-medium">
+                {i + 1}
+              </span>
               <span className="flex-1 text-left leading-5">
                 {highlightLine(line)}
               </span>
