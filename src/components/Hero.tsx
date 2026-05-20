@@ -59,7 +59,7 @@ export const Hero = () => {
         />
       )}
 
-      <div className="container mx-auto px-6 z-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center pt-28 pb-12">
+      <div className="container mx-auto px-4 sm:px-6 z-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center pt-28 pb-12">
         {/* Left Side: Professional Copy & Metrics */}
         <div className="flex flex-col justify-center order-1 relative z-10 text-left">
           <motion.div
@@ -68,10 +68,10 @@ export const Hero = () => {
             transition={{ duration: 0.8 }}
           >
             {/* Biometric Profile Tag Row */}
-            <div className="flex items-center gap-5 mb-8">
+            <div className="flex items-center gap-4 sm:gap-5 mb-8">
               <div className="relative group">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary to-accent opacity-30 blur-md group-hover:opacity-75 transition duration-500"></div>
-                <div className="relative w-16 h-16 rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center bg-[#090d16]/80 p-0.5">
+                <div className="relative w-14 sm:w-16 h-14 sm:h-16 rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center bg-[#090d16]/80 p-0.5">
                   <img
                     src={unasImage}
                     alt="Syed Unas Systems Architect"
@@ -80,29 +80,29 @@ export const Hero = () => {
                     className="w-full h-full object-cover rounded-[14px]"
                   />
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-[#030712] flex items-center justify-center shadow-[0_0_8px_#10b981]">
+                <div className="absolute -bottom-1 -right-1 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-emerald-500 border-2 border-[#030712] flex items-center justify-center shadow-[0_0_8px_#10b981]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#030712] animate-pulse"></span>
                 </div>
               </div>
-              <div className="text-left">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 shadow-sm backdrop-blur-md">
-                  <span className="relative flex h-2 w-2">
+              <div className="text-left min-w-0">
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 shadow-sm backdrop-blur-md">
+                  <span className="relative flex h-2 w-2 flex-shrink-0">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-primary shadow-[0_0_6px_#3b82f6]"></span>
                   </span>
                   <ShinyText
                     text="Senior Systems Architect & Full-Stack Engineer"
-                    className="text-[10px] font-bold uppercase tracking-widest text-slate-400"
+                    className="text-[8px] xs:text-[10px] font-bold uppercase tracking-widest text-slate-400"
                   />
                 </div>
-                <p className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mt-2 pl-1">
+                <p className="text-[8px] xs:text-[9px] font-mono text-slate-500 uppercase tracking-widest mt-2 pl-1">
                   EDGE NODE: KATY-TX-77449 // SYNC_OK
                 </p>
               </div>
             </div>
 
             {/* Impact Title */}
-            <h1 className="text-5xl md:text-7xl font-black font-outfit mb-12 tracking-tight leading-[1.08] text-white">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl font-black font-outfit mb-8 sm:mb-12 tracking-tight leading-[1.08] text-white">
               <SplitText
                 text="I'm Syed Unas,"
                 delay={40}
@@ -115,7 +115,7 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="text-slate-400 text-lg md:text-2xl max-w-xxl mb-16 leading-relaxed font-light"
+              className="text-slate-400 text-sm xs:text-base sm:text-lg md:text-2xl max-w-xxl mb-10 sm:mb-16 leading-relaxed font-light"
             >
               A Senior Full-Stack Engineer & Systems Architect with{" "}
               <span className="text-primary font-bold">7+ years</span> of
@@ -130,14 +130,14 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-wrap gap-4 items-center mb-12"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center mb-12"
           >
             <motion.a
               href="#contact"
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.98 }}
               id="hero-action-contact"
-              className="px-6 py-4 bg-gradient-to-r from-primary to-accent text-white rounded-2xl font-bold shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/45 transition-all duration-300 flex items-center gap-2.5"
+              className="px-5 sm:px-6 py-3.5 sm:py-4 bg-gradient-to-r from-primary to-accent text-white rounded-2xl font-bold shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/45 transition-all duration-300 flex items-center justify-center gap-2.5 text-sm sm:text-base"
             >
               <span>Initialize Connection</span>
               <span className="text-lg">→</span>
@@ -149,7 +149,7 @@ export const Hero = () => {
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.98 }}
               id="hero-action-resume"
-              className="px-6 py-4 bg-[#090d16]/80 hover:bg-[#3b82f6]/10 text-white border border-[#3b82f6]/30 hover:border-[#3b82f6]/70 rounded-2xl font-bold transition-all duration-300 shadow-md backdrop-blur-sm flex items-center gap-2.5 group"
+              className="px-5 sm:px-6 py-3.5 sm:py-4 bg-[#090d16]/80 hover:bg-[#3b82f6]/10 text-white border border-[#3b82f6]/30 hover:border-[#3b82f6]/70 rounded-2xl font-bold transition-all duration-300 shadow-md backdrop-blur-sm flex items-center justify-center gap-2.5 group text-sm sm:text-base"
             >
               <svg
                 className="w-5 h-5 text-primary group-hover:scale-110 transition-transform"
@@ -172,7 +172,7 @@ export const Hero = () => {
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.98 }}
               id="hero-action-projects"
-              className="px-6 py-4 bg-white/5 text-white border border-white/10 hover:border-primary/50 hover:bg-white/10 rounded-2xl font-bold transition-all duration-300 shadow-sm backdrop-blur-sm"
+              className="px-5 sm:px-6 py-3.5 sm:py-4 bg-white/5 text-white border border-white/10 hover:border-primary/50 hover:bg-white/10 rounded-2xl font-bold transition-all duration-300 shadow-sm backdrop-blur-sm text-center text-sm sm:text-base"
             >
               Inspect Deployments
             </motion.a>
@@ -182,7 +182,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.8 }}
-            className="grid grid-cols-3 gap-4 mb-4 max-w-xl"
+            className="grid grid-cols-1 min-[360px]:grid-cols-3 gap-2 sm:gap-4 mb-4 max-w-xl"
           >
             {[
               {
@@ -210,40 +210,19 @@ export const Hero = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.3 + i * 0.1, duration: 0.6 }}
                 id={`hero-metric-${i}`}
-                className={`group bg-white/5 border border-white/10 p-5 rounded-2xl hover:bg-white/10 hover:border-primary/40 transition-all duration-400 flex flex-col justify-between h-28 backdrop-blur-md`}
+                className={`group bg-white/5 border border-white/10 p-2.5 xs:p-4 sm:p-5 rounded-2xl hover:bg-white/10 hover:border-primary/40 transition-all duration-400 flex flex-col justify-between h-20 sm:h-28 backdrop-blur-md`}
               >
-                <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-none group-hover:text-primary transition-colors mb-2">
+                <p className="text-[7.5px] xs:text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-none group-hover:text-primary transition-colors mb-2">
                   {metric.label}
                 </p>
                 <p
-                  className={`text-xl font-black ${metric.color} leading-none group-hover:scale-105 transition-transform duration-300 origin-left`}
+                  className={`text-sm xs:text-base sm:text-xl font-black ${metric.color} leading-none group-hover:scale-105 transition-transform duration-300 origin-left`}
                 >
                   {metric.value}
                 </p>
               </motion.div>
             ))}
           </motion.div>
-
-          {/* Floating Telemetry Terminal (Uncommented & Redesigned) */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.6, duration: 0.8 }}
-            className="hidden xl:block absolute -left-36 bottom-6 w-72 bg-[#090d16]/95 rounded-2xl p-4 shadow-2xl border border-white/5 backdrop-blur-xl"
-          >
-            <div className="flex gap-1.5 mb-3 border-b border-white/5 pb-2">
-              <div className="w-2.5 h-2.5 rounded-full bg-rose-500"></div>
-              <div className="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
-              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
-              <span className="text-[8px] font-mono text-slate-500 ml-auto uppercase tracking-widest font-bold">system_daemon.sh</span>
-            </div>
-            <div className="font-mono text-[9px] space-y-1.5 text-slate-400 text-left">
-              <p className="text-primary font-bold">$ nexus-cli telemetry --live</p>
-              <p className="text-slate-500">Connecting node: katy-tx-edge-01...</p>
-              <p className="text-violet-400">⚡ Distributed database sync: 100%</p>
-              <p className="text-emerald-400">✓ Systems operational (Latency: 12ms)</p>
-            </div>
-          </motion.div> */}
         </div>
 
         {/* Right Side: Showcase Portrait Container (Replacing 3D Workspace Scene) */}
@@ -254,19 +233,19 @@ export const Hero = () => {
           className="relative w-full order-2 z-0 flex items-center justify-center py-6"
         >
           {/* Neon backlighting panels */}
-          <div className="absolute w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] pointer-events-none z-0" />
-          <div className="absolute w-[350px] h-[350px] bg-accent/10 rounded-full blur-[90px] pointer-events-none z-0" />
+          <div className="absolute w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] bg-primary/10 rounded-full blur-[100px] pointer-events-none z-0" />
+          <div className="absolute w-[250px] sm:w-[350px] h-[250px] sm:h-[350px] bg-accent/10 rounded-full blur-[90px] pointer-events-none z-0" />
 
           {/* Premium Glassmorphic Frame with Unas's Actual Portrait */}
-          <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[48px] overflow-hidden border border-white/10 bg-[#090d16]/80 p-3.5 shadow-2xl group z-10 backdrop-blur-xl">
+          <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[36px] sm:rounded-[48px] overflow-hidden border border-white/10 bg-[#090d16]/80 p-2 xs:p-3.5 shadow-2xl group z-10 backdrop-blur-xl">
             {/* Ambient Tech Border Glow */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-accent/15 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700 rounded-[48px] pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-accent/15 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700 rounded-[36px] sm:rounded-[48px] pointer-events-none" />
 
             {/* Floating Bezel Ambient Shadow */}
-            <div className="absolute -inset-1.5 bg-gradient-to-r from-primary to-accent rounded-[52px] blur-3xl opacity-10 group-hover:opacity-20 transition duration-1000" />
+            <div className="absolute -inset-1.5 bg-gradient-to-r from-primary to-accent rounded-[40px] sm:rounded-[52px] blur-3xl opacity-10 group-hover:opacity-20 transition duration-1000" />
 
             {/* Inner Portrait Screen */}
-            <div className="relative w-full h-full rounded-[36px] overflow-hidden border border-white/5 bg-[#030712]">
+            <div className="relative w-full h-full rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white/5 bg-[#030712]">
               <img
                 src={unasImage}
                 alt="Syed Unas - Senior Systems Architect & Full-Stack Engineer"
@@ -284,35 +263,35 @@ export const Hero = () => {
             </div>
 
             {/* Futuristic Tech Overlay HUD badges */}
-            <div className="absolute bottom-10 left-10 right-10 flex flex-col gap-2.5 z-20 text-left">
-              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-[#030712]/80 border border-white/10 shadow-lg backdrop-blur-md w-fit">
-                <span className="relative flex h-2.5 w-2.5">
+            <div className="absolute bottom-4 xs:bottom-10 left-4 xs:left-10 right-4 xs:right-10 flex flex-col gap-1.5 xs:gap-2.5 z-20 text-left">
+              <div className="inline-flex items-center gap-1.5 xs:gap-2.5 px-2.5 xs:px-4 py-1.5 xs:py-2 rounded-xl xs:rounded-2xl bg-[#030712]/80 border border-white/10 shadow-lg backdrop-blur-md w-fit">
+                <span className="relative flex h-2 w-2 xs:h-2.5 xs:w-2.5 flex-shrink-0">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 shadow-[0_0_6px_#10b981]"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 xs:h-2.5 xs:w-2.5 bg-emerald-500 shadow-[0_0_6px_#10b981]"></span>
                 </span>
-                <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-slate-300">
+                <span className="font-mono text-[7px] xs:text-[9px] font-bold uppercase tracking-widest text-slate-300">
                   SYSTEM STATUS: OPERATIONAL
                 </span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#030712]/85 border border-white/10 shadow-xl backdrop-blur-md">
-                <p className="font-mono text-[8px] text-slate-500 uppercase tracking-widest leading-none mb-1.5 font-bold">
+              <div className="p-2.5 xs:p-4 rounded-xl xs:rounded-2xl bg-[#030712]/85 border border-white/10 shadow-xl backdrop-blur-md">
+                <p className="font-mono text-[7px] xs:text-[8px] text-slate-500 uppercase tracking-widest leading-none mb-1.5 font-bold">
                   CORE_ARCHITECT_IDENTITY
                 </p>
-                <h3 className="text-lg font-black text-white font-outfit leading-none mb-1">
+                <h3 className="text-sm xs:text-base sm:text-lg font-black text-white font-outfit leading-none mb-1">
                   Syed Unas
                 </h3>
-                <p className="text-[10px] font-bold text-primary font-mono uppercase tracking-wider leading-none">
+                <p className="text-[8px] xs:text-[10px] font-bold text-primary font-mono uppercase tracking-wider leading-none">
                   Senior Full-Stack Engineer & Systems Architect
                 </p>
               </div>
             </div>
 
             {/* Fine Corner Ornamental Brackets */}
-            <div className="absolute top-7 left-7 w-5 h-5 border-t-2 border-l-2 border-primary/50 rounded-tl-sm pointer-events-none" />
-            <div className="absolute top-7 right-7 w-5 h-5 border-t-2 border-r-2 border-primary/50 rounded-tr-sm pointer-events-none" />
-            <div className="absolute bottom-7 left-7 w-5 h-5 border-b-2 border-l-2 border-primary/50 rounded-bl-sm pointer-events-none" />
-            <div className="absolute bottom-7 right-7 w-5 h-5 border-b-2 border-r-2 border-primary/50 rounded-br-sm pointer-events-none" />
+            <div className="absolute top-5 xs:top-7 left-5 xs:left-7 w-4 xs:w-5 h-4 xs:h-5 border-t-2 border-l-2 border-primary/50 rounded-tl-sm pointer-events-none" />
+            <div className="absolute top-5 xs:top-7 right-5 xs:right-7 w-4 xs:w-5 h-4 xs:h-5 border-t-2 border-r-2 border-primary/50 rounded-tr-sm pointer-events-none" />
+            <div className="absolute bottom-5 xs:bottom-7 left-5 xs:left-7 w-4 xs:w-5 h-4 xs:h-5 border-b-2 border-l-2 border-primary/50 rounded-bl-sm pointer-events-none" />
+            <div className="absolute bottom-5 xs:bottom-7 right-5 xs:right-7 w-4 xs:w-5 h-4 xs:h-5 border-b-2 border-r-2 border-primary/50 rounded-br-sm pointer-events-none" />
           </div>
 
           {/* Active Status Pod floating to the side */}

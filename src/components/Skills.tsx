@@ -136,7 +136,7 @@ export const Skills = () => {
     >
       <div className="absolute inset-0 tech-radial-glow pointer-events-none z-0" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col items-center mb-24">
           <motion.span
@@ -164,7 +164,7 @@ export const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="max-w-3xl mx-auto mb-20 p-6 rounded-3xl bg-[#090d16]/80 border border-amber-500/25 hover:border-amber-500/50 shadow-lg shadow-amber-500/5 backdrop-blur-xl transition-all duration-300 flex flex-col sm:flex-row items-center gap-6 text-left"
+          className="max-w-3xl mx-auto mb-20 p-4 sm:p-6 rounded-3xl bg-[#090d16]/80 border border-amber-500/25 hover:border-amber-500/50 shadow-lg shadow-amber-500/5 backdrop-blur-xl transition-all duration-300 flex flex-col sm:flex-row items-center gap-6 text-left"
         >
           <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 shadow-[0_0_12px_rgba(245,158,11,0.15)]">
             <span className="text-2xl font-black font-outfit select-none">
@@ -200,12 +200,12 @@ export const Skills = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8"
         >
           {skillCategories.map((category, idx) => (
             <motion.div key={idx} variants={itemVariants} className="h-full">
               <TiltedCard glowColor={category.glowColor} className="h-full">
-                <div className="p-8 h-full flex flex-col justify-between relative overflow-hidden rounded-[40px] bg-[#090d16]/70 border border-white/5">
+                <div className="p-4 sm:p-8 h-full flex flex-col justify-between relative overflow-hidden rounded-[30px] sm:rounded-[40px] bg-[#090d16]/70 border border-white/5">
                   {/* Floating Graphic Indicator */}
                   <div className="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.06] transition-opacity select-none pointer-events-none">
                     <span className="text-9xl font-black text-white leading-none">

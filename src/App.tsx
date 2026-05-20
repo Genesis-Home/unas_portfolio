@@ -84,7 +84,7 @@ function App() {
             >
               <div className="absolute inset-0 tech-radial-glow pointer-events-none z-0" />
 
-              <div className="container mx-auto px-6 relative z-10">
+              <div className="container mx-auto px-4 sm:px-6 relative z-10">
                 <div className="max-w-6xl mx-auto">
                   <div className="grid lg:grid-cols-[1fr_1.5fr] gap-16 lg:gap-20 items-center">
                     {/* Left Side: Contact Pitch and Info */}
@@ -97,13 +97,13 @@ function App() {
                       >
                         CONTACT PROTOCOL
                       </motion.span>
-                      <h2 className="text-5xl md:text-7xl font-extrabold font-outfit text-white mb-8 tracking-tight text-left">
+                      <h2 className="text-3xl sm:text-5xl md:text-7xl font-extrabold font-outfit text-white mb-8 tracking-tight text-left">
                         Initialize{" "}
                         <span className="text-gradient-primary">
                           Connection
                         </span>
                       </h2>
-                      <p className="text-slate-400 text-lg mb-12 leading-relaxed font-light text-left">
+                      <p className="text-slate-400 text-sm sm:text-lg mb-12 leading-relaxed font-light text-left">
                         Currently open to senior-level architectural
                         opportunities, engineering leadership, and high-impact
                         full-stack consulting worldwide. Let's engineer
@@ -120,18 +120,18 @@ function App() {
                             boxShadow: "0 0 20px rgba(59,130,246,0.2)",
                           }}
                           whileTap={{ scale: 0.98 }}
-                          className="group flex items-center gap-5 p-6 rounded-[28px] bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+                          className="group flex items-center gap-3 sm:gap-5 p-4 sm:p-6 rounded-2xl sm:rounded-[28px] bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-white/10 transition-all duration-300 cursor-pointer"
                         >
-                          <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white shadow-[0_0_10px_rgba(59,130,246,0.1)] group-hover:shadow-neon-blue transition-all duration-300">
+                          <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white shadow-[0_0_10px_rgba(59,130,246,0.1)] group-hover:shadow-neon-blue transition-all duration-300 flex-shrink-0">
                             <Mail size={20} />
                           </div>
-                          <div className="text-left">
+                          <div className="text-left min-w-0">
                             <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-1 font-mono">
                               Secure Email Socket
                             </p>
                             <a
                               href="mailto:Unas.engineer@gmail.com"
-                              className="text-lg font-bold text-slate-200 hover:text-primary transition-colors"
+                              className="text-sm min-[360px]:text-base sm:text-lg font-bold text-slate-200 hover:text-primary transition-colors break-all"
                             >
                               Unas.engineer@gmail.com
                             </a>
@@ -146,16 +146,16 @@ function App() {
                             boxShadow: "0 0 20px rgba(99,102,241,0.2)",
                           }}
                           whileTap={{ scale: 0.98 }}
-                          className="group flex items-center gap-5 p-6 rounded-[28px] bg-white/5 border border-white/10 hover:border-accent/40 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+                          className="group flex items-center gap-3 sm:gap-5 p-4 sm:p-6 rounded-2xl sm:rounded-[28px] bg-white/5 border border-white/10 hover:border-accent/40 hover:bg-white/10 transition-all duration-300 cursor-pointer"
                         >
-                          <div className="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white shadow-[0_0_10px_rgba(99,102,241,0.1)] group-hover:shadow-neon-violet transition-all duration-300">
+                          <div className="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white shadow-[0_0_10px_rgba(99,102,241,0.1)] group-hover:shadow-neon-violet transition-all duration-300 flex-shrink-0">
                             <MapPin size={20} />
                           </div>
-                          <div className="text-left">
+                          <div className="text-left min-w-0">
                             <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-1 font-mono">
                               Central Station
                             </p>
-                            <p className="text-lg font-bold text-slate-200">
+                            <p className="text-sm min-[360px]:text-base sm:text-lg font-bold text-slate-200 break-all">
                               Katy, TX 77449 | Remote
                             </p>
                           </div>

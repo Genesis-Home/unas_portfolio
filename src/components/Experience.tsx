@@ -131,7 +131,7 @@ export const Experience = () => {
     >
       <div className="absolute inset-0 tech-radial-glow pointer-events-none z-0" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col items-center mb-24">
           <motion.span
@@ -154,9 +154,9 @@ export const Experience = () => {
         </div>
 
         {/* Timeline List */}
-        <div className="max-w-5xl mx-auto relative pl-6 md:pl-10">
+        <div className="max-w-5xl mx-auto relative pl-5 sm:pl-10">
           {/* Vertical Glowing Connector Line */}
-          <div className="absolute left-[30px] md:left-[38px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-primary via-accent to-slate-800 pointer-events-none" />
+          <div className="absolute left-[16px] sm:left-[30px] md:left-[38px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-primary via-accent to-slate-800 pointer-events-none" />
 
           {experiences.map((exp, idx) => (
             <motion.div
@@ -168,7 +168,7 @@ export const Experience = () => {
               className="relative mb-16 last:mb-0 group"
             >
               {/* Timeline LED Checkpoint Node */}
-              <div className="absolute -left-[30px] md:-left-[38px] top-7 z-20 flex items-center justify-center">
+              <div className="absolute -left-[16px] sm:-left-[30px] md:-left-[38px] top-7 z-20 flex items-center justify-center">
                 <span className="relative flex h-5 w-5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-30"></span>
                   <span
@@ -179,7 +179,7 @@ export const Experience = () => {
 
               {/* Glassmorphic Project Brief Container */}
               <div
-                className={`grid lg:grid-cols-[1fr_2.2fr] gap-8 bg-[#090d16]/75 border p-8 md:p-12 rounded-[40px] shadow-2xl transition-all duration-500 backdrop-blur-xl ${exp.glowColor}`}
+                className={`grid lg:grid-cols-[1fr_2.2fr] gap-8 bg-[#090d16]/75 border p-4 xs:p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[40px] shadow-2xl transition-all duration-500 backdrop-blur-xl ${exp.glowColor}`}
               >
                 {/* Left Block: Identity & Stack */}
                 <div className="flex flex-col text-left">
@@ -218,7 +218,7 @@ export const Experience = () => {
                 {/* Right Block: Telemetry and Key Achievements */}
                 <div className="flex flex-col justify-center text-left">
                   {/* Brief Terminal Box */}
-                  <div className="bg-[#030712] p-6 rounded-3xl border border-white/5 mb-8">
+                  <div className="bg-[#030712] p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-white/5 mb-8">
                     <div className="flex items-center gap-2 text-primary mb-3">
                       <Briefcase size={15} />
                       <span className="text-[10px] font-bold uppercase tracking-wider font-mono">

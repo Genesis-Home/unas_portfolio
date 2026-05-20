@@ -73,14 +73,14 @@ export const Navbar = ({}: Record<string, never>) => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300"
+        className="fixed top-0 left-0 right-0 z-50 px-2 sm:px-6 py-3 sm:py-4 transition-all duration-300"
       >
       {/* Floating Glass Capsule Wrapper */}
       <div
-        className={`mx-auto flex justify-between items-center transition-all duration-500 rounded-3xl gap-4 sm:gap-5 ${
+        className={`mx-auto flex justify-between items-center transition-all duration-500 rounded-3xl gap-2 sm:gap-5 ${
           scrolled
             ? "glass-nav py-3.5 px-2 max-w-6xl shadow-2xl shadow-black/40 border border-white/5"
-            : "bg-transparent py-4 px-4 max-w-7xl border-none"
+            : "bg-transparent py-4 px-2.5 sm:px-4 max-w-7xl border-none"
         }`}
       >
         {/* Logo - Always Visible */}

@@ -305,7 +305,7 @@ export const Projects = ({ onSelectProject }: ProjectsProps) => {
     >
       <div className="absolute inset-0 tech-radial-glow pointer-events-none z-0" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col items-center mb-20">
           <motion.span
@@ -329,15 +329,15 @@ export const Projects = ({ onSelectProject }: ProjectsProps) => {
 
         {/* Tab Filters */}
         <div className="flex justify-center mb-16">
-          <div className="relative flex p-1.5 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md">
+          <div className="relative flex p-1 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md">
             {/* Sliding Capsule Background */}
             <motion.div
-              className="absolute top-1.5 bottom-1.5 rounded-xl bg-gradient-to-r from-primary to-accent pointer-events-none"
+              className="absolute top-1 bottom-1 rounded-xl bg-gradient-to-r from-primary to-accent pointer-events-none"
               layoutId="activeFilterTab"
               initial={false}
               animate={{
-                left: activeTab === "web" ? "6px" : "calc(50% + 2px)",
-                width: "calc(50% - 8px)",
+                left: activeTab === "web" ? "4px" : "calc(50% + 2px)",
+                width: "calc(50% - 6px)",
               }}
               transition={{ type: "spring", stiffness: 350, damping: 28 }}
             />
@@ -346,7 +346,7 @@ export const Projects = ({ onSelectProject }: ProjectsProps) => {
               whileHover={{ scale: 1.05, y: -1 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleTabChange("web")}
-              className={`relative z-10 px-8 py-3 rounded-xl font-outfit text-xs font-bold tracking-widest transition-all duration-300 uppercase flex items-center gap-2 font-mono cursor-pointer ${
+              className={`relative z-10 px-3 sm:px-8 py-2.5 sm:py-3 rounded-xl font-outfit text-[10px] sm:text-xs font-bold tracking-widest transition-all duration-300 uppercase flex items-center gap-2 font-mono cursor-pointer ${
                 activeTab === "web"
                   ? "text-white"
                   : "text-slate-400 hover:text-white"
@@ -366,7 +366,7 @@ export const Projects = ({ onSelectProject }: ProjectsProps) => {
               whileHover={{ scale: 1.05, y: -1 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleTabChange("mobile")}
-              className={`relative z-10 px-8 py-3 rounded-xl font-outfit text-xs font-bold tracking-widest transition-all duration-300 uppercase flex items-center gap-2 font-mono cursor-pointer ${
+              className={`relative z-10 px-3 sm:px-8 py-2.5 sm:py-3 rounded-xl font-outfit text-[10px] sm:text-xs font-bold tracking-widest transition-all duration-300 uppercase flex items-center gap-2 font-mono cursor-pointer ${
                 activeTab === "mobile"
                   ? "text-white"
                   : "text-slate-400 hover:text-white"
@@ -410,7 +410,7 @@ export const Projects = ({ onSelectProject }: ProjectsProps) => {
                         ? onSelectProject(project.id)
                         : window.open(project.url, "_blank")
                     }
-                    className="p-6 h-full flex flex-col justify-between relative bg-[#090d16]/80 backdrop-blur-xl border border-white/5 rounded-[40px] overflow-hidden group cursor-pointer hover:border-primary/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] transition-all duration-300 text-left"
+                    className="p-4 sm:p-6 h-full flex flex-col justify-between relative bg-[#090d16]/80 backdrop-blur-xl border border-white/5 rounded-[40px] overflow-hidden group cursor-pointer hover:border-primary/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] transition-all duration-300 text-left"
                   >
                     <div>
                       {/* Visual Showroom Area */}

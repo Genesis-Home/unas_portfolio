@@ -168,8 +168,8 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
       />
 
       {/* Futuristic Floating Navigation Header */}
-      <header className="sticky top-6 z-50 max-w-5xl mx-auto px-6 mb-16">
-        <div className="p-3 bg-[#090d16]/80 backdrop-blur-xl border border-white/5 rounded-2xl flex items-center justify-between shadow-2xl">
+      <header className="sticky top-6 z-50 max-w-5xl mx-auto px-4 sm:px-6 mb-16">
+        <div className="p-2.5 sm:p-3 bg-[#090d16]/80 backdrop-blur-xl border border-white/5 rounded-2xl flex items-center justify-between shadow-2xl">
           <motion.button
             whileHover={{
               scale: 1.08,
@@ -178,9 +178,9 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
             }}
             whileTap={{ scale: 0.93 }}
             onClick={onClose}
-            className="flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-primary hover:border-primary/60 font-mono text-xs uppercase cursor-pointer transition-all duration-300"
+            className="flex items-center gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-primary hover:border-primary/60 font-mono text-[10px] sm:text-xs uppercase cursor-pointer transition-all duration-300"
           >
-            <ArrowLeft size={14} className="text-primary" />
+            <ArrowLeft size={12} className="text-primary" />
             System Hub
           </motion.button>
 
@@ -197,7 +197,7 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
       </header>
 
       {/* Hero Welcome Block */}
-      <section className="container mx-auto px-6 relative z-10 max-w-6xl text-center mb-24 mt-8">
+      <section className="container mx-auto px-4 sm:px-6 relative z-10 max-w-6xl text-center mb-24 mt-8">
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -215,7 +215,7 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-7xl font-extrabold font-outfit text-white tracking-tight leading-none mb-6"
+          className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl font-extrabold font-outfit text-white tracking-tight leading-none mb-6"
         >
           Project <span className="text-gradient-primary">{project.name}</span>
         </motion.h1>
@@ -230,7 +230,7 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
       </section>
 
       {/* alternating sections walkthrough */}
-      <div className="space-y-36 relative z-10 max-w-6xl mx-auto px-6">
+      <div className="space-y-36 relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
         {project.screens.map((screen: ScreenData, idx: number) => {
           const isLaptop = screen.type === "laptop";
           const isLeft = screen.variant === "left";
@@ -256,9 +256,9 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                   </h3>
                 )}
 
-                <div className="bg-[#030712]/50 p-6 rounded-2xl border border-white/5 backdrop-blur-xl relative overflow-hidden">
+                <div className="bg-[#030712]/50 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/5 backdrop-blur-xl relative overflow-hidden">
                   <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-accent" />
-                  <p className="text-slate-300 text-base md:text-lg leading-relaxed font-light font-outfit">
+                  <p className="text-slate-300 text-sm sm:text-base md:text-lg leading-relaxed font-light font-outfit">
                     {screen.description}
                   </p>
 
