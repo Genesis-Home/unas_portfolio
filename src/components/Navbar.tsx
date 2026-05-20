@@ -63,9 +63,9 @@ export function Navbar() {
     >
       {/* Floating Glass Capsule Wrapper */}
       <div
-        className={`mx-auto flex justify-between items-center transition-all duration-500 rounded-3xl gap-4 sm:gap-6 ${
+        className={`mx-auto flex justify-between items-center transition-all duration-500 rounded-3xl gap-4 sm:gap-5 ${
           scrolled
-            ? "glass-nav py-3.5 px-4 sm:px-6 lg:px-8 max-w-6xl shadow-2xl shadow-black/40 border border-white/5"
+            ? "glass-nav py-3.5 px-2 max-w-6xl shadow-2xl shadow-black/40 border border-white/5"
             : "bg-transparent py-4 px-4 max-w-7xl border-none"
         }`}
       >
@@ -185,14 +185,14 @@ export function Navbar() {
             href="#contact"
             onClick={() => handleNavClick("contact")}
             id="nav-action-contact"
-            className="px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-primary to-accent text-white rounded-lg sm:rounded-xl transition-all text-[10px] sm:text-xs font-bold uppercase tracking-wider cursor-pointer flex-shrink-0 whitespace-nowrap"
+            className="px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-primary to-accent text-white rounded-lg sm:rounded-xl transition-all text-[10px] sm:text-xs font-bold uppercase tracking-wider cursor-pointer flex-shrink-0"
             whileHover={{
               scale: 1.1,
               boxShadow: "0 0 25px rgba(59,130,246,0.5)",
             }}
             whileTap={{ scale: 0.92 }}
           >
-            Contact
+            <span className="whitespace-nowrap">Contact</span>
           </motion.a>
         </div>
 
