@@ -1,7 +1,9 @@
 {
   "name": "syed-unas-portfolio",
+  "description": "Senior Full-Stack Engineer Portfolio - 7+ years of experience",
+  "author": "Syed Unas <Unas.engineer@gmail.com>",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
