@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback, useMemo } from "react";
 import { SplitText } from "./SplitText";
 import { ShinyText } from "./ShinyText";
 import Waves from "./Waves";
+import { Magnet } from "./Magnet";
 import unasImage from "../assets/unas_profile.png";
 
 export const Hero = () => {
@@ -245,22 +246,24 @@ export const Hero = () => {
             <div className="absolute -inset-1.5 bg-gradient-to-r from-primary to-accent rounded-[40px] sm:rounded-[52px] blur-3xl opacity-10 group-hover:opacity-20 transition duration-1000" />
 
             {/* Inner Portrait Screen */}
-            <div className="relative w-full h-full rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white/5 bg-[#030712]">
-              <img
-                src={unasImage}
-                alt="Syed Unas - Senior Systems Architect & Full-Stack Engineer"
-                loading="eager"
-                decoding="async"
-                className="w-full h-full object-cover scale-100 group-hover:scale-[1.04] transition-transform duration-[1200ms] ease-out"
-              />
+            <Magnet padding={80} magnetStrength={2.5}>
+              <div className="relative w-full h-full rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white/5 bg-[#030712]">
+                <img
+                  src={unasImage}
+                  alt="Syed Unas - Senior Systems Architect & Full-Stack Engineer"
+                  loading="eager"
+                  decoding="async"
+                  className="w-full h-full object-cover scale-100 group-hover:scale-[1.04] transition-transform duration-[1200ms] ease-out"
+                />
 
-              {/* High-tech overlay filters */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/90 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-accent/5 pointer-events-none" />
+                {/* High-tech overlay filters */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/90 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-accent/5 pointer-events-none" />
 
-              {/* Glowing horizontal scanline animation */}
-              <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-40 shadow-[0_0_12px_#3b82f6] animate-[scanline_4s_linear_infinite] pointer-events-none" />
-            </div>
+                {/* Glowing horizontal scanline animation */}
+                <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-40 shadow-[0_0_12px_#3b82f6] animate-[scanline_4s_linear_infinite] pointer-events-none" />
+              </div>
+            </Magnet>
 
             {/* Futuristic Tech Overlay HUD badges */}
             <div className="absolute bottom-4 xs:bottom-10 left-4 xs:left-10 right-4 xs:right-10 flex flex-col gap-1.5 xs:gap-2.5 z-20 text-left">

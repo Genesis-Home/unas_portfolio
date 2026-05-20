@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TiltedCard } from "./TiltedCard";
+import { Magnet } from "./Magnet";
 import {
   ExternalLink,
   Cpu,
@@ -423,11 +424,13 @@ export const Projects = ({ onSelectProject }: ProjectsProps) => {
 
                         {/* Floating Mockup Screen */}
                         <div className="relative z-10 w-[88%] h-[88%] flex items-center justify-center">
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-transform duration-500 group-hover:scale-105"
-                          />
+                          <Magnet padding={60} magnetStrength={3}>
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-transform duration-500 group-hover:scale-105"
+                            />
+                          </Magnet>
                         </div>
 
                         {/* Glass overlay badge for category */}
