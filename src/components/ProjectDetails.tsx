@@ -117,9 +117,12 @@ interface ProjectDetailsProps {
 export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
   const project = getProjectById(projectId);
 
-  // Auto-scroll to top when screen loads
+  // Scroll to top of project details (only within the modal, not page)
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const detailsSection = document.querySelector(".project-details-container");
+    if (detailsSection) {
+      detailsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }, [projectId]);
 
   if (!project) {
@@ -144,7 +147,7 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-hidden tech-grid pb-24">
+    <div className="project-details-container min-h-screen bg-background text-foreground relative overflow-hidden tech-grid pb-24">
       {/* Global Background Ambient Glow Lights */}
       <div
         className={`fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b ${project.glow} rounded-full blur-[140px] pointer-events-none z-0`}
@@ -306,7 +309,7 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
                       <div className="w-full h-full bg-[#020408] rounded-[36px] overflow-hidden border border-black/60 relative">
                         <img
                           src={screen.image}
-                          alt={screen.heading || meta.name}
+                          alt={screen.heading}
                           className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                         />
                       </div>
