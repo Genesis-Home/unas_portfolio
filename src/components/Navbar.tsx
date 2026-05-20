@@ -61,28 +61,29 @@ export function Navbar() {
     >
       {/* Floating Glass Capsule Wrapper */}
       <div
-        className={`mx-auto flex justify-between items-center transition-all duration-500 rounded-3xl ${
+        className={`mx-auto flex justify-between items-center transition-all duration-500 rounded-3xl gap-4 sm:gap-6 ${
           scrolled
-            ? "glass-nav py-3.5 px-8 max-w-5xl shadow-2xl shadow-black/40 border border-white/5"
+            ? "glass-nav py-3.5 px-4 sm:px-6 lg:px-8 max-w-6xl shadow-2xl shadow-black/40 border border-white/5"
             : "bg-transparent py-4 px-4 max-w-7xl border-none"
         }`}
       >
+        {/* Logo - Always Visible */}
         <a
           href="#hero"
           onClick={() => handleNavClick("hero")}
           id="nav-brand-logo"
-          className="group flex items-center gap-3 select-none"
+          className="group flex items-center gap-2 sm:gap-3 select-none flex-shrink-0"
         >
-          <div className="w-10 h-10 rounded-xl bg-white/5 border border-primary/20 group-hover:border-primary/50 flex items-center justify-center text-primary group-hover:text-white transition-all shadow-[0_0_12px_rgba(59,130,246,0.1)] font-mono text-sm font-bold">
+          <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-lg sm:rounded-xl bg-white/5 border border-primary/20 group-hover:border-primary/50 flex items-center justify-center text-primary group-hover:text-white transition-all shadow-[0_0_12px_rgba(59,130,246,0.1)] font-mono text-xs sm:text-sm font-bold flex-shrink-0">
             &lt;/&gt;
           </div>
-          <span className="text-lg font-extrabold font-outfit text-white group-hover:text-primary transition-colors tracking-tight select-none">
+          <span className="hidden sm:inline text-base sm:text-lg font-extrabold font-outfit text-white group-hover:text-primary transition-colors tracking-tight select-none whitespace-nowrap">
             Syed Unas
           </span>
         </a>
 
-        {/* Desktop Nav Items */}
-        <div className="hidden md:flex items-center gap-6 lg:gap-8 text-[12px] font-bold uppercase tracking-widest leading-none">
+        {/* Desktop Nav Items - Hidden on mobile */}
+        <div className="hidden lg:flex items-center gap-4 xl:gap-6 text-[11px] xl:text-[12px] font-bold uppercase tracking-widest leading-none flex-shrink-0">
           {navLinks.map((link) => (
             <motion.div key={link.id} className="relative group">
               <motion.a
@@ -131,12 +132,13 @@ export function Navbar() {
               </motion.a>
             </motion.div>
           ))}
+          {/* Resume Button - Hidden on sm */}
           <motion.a
             href="https://drive.google.com/file/d/1x5c6jODLmzYdqkSqke9oXYEmdS0gI7zM/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             id="nav-action-resume"
-            className="px-5 py-3 border border-primary/20 hover:border-primary/60 bg-[#3b82f6]/5 hover:bg-[#3b82f6]/10 text-white rounded-xl transition-all text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 cursor-pointer"
+            className="hidden md:flex px-3 sm:px-4 py-2.5 sm:py-3 border border-primary/20 hover:border-primary/60 bg-[#3b82f6]/5 hover:bg-[#3b82f6]/10 text-white rounded-lg sm:rounded-xl transition-all text-[10px] sm:text-xs font-bold uppercase tracking-wider items-center gap-1.5 cursor-pointer flex-shrink-0"
             whileHover={{
               scale: 1.08,
               boxShadow: "0 0 15px rgba(59,130,246,0.3)",
@@ -144,7 +146,7 @@ export function Navbar() {
             whileTap={{ scale: 0.93 }}
           >
             <svg
-              className="w-3.5 h-3.5 text-primary"
+              className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-primary flex-shrink-0"
               fill="none"
               stroke="currentColor"
               strokeWidth="2.5"
@@ -157,26 +159,31 @@ export function Navbar() {
                 d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
               />
             </svg>
-            <span>Resume</span>
+            <span className="hidden lg:inline">Resume</span>
           </motion.a>
+
+          {/* Phone Button - Icon on all screens, text on lg+ */}
           <motion.a
             href="tel:+1-608-715-7408"
             id="nav-action-phone"
-            className="px-4 py-3 border border-slate-400/20 hover:border-primary/60 bg-slate-400/5 hover:bg-primary/10 text-slate-300 hover:text-primary rounded-xl transition-all text-xs font-bold uppercase tracking-wider flex items-center gap-2 cursor-pointer"
+            className="px-3 sm:px-4 py-2.5 sm:py-3 border border-slate-400/20 hover:border-primary/60 bg-slate-400/5 hover:bg-primary/10 text-slate-300 hover:text-primary rounded-lg sm:rounded-xl transition-all text-[10px] sm:text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 sm:gap-2 cursor-pointer flex-shrink-0"
             whileHover={{
               scale: 1.08,
               boxShadow: "0 0 15px rgba(59,130,246,0.2)",
             }}
             whileTap={{ scale: 0.93 }}
+            title="+1-608-715-7408"
           >
-            <Phone size={14} />
-            <span>+1-608-715-7408</span>
+            <Phone size={14} className="flex-shrink-0" />
+            <span className="hidden lg:inline">+1-608-715-7408</span>
           </motion.a>
+
+          {/* Contact Button */}
           <motion.a
             href="#contact"
             onClick={() => handleNavClick("contact")}
             id="nav-action-contact"
-            className="px-6 py-3 bg-gradient-to-r from-primary to-accent text-white rounded-xl transition-all text-xs font-bold uppercase tracking-wider cursor-pointer"
+            className="px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-primary to-accent text-white rounded-lg sm:rounded-xl transition-all text-[10px] sm:text-xs font-bold uppercase tracking-wider cursor-pointer flex-shrink-0 whitespace-nowrap"
             whileHover={{
               scale: 1.1,
               boxShadow: "0 0 25px rgba(59,130,246,0.5)",
