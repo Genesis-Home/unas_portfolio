@@ -70,6 +70,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Prevent performance issues during animations */
+  --webkit-font-smoothing: antialiased;
 }
 
 body {

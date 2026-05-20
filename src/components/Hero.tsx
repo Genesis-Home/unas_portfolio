@@ -75,6 +75,8 @@ export const Hero = () => {
                   <img
                     src={unasImage}
                     alt="Syed Unas Systems Architect"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover rounded-[14px]"
                   />
                 </div>
@@ -268,6 +270,8 @@ export const Hero = () => {
               <img
                 src={unasImage}
                 alt="Syed Unas - Senior Systems Architect & Full-Stack Engineer"
+                loading="eager"
+                decoding="async"
                 className="w-full h-full object-cover scale-100 group-hover:scale-[1.04] transition-transform duration-[1200ms] ease-out"
               />
 
