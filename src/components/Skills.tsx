@@ -153,12 +153,14 @@ export function Skills() {
 
                   <div className="flex flex-wrap gap-2.5 mt-auto">
                     {category.skills.map((skill, sIdx) => (
-                      <span
+                      <motion.span
                         key={sIdx}
-                        className="px-4 py-2 rounded-2xl text-[11px] font-bold border border-slate-100 bg-white/60 text-slate-600 hover:border-primary/40 hover:text-primary transition-all duration-300"
+                        whileHover={{ scale: 1.08, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-4 py-2 rounded-2xl text-[11px] font-bold border border-slate-100 bg-white/60 text-slate-600 hover:border-primary/60 hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-pointer"
                       >
                         {skill}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
                 </div>

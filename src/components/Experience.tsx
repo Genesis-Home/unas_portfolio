@@ -93,7 +93,7 @@ export function Experience() {
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               className="relative mb-16 last:mb-0 group"
             >
-              <div className="grid lg:grid-cols-[1fr_2.5fr] gap-8 bg-white p-8 md:p-12 rounded-[48px] border border-slate-200 shadow-xl shadow-slate-200/40 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500">
+              <div className="grid lg:grid-cols-[1fr_2.5fr] gap-8 bg-white p-8 md:p-12 rounded-[48px] border border-slate-200 shadow-xl shadow-slate-200/40 hover:shadow-2xl hover:shadow-primary/15 hover:border-primary/30 transition-all duration-500 group/card">
                 <div className="flex flex-col">
                   <div
                     className={`w-14 h-14 ${exp.color} rounded-2xl mb-6 flex items-center justify-center text-white shadow-lg`}

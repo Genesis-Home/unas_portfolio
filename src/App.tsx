@@ -9,7 +9,6 @@ import {
   Github as GitHub,
   Linkedin as LinkedIn,
   Terminal,
-  Code2,
 } from "lucide-react";
 
 function App() {
@@ -46,7 +45,10 @@ function App() {
                 </p>
 
                 <div className="flex flex-col gap-6">
-                  <div className="group flex items-center gap-5 p-6 rounded-[32px] bg-white border border-slate-200 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all">
+                  <motion.div
+                    whileHover={{ x: 8 }}
+                    className="group flex items-center gap-5 p-6 rounded-[32px] bg-white border border-slate-200 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 transition-all cursor-pointer"
+                  >
                     <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
                       <Mail size={20} />
                     </div>
@@ -56,14 +58,17 @@ function App() {
                       </p>
                       <a
                         href="mailto:Unas.engineer@gmail.com"
-                        className="text-lg font-bold text-slate-900"
+                        className="text-lg font-bold text-slate-900 hover:text-primary transition-colors"
                       >
                         Unas.engineer@gmail.com
                       </a>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="group flex items-center gap-5 p-6 rounded-[32px] bg-white border border-slate-200 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all">
+                  <motion.div
+                    whileHover={{ x: 8 }}
+                    className="group flex items-center gap-5 p-6 rounded-[32px] bg-white border border-slate-200 hover:border-slate-900/40 hover:shadow-xl hover:shadow-slate-900/5 transition-all cursor-pointer"
+                  >
                     <div className="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center text-slate-600 group-hover:bg-slate-900 group-hover:text-white transition-all">
                       <MapPin size={20} />
                     </div>
@@ -75,7 +80,7 @@ function App() {
                         Katy, TX 77449 | Remote
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
 
@@ -111,20 +116,22 @@ function App() {
                     color: "hover:text-indigo-600",
                   },
                 ].map((social, i) => (
-                  <a
+                  <motion.a
                     key={i}
                     href={social.link}
-                    className="group h-48 flex flex-col items-center justify-center gap-4 bg-white border border-slate-200 rounded-[48px] p-8 hover:shadow-2xl hover:shadow-primary/5 hover:border-primary/20 transition-all duration-500"
+                    whileHover={{ y: -8, scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="group h-48 flex flex-col items-center justify-center gap-4 bg-white border border-slate-200 rounded-[48px] p-8 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-500"
                   >
                     <div
-                      className={`text-slate-500 ${social.color} transition-all duration-300 group-hover:scale-125`}
+                      className={`text-slate-500 ${social.color} transition-all duration-300 group-hover:scale-150 text-4xl`}
                     >
                       {social.icon}
                     </div>
                     <span className="text-sm font-bold text-slate-900 group-hover:tracking-[0.2em] transition-all">
                       {social.label}
                     </span>
-                  </a>
+                  </motion.a>
                 ))}
               </motion.div>
             </div>

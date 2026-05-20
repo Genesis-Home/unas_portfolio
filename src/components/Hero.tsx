@@ -104,47 +104,61 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 1 }}
             className="flex flex-wrap gap-5 items-center mb-12"
           >
-            <a
+            <motion.a
               href="#contact"
-              className="px-10 py-5 bg-primary text-white rounded-3xl font-bold hover:bg-primary/90 transition-all shadow-2xl shadow-primary/20 flex items-center gap-3 hover:-translate-y-1"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-10 py-5 bg-gradient-to-r from-primary to-blue-600 text-white rounded-3xl font-bold shadow-2xl shadow-primary/30 flex items-center gap-3 hover:shadow-2xl hover:shadow-primary/40 transition-all duration-300"
             >
-              Start Building
-            </a>
-            <a
+              <span>Let's Connect</span>
+              <span className="text-xl">→</span>
+            </motion.a>
+            <motion.a
               href="#experience"
-              className="px-10 py-5 bg-white text-slate-800 border border-slate-200 rounded-3xl font-bold hover:bg-slate-50 transition-all hover:-translate-y-1 shadow-sm"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-10 py-5 bg-white text-slate-800 border-2 border-slate-200 rounded-3xl font-bold hover:border-primary/50 hover:bg-slate-50 transition-all duration-300 shadow-sm"
             >
-              View Architecture
-            </a>
+              View Work
+            </motion.a>
           </motion.div>
 
-          {/* New Dashboard Metrics */}
+          {/* Performance Metrics */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
             className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-12"
           >
             {[
-              { label: "Latency", value: "18ms", color: "text-green-500" },
-              { label: "Uptime", value: "99.9%", color: "text-blue-500" },
               {
-                label: "Deployment",
-                value: "Active",
-                color: "text-indigo-500",
+                label: "Experience",
+                value: "7+ Years",
+                color: "text-blue-600",
+              },
+              { label: "Projects", value: "50+", color: "text-emerald-600" },
+              {
+                label: "Status",
+                value: "Available",
+                color: "text-amber-600",
               },
             ].map((metric, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="bg-white/50 border border-slate-100 p-4 rounded-2xl"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.3 + i * 0.1, duration: 0.6 }}
+                className="group bg-white/60 backdrop-blur-sm border border-slate-100 p-4 rounded-2xl hover:bg-white hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
               >
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 group-hover:text-primary transition-colors">
                   {metric.label}
                 </p>
-                <p className={`text-lg font-black ${metric.color}`}>
+                <p
+                  className={`text-lg font-black ${metric.color} group-hover:scale-110 transition-transform duration-300 origin-left`}
+                >
                   {metric.value}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
 
