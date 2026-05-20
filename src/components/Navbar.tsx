@@ -58,12 +58,23 @@ export const Navbar = ({}: Record<string, never>) => {
   );
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300"
-    >
+    <>
+      {/* Skip to Main Content Link for Accessibility */}
+      <a
+        href="#hero"
+        className="absolute top-0 left-0 -translate-y-full focus:translate-y-0 z-[999] px-4 py-2 bg-primary text-white rounded-b-lg transition-transform"
+      >
+        Skip to main content
+      </a>
+
+      <motion.nav
+        role="navigation"
+        aria-label="Main navigation"
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300"
+      >
       {/* Floating Glass Capsule Wrapper */}
       <div
         className={`mx-auto flex justify-between items-center transition-all duration-500 rounded-3xl gap-4 sm:gap-5 ${
@@ -212,6 +223,8 @@ export const Navbar = ({}: Record<string, never>) => {
         {/* Mobile Menu Button - Visible on smaller screens */}
         <motion.button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={mobileMenuOpen}
           className="xl:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-white/10 bg-white/5 hover:border-primary/60 hover:bg-primary/10 text-slate-300 hover:text-primary transition-all cursor-pointer"
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.93 }}
@@ -228,6 +241,9 @@ export const Navbar = ({}: Record<string, never>) => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
+            role="navigation"
+            aria-label="Mobile navigation menu"
+            aria-hidden={!mobileMenuOpen}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -319,5 +335,6 @@ export const Navbar = ({}: Record<string, never>) => {
         />
       </div>
     </motion.nav>
+    </>
   );
 };

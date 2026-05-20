@@ -1,0 +1,19 @@
+# Robots.txt for unas-portfolio.vercel.app
+
+# Allow all bots
+User-agent: *
+Allow: /
+Disallow: /dist/
+Disallow: /node_modules/
+Disallow: /*.js
+Disallow: /*.css
+
+# Crawl delay
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://unas-portfolio.vercel.app/sitemap.xml
+
+# Google-specific
+User-agent: Googlebot
+Allow: /
