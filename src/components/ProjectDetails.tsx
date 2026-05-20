@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Magnet } from "./Magnet";
 import {
   ArrowLeft,
   Smartphone,
@@ -284,17 +285,15 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                 className="w-full lg:w-[50%] flex justify-center"
               >
                 {/* Direct Image Display - No Frames */}
-                <div className="w-full max-w-3xl group">
-                  <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                    <img
-                      src={screen.image}
-                      alt={screen.heading || project.name}
-                      className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-700"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                </div>
+                <Magnet padding={70} magnetStrength={2.8}>
+                  <img
+                    src={screen.image}
+                    alt={screen.heading || project.name}
+                    className="w-full max-w-3xl h-auto object-contain group-hover:scale-[1.02] transition-transform duration-700 rounded-2xl shadow-2xl"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </Magnet>
               </motion.div>
             </section>
           );
