@@ -393,16 +393,18 @@ export function Projects({ onSelectProject }: ProjectsProps) {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.4 }}
-                className="h-full"
+                whileHover={{ scale: 1.02, y: -5 }}
+                whileTap={{ scale: 0.98 }}
+                className="h-full cursor-pointer"
               >
                 <TiltedCard glowColor={project.glowColor} className="h-full">
-                  <div
+                  <motion.div
                     onClick={() =>
                       project.id
                         ? onSelectProject(project.id)
                         : window.open(project.url, "_blank")
                     }
-                    className="p-6 h-full flex flex-col justify-between relative bg-[#090d16]/80 backdrop-blur-xl border border-white/5 rounded-[40px] overflow-hidden group cursor-pointer hover:border-primary/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-300 text-left"
+                    className="p-6 h-full flex flex-col justify-between relative bg-[#090d16]/80 backdrop-blur-xl border border-white/5 rounded-[40px] overflow-hidden group cursor-pointer hover:border-primary/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] transition-all duration-300 text-left"
                   >
                     <div>
                       {/* Visual Showroom Area */}
@@ -492,7 +494,7 @@ export function Projects({ onSelectProject }: ProjectsProps) {
                         ))}
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </TiltedCard>
               </motion.div>
             ))}
@@ -507,10 +509,10 @@ export function Projects({ onSelectProject }: ProjectsProps) {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.15, y: -5, boxShadow: "0 0 30px rgba(59,130,246,0.5)" }}
+            whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center shadow-2xl hover:shadow-neon-blue transition-all duration-300 cursor-pointer"
+            className="fixed bottom-8 right-8 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center shadow-lg transition-all duration-300 cursor-pointer"
           >
             <ArrowUp size={20} className="text-white animate-bounce" />
           </motion.button>

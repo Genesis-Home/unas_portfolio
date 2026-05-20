@@ -173,10 +173,14 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
       <header className="sticky top-6 z-50 max-w-5xl mx-auto px-6 mb-16">
         <div className="p-3 bg-[#090d16]/80 backdrop-blur-xl border border-white/5 rounded-2xl flex items-center justify-between shadow-2xl">
           <motion.button
-            whileHover={{ scale: 1.05, x: -3 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{
+              scale: 1.08,
+              x: -4,
+              boxShadow: "0 0 20px rgba(59,130,246,0.3)",
+            }}
+            whileTap={{ scale: 0.93 }}
             onClick={onClose}
-            className="flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white font-mono text-xs uppercase cursor-pointer hover:border-primary/40 hover:shadow-neon-blue/20 transition-all duration-300"
+            className="flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-primary hover:border-primary/60 font-mono text-xs uppercase cursor-pointer transition-all duration-300"
           >
             <ArrowLeft size={14} className="text-primary" />
             System Hub
@@ -348,10 +352,14 @@ export function ProjectDetails({ projectId, onClose }: ProjectDetailsProps) {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{
+              scale: 1.15,
+              y: -5,
+              boxShadow: "0 0 30px rgba(59,130,246,0.5)",
+            }}
+            whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center shadow-2xl hover:shadow-neon-blue transition-all duration-300 cursor-pointer"
+            className="fixed bottom-8 right-8 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center shadow-lg transition-all duration-300 cursor-pointer"
           >
             <ArrowUp size={20} className="text-white animate-bounce" />
           </motion.button>
