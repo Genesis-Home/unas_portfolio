@@ -208,22 +208,28 @@ export function Projects() {
               transition={{ type: "spring", stiffness: 350, damping: 28 }}
             />
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05, y: -1 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setActiveTab("web")}
-              className={`relative z-10 px-8 py-3 rounded-xl font-outfit text-xs font-bold tracking-widest transition-colors duration-300 uppercase flex items-center gap-2 font-mono ${activeTab === "web" ? "text-white" : "text-slate-400 hover:text-white"
-                }`}
+              className={`relative z-10 px-8 py-3 rounded-xl font-outfit text-xs font-bold tracking-widest transition-all duration-300 uppercase flex items-center gap-2 font-mono cursor-pointer ${
+                activeTab === "web" ? "text-white" : "text-slate-400 hover:text-white"
+              }`}
             >
               <Globe size={14} className={activeTab === "web" ? "text-white animate-spin-slow" : "text-slate-400"} />
               Web App
-            </button>
-            <button
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05, y: -1 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setActiveTab("mobile")}
-              className={`relative z-10 px-8 py-3 rounded-xl font-outfit text-xs font-bold tracking-widest transition-colors duration-300 uppercase flex items-center gap-2 font-mono ${activeTab === "mobile" ? "text-white" : "text-slate-400 hover:text-white"
-                }`}
+              className={`relative z-10 px-8 py-3 rounded-xl font-outfit text-xs font-bold tracking-widest transition-all duration-300 uppercase flex items-center gap-2 font-mono cursor-pointer ${
+                activeTab === "mobile" ? "text-white" : "text-slate-400 hover:text-white"
+              }`}
             >
-              <Smartphone size={14} className={activeTab === "mobile" ? "text-white" : "text-slate-400"} />
+              <Smartphone size={14} className={activeTab === "mobile" ? "text-white animate-pulse" : "text-slate-400"} />
               Mobile App
-            </button>
+            </motion.button>
           </div>
         </div>
 
