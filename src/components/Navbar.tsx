@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Phone } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Phone, Menu, X } from "lucide-react";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,6 +44,7 @@ export function Navbar() {
 
   const handleNavClick = (sectionId: string) => {
     setActiveSection(sectionId);
+    setMobileMenuOpen(false);
   };
 
   const navLinks = [
@@ -82,8 +84,8 @@ export function Navbar() {
           </span>
         </a>
 
-        {/* Desktop Nav Items - Hidden on mobile */}
-        <div className="hidden lg:flex items-center gap-4 xl:gap-6 text-[11px] xl:text-[12px] font-bold uppercase tracking-widest leading-none flex-shrink-0">
+        {/* Desktop Nav Items - Hidden on smaller screens */}
+        <div className="hidden xl:flex items-center gap-4 xl:gap-6 text-[11px] xl:text-[12px] font-bold uppercase tracking-widest leading-none flex-shrink-0">
           {navLinks.map((link) => (
             <motion.div key={link.id} className="relative group">
               <motion.a
@@ -132,13 +134,13 @@ export function Navbar() {
               </motion.a>
             </motion.div>
           ))}
-          {/* Resume Button - Hidden on sm */}
+          {/* Resume Button */}
           <motion.a
             href="https://drive.google.com/file/d/1x5c6jODLmzYdqkSqke9oXYEmdS0gI7zM/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             id="nav-action-resume"
-            className="hidden md:flex px-3 sm:px-4 py-2.5 sm:py-3 border border-primary/20 hover:border-primary/60 bg-[#3b82f6]/5 hover:bg-[#3b82f6]/10 text-white rounded-lg sm:rounded-xl transition-all text-[10px] sm:text-xs font-bold uppercase tracking-wider items-center gap-1.5 cursor-pointer flex-shrink-0"
+            className="px-3 sm:px-4 py-2.5 sm:py-3 border border-primary/20 hover:border-primary/60 bg-[#3b82f6]/5 hover:bg-[#3b82f6]/10 text-white rounded-lg sm:rounded-xl transition-all text-[10px] sm:text-xs font-bold uppercase tracking-wider items-center gap-1.5 cursor-pointer flex-shrink-0 flex"
             whileHover={{
               scale: 1.08,
               boxShadow: "0 0 15px rgba(59,130,246,0.3)",
@@ -162,7 +164,7 @@ export function Navbar() {
             <span className="hidden lg:inline">Resume</span>
           </motion.a>
 
-          {/* Phone Button - Icon on all screens, text on lg+ */}
+          {/* Phone Button */}
           <motion.a
             href="tel:+1-608-715-7408"
             id="nav-action-phone"
@@ -193,7 +195,104 @@ export function Navbar() {
             Contact
           </motion.a>
         </div>
+
+        {/* Mobile Menu Button - Visible on smaller screens */}
+        <motion.button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="xl:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-white/10 bg-white/5 hover:border-primary/60 hover:bg-primary/10 text-slate-300 hover:text-primary transition-all cursor-pointer"
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.93 }}
+        >
+          {mobileMenuOpen ? (
+            <X size={20} className="text-primary" />
+          ) : (
+            <Menu size={20} />
+          )}
+        </motion.button>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-full left-0 right-0 mt-2 mx-4 z-40 bg-[#090d16]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/40 overflow-hidden"
+          >
+            <div className="flex flex-col p-4 gap-3">
+              {/* Nav Links */}
+              {navLinks.map((link) => (
+                <motion.a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  onClick={() => handleNavClick(link.id)}
+                  className={`px-4 py-3 rounded-lg font-bold uppercase text-sm tracking-wider transition-all ${
+                    activeSection === link.id
+                      ? "bg-primary/20 text-white border border-primary/40"
+                      : "bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10 hover:text-primary hover:border-primary/40"
+                  }`}
+                  whileHover={{ x: 4 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+
+              <div className="h-px bg-white/5 my-2" />
+
+              {/* Resume Button */}
+              <motion.a
+                href="https://drive.google.com/file/d/1x5c6jODLmzYdqkSqke9oXYEmdS0gI7zM/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-3 rounded-lg border border-primary/20 hover:border-primary/60 bg-[#3b82f6]/5 hover:bg-[#3b82f6]/10 text-white transition-all flex items-center gap-2 font-bold uppercase text-sm tracking-wider cursor-pointer"
+                whileHover={{ scale: 1.02, x: 4 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <svg
+                  className="w-4 h-4 text-primary flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                <span>Resume</span>
+              </motion.a>
+
+              {/* Phone Button */}
+              <motion.a
+                href="tel:+1-608-715-7408"
+                className="px-4 py-3 rounded-lg border border-slate-400/20 hover:border-primary/60 bg-slate-400/5 hover:bg-primary/10 text-slate-300 hover:text-primary transition-all flex items-center gap-2 font-bold uppercase text-sm tracking-wider cursor-pointer"
+                whileHover={{ scale: 1.02, x: 4 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Phone size={16} className="flex-shrink-0" />
+                <span>+1-608-715-7408</span>
+              </motion.a>
+
+              {/* Contact Button */}
+              <motion.a
+                href="#contact"
+                onClick={() => handleNavClick("contact")}
+                className="px-4 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-white transition-all font-bold uppercase text-sm tracking-wider cursor-pointer text-center"
+                whileHover={{ scale: 1.02, x: 4 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Contact
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Futuristic Scroll Progress bar integrated into bottom of capsule */}
       <div className="max-w-5xl mx-auto px-8 relative">
