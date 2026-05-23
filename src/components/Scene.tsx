@@ -17,16 +17,22 @@ export function Scene() {
   const fanRef = useRef<THREE.Mesh>(null);
   const fan2Ref = useRef<THREE.Mesh>(null);
 
-  // Generating random points for data particles
+  // Generating random points for data particles purely
   const particles = useMemo(() => {
+    let seed = 1;
+    const seededRandom = () => {
+      const x = Math.sin(seed++) * 10000;
+      return x - Math.floor(x);
+    };
+
     const count = 250;
     const positions = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
       // Create a cylindrical distribution around the workspace
-      const angle = Math.random() * Math.PI * 2;
-      const radius = 3.0 + Math.random() * 4.0;
+      const angle = seededRandom() * Math.PI * 2;
+      const radius = 3.0 + seededRandom() * 4.0;
       positions[i * 3] = Math.cos(angle) * radius;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 6;
+      positions[i * 3 + 1] = (seededRandom() - 0.5) * 6;
       positions[i * 3 + 2] = Math.sin(angle) * radius;
     }
     return positions;

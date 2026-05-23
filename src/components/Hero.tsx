@@ -23,9 +23,14 @@ export const Hero = () => {
   );
 
   useEffect(() => {
-    setIsMounted(true);
+    const handle = requestAnimationFrame(() => {
+      setIsMounted(true);
+    });
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    return () => {
+      cancelAnimationFrame(handle);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, [handleMouseMove]);
 
   return (
