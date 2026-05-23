@@ -3,23 +3,27 @@
 A modern, professional portfolio website showcasing 7+ years of full-stack engineering expertise.
 
 ## 🌐 Live Demo
+
 Visit the portfolio at your deployment URL
 
 ## 🎨 Features
 
 ✨ **Modern Design**
+
 - Sleek, professional UI with glassmorphism effects
 - Smooth animations and transitions
 - Responsive design for all devices
 - Dark theme with blue accent colors
 
 🚀 **Performance**
+
 - Built with React 19 + TypeScript
 - Optimized 3D scene with React Three Fiber
 - Vite for lightning-fast builds
 - Tailwind CSS for efficient styling
 
 📱 **Sections**
+
 - **Hero**: Eye-catching intro with 3D workstation
 - **Skills**: 6 categories of technical expertise (40+ technologies)
 - **Experience**: Professional timeline with Crowdbotics, Techneeqs, Muhammad Labs
@@ -28,6 +32,7 @@ Visit the portfolio at your deployment URL
 ## 🛠️ Tech Stack
 
 **Frontend**
+
 - React 19.2.4
 - TypeScript
 - Tailwind CSS 4
@@ -35,6 +40,7 @@ Visit the portfolio at your deployment URL
 - React Three Fiber (3D)
 
 **Build & Deployment**
+
 - Vite 8.0.4
 - ESLint 9
 - Node.js
@@ -79,6 +85,7 @@ src/
 ## 👤 About
 
 Senior Full-Stack Engineer with expertise in:
+
 - React, Next.js, Angular (Frontend)
 - Node.js, NestJS, Python, Django (Backend)
 - AWS, Azure, GCP (Cloud)
