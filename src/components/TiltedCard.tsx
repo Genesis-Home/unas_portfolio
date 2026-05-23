@@ -83,7 +83,7 @@ export const TiltedCard: React.FC<TiltedCardProps> = ({
       </div>
 
       {/* Outer Border Glow (Subtle) */}
-      <div className="absolute -inset-px bg-gradient-to-br from-primary/10 to-accent/10 rounded-[40px] -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute -inset-px bg-linear-to-br from-primary/10 to-accent/10 rounded-[40px] -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
     </motion.div>
   );
 };

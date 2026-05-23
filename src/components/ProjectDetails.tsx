@@ -9,107 +9,7 @@ import {
   ShieldAlert,
   ArrowUp,
 } from "lucide-react";
-
-// Import all local PortfolioData files
-import InspeCasaScreens from "./PortfolioData/InspeCasa";
-import MysturaScreens from "./PortfolioData/MysturaData";
-import REELConnectScreens from "./PortfolioData/REELConnect";
-import FinsususScreens from "./PortfolioData/Finsusu";
-import TaxiCallerScreens from "./PortfolioData/TaxiCaller";
-import CareConnectScreens from "./PortfolioData/CareConnect";
-import PakistanBookingScreens from "./PortfolioData/PakistanBooking";
-
-interface ScreenData {
-  type: "mobile" | "laptop";
-  variant: "left" | "right";
-  heading: string;
-  description: string;
-  image: string;
-  bgImage: string;
-  hero?: boolean;
-}
-
-interface Project {
-  id: string;
-  name: string;
-  category: string;
-  description: string;
-  glow: string;
-  type: "web" | "mobile";
-  screens: ScreenData[];
-}
-
-const projects: Project[] = [
-  {
-    id: "1",
-    name: "InspeCasa",
-    category: "Web Application UI",
-    description: "Property Inspections & Compliance Verification Core",
-    glow: "from-emerald-500/20 to-teal-500/20",
-    type: "mobile",
-    screens: InspeCasaScreens as ScreenData[],
-  },
-  {
-    id: "2",
-    name: "MYSUTRA",
-    category: "Web Service Platform",
-    description: "Distributed Identity Mapping & Legacy Services Engine",
-    glow: "from-amber-500/20 to-orange-500/20",
-    type: "mobile",
-    screens: MysturaScreens as ScreenData[],
-  },
-  {
-    id: "3",
-    name: "REELConnect",
-    category: "Web Networking System",
-    description: "Film Industry Creative Social & Casting Operations Hub",
-    glow: "from-violet-500/20 to-fuchsia-500/20",
-    type: "mobile",
-    screens: REELConnectScreens as ScreenData[],
-  },
-  {
-    id: "4",
-    name: "Finsusu",
-    category: "Mobile Application",
-    description: "Algorithmic Micro-Savings & Personal Financial Intelligence",
-    glow: "from-emerald-500/20 to-cyan-500/20",
-    type: "mobile",
-    screens: FinsususScreens as ScreenData[],
-  },
-  {
-    id: "5",
-    name: "Taxi Caller",
-    category: "Mobile Dispatch Software",
-    description: "Geospatial Ride Matching & Driver Coordination Network",
-    glow: "from-yellow-500/20 to-amber-500/20",
-    type: "web",
-    screens: TaxiCallerScreens as ScreenData[],
-  },
-  {
-    id: "6",
-    name: "Care Connect",
-    category: "Mobile Health Platform",
-    description: "HIPAA-Compliant Video Telehealth & Encrypted EHR Conduit",
-    glow: "from-blue-500/20 to-indigo-500/20",
-    type: "web",
-    screens: CareConnectScreens as ScreenData[],
-  },
-  {
-    id: "7",
-    name: "Pakistan Booking",
-    category: "Web Reservation Core",
-    description: "Centralized Hospitality Inventory & Regional Booking Ingress",
-    glow: "from-emerald-500/20 to-green-500/20",
-    type: "web",
-    screens: PakistanBookingScreens as ScreenData[],
-  },
-];
-
-// Helper functions for easy filtering
-export const getWebProjects = () => projects.filter((p) => p.type === "web");
-export const getMobileProjects = () =>
-  projects.filter((p) => p.type === "mobile");
-export const getProjectById = (id: string) => projects.find((p) => p.id === id);
+import { getProjectById, type ScreenData } from "../data/projects";
 
 interface ProjectDetailsProps {
   projectId: string;
@@ -165,7 +65,7 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
     <div className="project-details-container min-h-screen bg-background text-foreground relative overflow-hidden tech-grid pb-24">
       {/* Global Background Ambient Glow Lights */}
       <div
-        className={`fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b ${project.glow} rounded-full blur-[140px] pointer-events-none z-0`}
+        className={`fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b ${project.glowGradient} rounded-full blur-[140px] pointer-events-none z-0`}
       />
 
       {/* Futuristic Floating Navigation Header */}
@@ -191,7 +91,7 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
             </span>
             <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse shadow-neon-emerald" />
             <span className="text-xs font-black text-white font-mono uppercase tracking-wider">
-              {project.name}
+              {project.title}
             </span>
           </div>
         </div>
@@ -205,12 +105,12 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
           transition={{ duration: 0.5 }}
           className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-6 font-mono inline-flex items-center gap-1.5"
         >
-          {project.type === "web" ? (
+          {project.category === "web" ? (
             <Globe size={12} />
           ) : (
             <Smartphone size={12} />
           )}
-          {project.category}
+          {project.detailedCategory}
         </motion.span>
         <motion.h1
           initial={{ opacity: 0, y: 15 }}
@@ -218,7 +118,7 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl font-extrabold font-outfit text-white tracking-tight leading-none mb-6"
         >
-          Project <span className="text-gradient-primary">{project.name}</span>
+          Project <span className="text-gradient-primary">{project.title}</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 15 }}
@@ -232,7 +132,7 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
 
       {/* alternating sections walkthrough */}
       <div className="space-y-36 relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
-        {project.screens.map((screen: ScreenData, idx: number) => {
+        {project.screens?.map((screen: ScreenData, idx: number) => {
           const isLeft = screen.variant === "left";
 
           return (
@@ -288,7 +188,7 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                 <Magnet padding={70} magnetStrength={2.8}>
                   <img
                     src={screen.image}
-                    alt={screen.heading || project.name}
+                    alt={screen.heading || project.title}
                     className="w-full max-w-3xl h-auto object-contain group-hover:scale-[1.02] transition-transform duration-700 rounded-2xl shadow-2xl"
                     loading="lazy"
                     decoding="async"

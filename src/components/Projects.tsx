@@ -14,260 +14,35 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-interface Metric {
-  label: string;
-  value: string;
-}
+import { projectsList } from "../data/projects";
 
-interface PipelineStep {
-  node: string;
-  note: string;
-}
+const getProjectIcon = (iconName: string, glowColor: string) => {
+  const colorClass = glowColor.includes("rgba(59, 130, 246")
+    ? "text-blue-400"
+    : glowColor.includes("rgba(16, 185, 129")
+      ? "text-emerald-400"
+      : glowColor.includes("rgba(139, 92, 246")
+        ? "text-violet-400"
+        : glowColor.includes("rgba(245, 158, 11")
+          ? "text-amber-400"
+          : "text-slate-400";
 
-interface Project {
-  id?: string; // AppMash case study ID
-  title: string;
-  category: "web" | "mobile";
-  subtitle: string;
-  description: string;
-  metrics: Metric[];
-  tech: string[];
-  glowColor: string;
-  icon: React.ReactNode;
-  url: string;
-  flow: PipelineStep[];
-  image: string; // Preview mockup image for project cards
-}
-
-const projectsList: Project[] = [
-  {
-    title: "USA Home Listings",
-    category: "web",
-    subtitle: "Lead Gen & Marketing Automation Platform",
-    description:
-      "Developed a real-time lead generation and marketing automation platform for moving companies featuring verified homeowner data, AI-based vacancy filtering, and automated outreach campaigns to improve lead quality.",
-    metrics: [
-      { label: "Supported Orgs", value: "500+ Companies" },
-      { label: "Database Scale", value: "10M+ Listings" },
-      { label: "System SLA", value: "99.99% Uptime" },
-    ],
-    tech: ["React", "Node.js", "Django", "Python", "Stripe API", "PostgreSQL"],
-    glowColor: "rgba(59, 130, 246, 0.25)", // Tech Blue
-    icon: <Server className="text-blue-400" size={24} />,
-    url: "https://www.usahomelistings.com",
-    image: "/why-choose-us-image-1.png",
-    flow: [
-      { node: "React Dashboard", note: "Search & Export" },
-      { node: "RESTful Workflows", note: "Lead Management" },
-      { node: "AI Recommendation", note: "Collaborative Filter" },
-      { node: "Outreach Engine", note: "Direct Mail / Email" },
-      { node: "Data Tier", note: "PostgreSQL Sync" },
-    ],
-  },
-  {
-    id: "1",
-    title: "InspeCasa",
-    category: "mobile",
-    subtitle: "Property & Inspection Management System",
-    description:
-      "A high-performance property audit and digital inspection platform. Streamlines building walkthroughs, automates compliance reporting, and manages offline-first data capture for auditors.",
-    metrics: [
-      { label: "Audits Run", value: "250k+ Done" },
-      { label: "Report Gen", value: "< 2.5s" },
-      { label: "Sync Reliability", value: "100.0% ACID" },
-    ],
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Express",
-      "MongoDB",
-      "AWS S3",
-    ],
-    glowColor: "rgba(16, 185, 129, 0.25)", // Emerald
-    icon: <Cpu className="text-emerald-400" size={24} />,
-    url: "https://appmash.org/",
-    image: "/project-1.png",
-    flow: [
-      { node: "Audit Portal", note: "Auditor Interface" },
-      { node: "Offline Store", note: "IndexedDB Cache" },
-      { node: "Ingress Gateway", note: "Node.js REST API" },
-      { node: "PDF Engine", note: "Dynamic Report Gen" },
-      { node: "Storage Layer", note: "MongoDB & S3" },
-    ],
-  },
-  {
-    id: "3",
-    title: "REELConnect",
-    category: "mobile",
-    subtitle: "Film Production & Social Networking",
-    description:
-      "A social hub and collaboration platform tailored for filmmakers, cast, and crew. Facilitates role matching, production portfolio showcases, and real-time community chat.",
-    metrics: [
-      { label: "Active Crew", value: "12k+ Members" },
-      { label: "Match Speed", value: "< 50ms" },
-      { label: "Daily Messages", value: "100k+ Sent" },
-    ],
-    tech: ["React", "Redux", "WebSockets", "Node.js", "GraphQL", "PostgreSQL"],
-    glowColor: "rgba(139, 92, 246, 0.25)", // Violet
-    icon: <Database className="text-violet-400" size={24} />,
-    url: "https://appmash.org/",
-    image: "/project-3.png",
-    flow: [
-      { node: "Media Showcase", note: "Dynamic Reel Feed" },
-      { node: "GraphQL Endpoint", note: "Optimized Schema" },
-      { node: "WebSocket Hub", note: "Real-Time Messaging" },
-      { node: "Matching Engine", note: "Crew Recommendation" },
-      { node: "Database Store", note: "Postgres Replica" },
-    ],
-  },
-  {
-    id: "2",
-    title: "MYSUTRA",
-    category: "mobile",
-    subtitle: "Identity Mapping & Legacy Platform",
-    description:
-      "An enterprise-grade services ecosystem and secure identity mapping tool, providing advanced digital verification, custom workflows, and decentralized metadata management.",
-    metrics: [
-      { label: "Users Verified", value: "50k+ Active" },
-      { label: "Token Match", value: "0% Collision" },
-      { label: "SLA Guarantee", value: "99.95% SLA" },
-    ],
-    tech: ["React", "TypeScript", "NestJS", "Kafka", "Redis Cache", "Docker"],
-    glowColor: "rgba(245, 158, 11, 0.25)", // Amber/Gold
-    icon: <Activity className="text-amber-400" size={24} />,
-    url: "https://appmash.org/",
-    image: "/project-2.png",
-    flow: [
-      { node: "Auth Gateway", note: "JWT / OAuth2" },
-      { node: "Verify Engine", note: "NestJS Service" },
-      { node: "Event Stream", note: "Kafka Broker" },
-      { node: "Fast Storage", note: "Redis Cache" },
-      { node: "Relational Tier", note: "Postgres Storage" },
-    ],
-  },
-  {
-    id: "7",
-    title: "Pakistan Booking",
-    category: "web",
-    subtitle: "Travel Reservation & Hotel System",
-    description:
-      "A centralized travel booking, reservation, and management platform for stays, destinations, and rental properties across Pakistan, featuring live inventory and fast queries.",
-    metrics: [
-      { label: "Stays Listed", value: "1,200+ Hotels" },
-      { label: "Search Latency", value: "< 80ms" },
-      { label: "Total Bookings", value: "80k+ Completed" },
-    ],
-    tech: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "PostgreSQL"],
-    glowColor: "rgba(16, 185, 129, 0.25)", // Emerald
-    icon: <Server className="text-emerald-400" size={24} />,
-    url: "https://appmash.org/",
-    image: "/booking system.png",
-    flow: [
-      { node: "Web Frontend", note: "React / Vite App" },
-      { node: "Geo Filter API", note: "Filtered Search" },
-      { node: "Reserve Handler", note: "ACID Booking Transaction" },
-      { node: "Payment Ingress", note: "Easypaisa & JazzCash" },
-      { node: "SMS Dispatcher", note: "Auto Reservation OTP" },
-    ],
-  },
-  {
-    id: "4",
-    title: "Finsusu",
-    category: "mobile",
-    subtitle: "Micro-Savings & Personal Finance App",
-    description:
-      "A modern, gamified personal finance and micro-savings mobile application. Features auto-saves, custom saving pools, and secure banking-grade integrations to build smart financial habits.",
-    metrics: [
-      { label: "Avg. Savings", value: "+22% / User" },
-      { label: "Bank Sync", value: "< 250ms" },
-      { label: "App Store Rating", value: "4.9 / 5.0" },
-    ],
-    tech: [
-      "React Native",
-      "Expo",
-      "Redux Toolkit",
-      "Node.js",
-      "Plaid API",
-      "PostgreSQL",
-    ],
-    glowColor: "rgba(16, 185, 129, 0.25)", // Emerald Green
-    icon: <Smartphone className="text-emerald-400" size={24} />,
-    url: "https://appmash.org/",
-    image: "/finsusu.png",
-    flow: [
-      { node: "Mobile Frontend", note: "React Native UI" },
-      { node: "Plaid Integration", note: "Secure Bank Link" },
-      { node: "Autosave Daemon", note: "Server-side Cron" },
-      { node: "Ledger DB", note: "Double-Entry Postgres" },
-      { node: "Push Notification", note: "Firebase (FCM)" },
-    ],
-  },
-  {
-    id: "5",
-    title: "Taxi Caller",
-    category: "web",
-    subtitle: "Real-Time Ride Dispatching Engine",
-    description:
-      "A low-latency, cross-platform ride-hailing and dispatch application featuring high-frequency geospatial tracking, driver match protocols, and real-time mapping dashboards.",
-    metrics: [
-      { label: "Geo Match Speed", value: "< 1.2s Broadcast" },
-      { label: "Active Network", value: "5k+ Drivers" },
-      { label: "Location Accuracy", value: "< 2m Variance" },
-    ],
-    tech: [
-      "React Native",
-      "Expo",
-      "Google Maps API",
-      "Socket.io",
-      "Node.js",
-      "Redis",
-    ],
-    glowColor: "rgba(245, 158, 11, 0.25)", // Amber
-    icon: <Smartphone className="text-amber-400" size={24} />,
-    url: "https://appmash.org/",
-    image: "/taxicaller.png",
-    flow: [
-      { node: "Client Mobile UI", note: "React Native App" },
-      { node: "Socket Gateway", note: "Socket.io Ingest" },
-      { node: "Dispatch Engine", note: "Geospatial Matching" },
-      { node: "Transit Tracker", note: "Redis Pub/Sub Sync" },
-      { node: "Stripe Ledger", note: "Double-Entry Checkout" },
-    ],
-  },
-  {
-    id: "6",
-    title: "Care Connect",
-    category: "web",
-    subtitle: "HIPAA Compliant Telehealth Portal",
-    description:
-      "A highly secure mobile healthcare application supporting encrypted video consultations, patient medical history tracking, digital prescriptions, and direct clinic integrations.",
-    metrics: [
-      { label: "Video Latency", value: "< 120ms Agora" },
-      { label: "Provider Panel", value: "1.5k+ MDs" },
-      { label: "Security Standard", value: "100% HIPAA" },
-    ],
-    tech: [
-      "React Native",
-      "Tailwind Native",
-      "Agora RTC",
-      "Express",
-      "Node.js",
-      "MongoDB",
-    ],
-    glowColor: "rgba(59, 130, 246, 0.25)", // Blue
-    icon: <Smartphone className="text-blue-400" size={24} />,
-    url: "https://appmash.org/",
-    image: "/careconnect.png",
-    flow: [
-      { node: "Patient Video App", note: "Agora Consult Platform" },
-      { node: "Signaling Server", note: "WebSockets Connect" },
-      { node: "Prescription Gen", note: "Express API -> PDF Mail" },
-      { node: "EHR Ingress", note: "Secure Patient Sync" },
-      { node: "Database Storage", note: "MongoDB Encrypted" },
-    ],
-  },
-];
+  switch (iconName) {
+    case "Server":
+      return <Server className={colorClass} size={24} />;
+    case "Cpu":
+      return <Cpu className={colorClass} size={24} />;
+    case "Database":
+      return <Database className={colorClass} size={24} />;
+    case "Activity":
+      return <Activity className={colorClass} size={24} />;
+    case "Smartphone":
+      return <Smartphone className={colorClass} size={24} />;
+    case "Globe":
+    default:
+      return <Globe className={colorClass} size={24} />;
+  }
+};
 
 interface ProjectsProps {
   onSelectProject: (id: string) => void;
@@ -442,7 +217,7 @@ export const Projects = ({ onSelectProject }: ProjectsProps) => {
 
                         {/* Top right icon badge */}
                         <div className="absolute top-3.5 right-3.5 z-20 w-8 h-8 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 text-slate-300">
-                          {project.icon}
+                          {getProjectIcon(project.iconName, project.glowColor)}
                         </div>
                       </div>
 

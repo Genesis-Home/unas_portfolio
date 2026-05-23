@@ -23,9 +23,14 @@ export const Hero = () => {
   );
 
   useEffect(() => {
-    setIsMounted(true);
+    const handle = requestAnimationFrame(() => {
+      setIsMounted(true);
+    });
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    return () => {
+      cancelAnimationFrame(handle);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, [handleMouseMove]);
 
   return (
@@ -71,7 +76,7 @@ export const Hero = () => {
             {/* Biometric Profile Tag Row */}
             <div className="flex items-center gap-4 sm:gap-5 mb-8">
               <div className="relative group">
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary to-accent opacity-30 blur-md group-hover:opacity-75 transition duration-500"></div>
+                <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-primary to-accent opacity-30 blur-md group-hover:opacity-75 transition duration-500"></div>
                 <div className="relative w-14 sm:w-16 h-14 sm:h-16 rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center bg-[#090d16]/80 p-0.5">
                   <img
                     src={unasImage}
@@ -81,13 +86,13 @@ export const Hero = () => {
                     className="w-full h-full object-cover rounded-[14px]"
                   />
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-emerald-500 border-2 border-[#030712] flex items-center justify-center shadow-[0_0_8px_#10b981]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#030712] animate-pulse"></span>
+                <div className="absolute -bottom-1 -right-1 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-emerald-500 border-2 border-background flex items-center justify-center shadow-[0_0_8px_#10b981]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-background animate-pulse"></span>
                 </div>
               </div>
               <div className="text-left min-w-0">
                 <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 shadow-sm backdrop-blur-md">
-                  <span className="relative flex h-2 w-2 flex-shrink-0">
+                  <span className="relative flex h-2 w-2 shrink-0">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-primary shadow-[0_0_6px_#3b82f6]"></span>
                   </span>
@@ -138,7 +143,7 @@ export const Hero = () => {
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.98 }}
               id="hero-action-contact"
-              className="px-5 sm:px-6 py-3.5 sm:py-4 bg-gradient-to-r from-primary to-accent text-white rounded-2xl font-bold shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/45 transition-all duration-300 flex items-center justify-center gap-2.5 text-sm sm:text-base"
+              className="px-5 sm:px-6 py-3.5 sm:py-4 bg-linear-to-r from-primary to-accent text-white rounded-2xl font-bold shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/45 transition-all duration-300 flex items-center justify-center gap-2.5 text-sm sm:text-base"
             >
               <span>Initialize Connection</span>
               <span className="text-lg">→</span>
@@ -240,35 +245,35 @@ export const Hero = () => {
           {/* Premium Glassmorphic Frame with Unas's Actual Portrait */}
           <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[36px] sm:rounded-[48px] overflow-hidden border border-white/10 bg-[#090d16]/80 p-2 xs:p-3.5 shadow-2xl group z-10 backdrop-blur-xl">
             {/* Ambient Tech Border Glow */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-accent/15 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700 rounded-[36px] sm:rounded-[48px] pointer-events-none" />
+            <div className="absolute inset-0 bg-linear-to-tr from-primary/20 via-accent/15 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700 rounded-[36px] sm:rounded-[48px] pointer-events-none" />
 
             {/* Floating Bezel Ambient Shadow */}
-            <div className="absolute -inset-1.5 bg-gradient-to-r from-primary to-accent rounded-[40px] sm:rounded-[52px] blur-3xl opacity-10 group-hover:opacity-20 transition duration-1000" />
+            <div className="absolute -inset-1.5 bg-linear-to-r from-primary to-accent rounded-[40px] sm:rounded-[52px] blur-3xl opacity-10 group-hover:opacity-20 transition duration-1000" />
 
             {/* Inner Portrait Screen */}
             <Magnet padding={80} magnetStrength={2.5}>
-              <div className="relative w-full h-full rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white/5 bg-[#030712]">
+              <div className="relative w-full h-full rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white/5 bg-background">
                 <img
                   src={unasImage}
                   alt="Syed Unas - Senior Systems Architect & Full-Stack Engineer"
                   loading="eager"
                   decoding="async"
-                  className="w-full h-full object-cover scale-100 group-hover:scale-[1.04] transition-transform duration-[1200ms] ease-out"
+                  className="w-full h-full object-cover scale-100 group-hover:scale-[1.04] transition-transform duration-1200 ease-out"
                 />
 
                 {/* High-tech overlay filters */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/90 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-accent/5 pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-t from-background/90 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-b from-primary/5 via-transparent to-accent/5 pointer-events-none" />
 
                 {/* Glowing horizontal scanline animation */}
-                <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-40 shadow-[0_0_12px_#3b82f6] animate-[scanline_4s_linear_infinite] pointer-events-none" />
+                <div className="absolute inset-x-0 h-0.5 bg-linear-to-r from-transparent via-primary to-transparent opacity-40 shadow-[0_0_12px_#3b82f6] animate-[scanline_4s_linear_infinite] pointer-events-none" />
               </div>
             </Magnet>
 
             {/* Futuristic Tech Overlay HUD badges */}
             <div className="absolute bottom-4 xs:bottom-10 left-4 xs:left-10 right-4 xs:right-10 flex flex-col gap-1.5 xs:gap-2.5 z-20 text-left">
-              <div className="inline-flex items-center gap-1.5 xs:gap-2.5 px-2.5 xs:px-4 py-1.5 xs:py-2 rounded-xl xs:rounded-2xl bg-[#030712]/80 border border-white/10 shadow-lg backdrop-blur-md w-fit">
-                <span className="relative flex h-2 w-2 xs:h-2.5 xs:w-2.5 flex-shrink-0">
+              <div className="inline-flex items-center gap-1.5 xs:gap-2.5 px-2.5 xs:px-4 py-1.5 xs:py-2 rounded-xl xs:rounded-2xl bg-background/80 border border-white/10 shadow-lg backdrop-blur-md w-fit">
+                <span className="relative flex h-2 w-2 xs:h-2.5 xs:w-2.5 shrink-0">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 xs:h-2.5 xs:w-2.5 bg-emerald-500 shadow-[0_0_6px_#10b981]"></span>
                 </span>
@@ -277,7 +282,7 @@ export const Hero = () => {
                 </span>
               </div>
 
-              <div className="p-2.5 xs:p-4 rounded-xl xs:rounded-2xl bg-[#030712]/85 border border-white/10 shadow-xl backdrop-blur-md">
+              <div className="p-2.5 xs:p-4 rounded-xl xs:rounded-2xl bg-background/85 border border-white/10 shadow-xl backdrop-blur-md">
                 <p className="font-mono text-[7px] xs:text-[8px] text-slate-500 uppercase tracking-widest leading-none mb-1.5 font-bold">
                   CORE_ARCHITECT_IDENTITY
                 </p>
@@ -310,7 +315,7 @@ export const Hero = () => {
             </div>
             <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden mb-3">
               <motion.div
-                className="h-full bg-gradient-to-r from-primary to-accent"
+                className="h-full bg-linear-to-r from-primary to-accent"
                 animate={{ width: ["0%", "92%"] }}
                 transition={{
                   duration: 2.5,
