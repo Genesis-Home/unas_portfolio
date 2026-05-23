@@ -149,14 +149,14 @@ export const Experience = () => {
             initial={{ width: 0 }}
             whileInView={{ width: "100px" }}
             viewport={{ once: true }}
-            className="h-1 bg-gradient-to-r from-primary to-accent mt-8 rounded-full"
+            className="h-1 bg-linear-to-r from-primary to-accent mt-8 rounded-full"
           />
         </div>
 
         {/* Timeline List */}
         <div className="max-w-5xl mx-auto relative pl-5 sm:pl-10">
           {/* Vertical Glowing Connector Line */}
-          <div className="absolute left-[16px] sm:left-[30px] md:left-[38px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-primary via-accent to-slate-800 pointer-events-none" />
+          <div className="absolute left-4 sm:left-7.5 md:left-9.5 top-6 bottom-6 w-0.5 bg-linear-to-b from-primary via-accent to-slate-800 pointer-events-none" />
 
           {experiences.map((exp, idx) => (
             <motion.div
@@ -168,7 +168,7 @@ export const Experience = () => {
               className="relative mb-16 last:mb-0 group"
             >
               {/* Timeline LED Checkpoint Node */}
-              <div className="absolute -left-[16px] sm:-left-[30px] md:-left-[38px] top-7 z-20 flex items-center justify-center">
+              <div className="absolute -left-4 sm:-left-7.5 md:-left-9.5 top-7 z-20 flex items-center justify-center">
                 <span className="relative flex h-5 w-5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-30"></span>
                   <span
@@ -218,7 +218,7 @@ export const Experience = () => {
                 {/* Right Block: Telemetry and Key Achievements */}
                 <div className="flex flex-col justify-center text-left">
                   {/* Brief Terminal Box */}
-                  <div className="bg-[#030712] p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-white/5 mb-8">
+                  <div className="bg-background p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-white/5 mb-8">
                     <div className="flex items-center gap-2 text-primary mb-3">
                       <Briefcase size={15} />
                       <span className="text-[10px] font-bold uppercase tracking-wider font-mono">

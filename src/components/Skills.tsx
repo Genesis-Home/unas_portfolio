@@ -154,7 +154,7 @@ export const Skills = () => {
             initial={{ width: 0 }}
             whileInView={{ width: "100px" }}
             viewport={{ once: true }}
-            className="h-1 bg-gradient-to-r from-primary to-accent mt-8 rounded-full"
+            className="h-1 bg-linear-to-r from-primary to-accent mt-8 rounded-full"
           />
         </div>
 

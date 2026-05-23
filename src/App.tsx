@@ -122,7 +122,7 @@ function App() {
                           whileTap={{ scale: 0.98 }}
                           className="group flex items-center gap-3 sm:gap-5 p-4 sm:p-6 rounded-2xl sm:rounded-[28px] bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-white/10 transition-all duration-300 cursor-pointer"
                         >
-                          <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white shadow-[0_0_10px_rgba(59,130,246,0.1)] group-hover:shadow-neon-blue transition-all duration-300 flex-shrink-0">
+                          <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white shadow-[0_0_10px_rgba(59,130,246,0.1)] group-hover:shadow-neon-blue transition-all duration-300 shrink-0">
                             <Mail size={20} />
                           </div>
                           <div className="text-left min-w-0">
@@ -148,7 +148,7 @@ function App() {
                           whileTap={{ scale: 0.98 }}
                           className="group flex items-center gap-3 sm:gap-5 p-4 sm:p-6 rounded-2xl sm:rounded-[28px] bg-white/5 border border-white/10 hover:border-accent/40 hover:bg-white/10 transition-all duration-300 cursor-pointer"
                         >
-                          <div className="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white shadow-[0_0_10px_rgba(99,102,241,0.1)] group-hover:shadow-neon-violet transition-all duration-300 flex-shrink-0">
+                          <div className="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white shadow-[0_0_10px_rgba(99,102,241,0.1)] group-hover:shadow-neon-violet transition-all duration-300 shrink-0">
                             <MapPin size={20} />
                           </div>
                           <div className="text-left min-w-0">
@@ -229,7 +229,7 @@ function App() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mt-20 bg-[#030712]/90 border border-white/5 rounded-2xl p-6 font-mono text-xs text-left max-w-6xl mx-auto shadow-2xl shadow-black/55 backdrop-blur-xl"
+                    className="mt-20 bg-background/90 border border-white/5 rounded-2xl p-6 font-mono text-xs text-left max-w-6xl mx-auto shadow-2xl shadow-black/55 backdrop-blur-xl"
                   >
                     <div className="flex gap-1.5 mb-3.5 border-b border-white/5 pb-2.5">
                       <div className="w-2.5 h-2.5 rounded-full bg-rose-500"></div>

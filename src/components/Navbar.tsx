@@ -62,7 +62,7 @@ export const Navbar = ({}: Record<string, never>) => {
       {/* Skip to Main Content Link for Accessibility */}
       <a
         href="#hero"
-        className="absolute top-0 left-0 -translate-y-full focus:translate-y-0 z-[999] px-4 py-2 bg-primary text-white rounded-b-lg transition-transform"
+        className="absolute top-0 left-0 -translate-y-full focus:translate-y-0 z-999 px-4 py-2 bg-primary text-white rounded-b-lg transition-transform"
       >
         Skip to main content
       </a>
@@ -88,9 +88,9 @@ export const Navbar = ({}: Record<string, never>) => {
             href="#hero"
             onClick={() => handleNavClick("hero")}
             id="nav-brand-logo"
-            className="group flex items-center gap-2 sm:gap-3 select-none flex-shrink-0"
+            className="group flex items-center gap-2 sm:gap-3 select-none shrink-0"
           >
-            <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-lg sm:rounded-xl bg-white/5 border border-primary/20 group-hover:border-primary/50 flex items-center justify-center text-primary group-hover:text-white transition-all shadow-[0_0_12px_rgba(59,130,246,0.1)] font-mono text-xs sm:text-sm font-bold flex-shrink-0">
+            <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-lg sm:rounded-xl bg-white/5 border border-primary/20 group-hover:border-primary/50 flex items-center justify-center text-primary group-hover:text-white transition-all shadow-[0_0_12px_rgba(59,130,246,0.1)] font-mono text-xs sm:text-sm font-bold shrink-0">
               &lt;/&gt;
             </div>
             <span className="hidden sm:inline text-base sm:text-lg font-extrabold font-outfit text-white group-hover:text-primary transition-colors tracking-tight select-none whitespace-nowrap">
@@ -99,7 +99,7 @@ export const Navbar = ({}: Record<string, never>) => {
           </a>
 
           {/* Desktop Nav Items - Hidden on smaller screens */}
-          <div className="hidden xl:flex items-center gap-4 xl:gap-6 text-[11px] xl:text-[12px] font-bold uppercase tracking-widest leading-none flex-shrink-0">
+          <div className="hidden xl:flex items-center gap-4 xl:gap-6 text-[11px] xl:text-[12px] font-bold uppercase tracking-widest leading-none shrink-0">
             {navLinks.map((link) => (
               <motion.div key={link.id} className="relative group">
                 <motion.a
@@ -119,7 +119,7 @@ export const Navbar = ({}: Record<string, never>) => {
                 >
                   {/* Animated background gradient */}
                   <motion.div
-                    className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/20 via-accent/10 to-primary/20 -z-10"
+                    className="absolute inset-0 rounded-lg bg-linear-to-r from-primary/20 via-accent/10 to-primary/20 -z-10"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileHover={{ opacity: 1, scale: 1 }}
                     whileInView={
@@ -146,7 +146,7 @@ export const Navbar = ({}: Record<string, never>) => {
 
                   {/* Animated bottom indicator */}
                   <motion.div
-                    className="absolute bottom-0 left-2 right-2 h-1.5 bg-gradient-to-r from-primary via-blue-400 to-accent rounded-full"
+                    className="absolute bottom-0 left-2 right-2 h-1.5 bg-linear-to-r from-primary via-blue-400 to-accent rounded-full"
                     initial={{ scaleX: 0 }}
                     animate={
                       activeSection === link.id ? { scaleX: 1 } : { scaleX: 0 }
@@ -209,7 +209,7 @@ export const Navbar = ({}: Record<string, never>) => {
               href="#contact"
               onClick={() => handleNavClick("contact")}
               id="nav-action-contact"
-              className="px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-primary to-accent text-white rounded-lg sm:rounded-xl transition-all text-[10px] sm:text-xs font-bold uppercase tracking-wider cursor-pointer flex-shrink-0"
+              className="px-3 sm:px-4 py-2.5 sm:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg sm:rounded-xl transition-all text-[10px] sm:text-xs font-bold uppercase tracking-wider cursor-pointer flex-shrink-0"
               whileHover={{
                 scale: 1.1,
                 boxShadow: "0 0 25px rgba(59,130,246,0.5)",
@@ -314,7 +314,7 @@ export const Navbar = ({}: Record<string, never>) => {
                 <motion.a
                   href="#contact"
                   onClick={() => handleNavClick("contact")}
-                  className="px-4 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-white transition-all font-bold uppercase text-sm tracking-wider cursor-pointer text-center"
+                  className="px-4 py-3 rounded-lg bg-linear-to-r from-primary to-accent text-white transition-all font-bold uppercase text-sm tracking-wider cursor-pointer text-center"
                   whileHover={{ scale: 1.02, x: 4 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -328,7 +328,7 @@ export const Navbar = ({}: Record<string, never>) => {
         {/* Futuristic Scroll Progress bar integrated into bottom of capsule */}
         <div className="max-w-5xl mx-auto px-8 relative">
           <motion.div
-            className="absolute bottom-0 left-8 right-8 h-[2px] bg-gradient-to-r from-primary via-blue-400 to-cyan-400 shadow-[0_0_8px_#3b82f6]"
+            className="absolute bottom-0 left-8 right-8 h-[2px] bg-linear-to-r from-primary via-blue-400 to-cyan-400 shadow-[0_0_8px_#3b82f6]"
             style={{
               width: `calc(${scrollProgress}% - 64px)`,
               transformOrigin: "left",
