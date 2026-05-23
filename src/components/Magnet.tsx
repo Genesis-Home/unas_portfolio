@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef, ReactNode } from "react";
+import { useState, useEffect, useRef } from "react";
+import type { ReactNode, HTMLAttributes } from "react";
 
-interface MagnetProps {
+interface MagnetProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   padding?: number;
   disabled?: boolean;
@@ -9,7 +10,6 @@ interface MagnetProps {
   inactiveTransition?: string;
   wrapperClassName?: string;
   innerClassName?: string;
-  [key: string]: any;
 }
 
 export const Magnet = ({
@@ -24,13 +24,16 @@ export const Magnet = ({
   ...props
 }: MagnetProps) => {
   const [isActive, setIsActive] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState<{ x: number; y: number }>(() => ({
+    x: 0,
+    y: 0,
+  }));
   const magnetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (disabled) {
-      setPosition({ x: 0, y: 0 });
-      return;
+      const t = window.setTimeout(() => setPosition({ x: 0, y: 0 }), 0);
+      return () => clearTimeout(t);
     }
 
     const handleMouseMove = (e: MouseEvent) => {
