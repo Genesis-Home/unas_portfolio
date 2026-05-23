@@ -1,73 +1,104 @@
-# React + TypeScript + Vite
+# Syed Unas - Senior Full-Stack Engineer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, professional portfolio website showcasing 7+ years of full-stack engineering expertise.
 
-Currently, two official plugins are available:
+## 🌐 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Visit the portfolio at your deployment URL
 
-## React Compiler
+## 🎨 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+✨ **Modern Design**
 
-## Expanding the ESLint configuration
+- Sleek, professional UI with glassmorphism effects
+- Smooth animations and transitions
+- Responsive design for all devices
+- Dark theme with blue accent colors
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+🚀 **Performance**
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Built with React 19 + TypeScript
+- Optimized 3D scene with React Three Fiber
+- Vite for lightning-fast builds
+- Tailwind CSS for efficient styling
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+📱 **Sections**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Hero**: Eye-catching intro with 3D workstation
+- **Skills**: 6 categories of technical expertise (40+ technologies)
+- **Experience**: Professional timeline with Crowdbotics, Techneeqs, Muhammad Labs
+- **Contact**: Direct email, phone, LinkedIn, GitHub links
+
+## 🛠️ Tech Stack
+
+**Frontend**
+
+- React 19.2.4
+- TypeScript
+- Tailwind CSS 4
+- Framer Motion (animations)
+- React Three Fiber (3D)
+
+**Build & Deployment**
+
+- Vite 8.0.4
+- ESLint 9
+- Node.js
+
+## 📦 Installation
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Build
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
+npm run preview
 ```
+
+## 📋 Project Structure
+
+```
+src/
+├── components/
+│   ├── Hero.tsx          # Main hero section with 3D scene
+│   ├── Skills.tsx        # Technology skills showcase
+│   ├── Experience.tsx    # Professional timeline
+│   ├── Scene.tsx         # 3D workstation visualization
+│   ├── Navbar.tsx        # Navigation bar
+│   └── [other components]
+├── App.tsx              # Main app component
+├── index.css            # Global styles
+└── main.tsx             # Entry point
+```
+
+## ✨ Highlights
+
+- **3D Interactive Workstation**: Premium 3D computer setup with smooth animations
+- **Professional Content**: Accurate work history and technical skills
+- **Global Reach**: Optimized for worldwide audience
+- **Enterprise Grade**: Polished animations and effects
+
+## 👤 About
+
+Senior Full-Stack Engineer with expertise in:
+
+- React, Next.js, Angular (Frontend)
+- Node.js, NestJS, Python, Django (Backend)
+- AWS, Azure, GCP (Cloud)
+- AI/ML integration
+- Microservices architecture
+
+## 📧 Contact
+
+- Email: Unas.engineer@gmail.com
+- Phone: +1-608-715-7408
+- LinkedIn: linkedin.com/in/unas/
+- Location: Katy, TX 77449 | Remote
+
+---
+
+© 2026 Syed Unas — All rights reserved

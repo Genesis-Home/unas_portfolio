@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from "react";
 
 interface WavesProps {
   lineColor?: string;
@@ -16,8 +16,8 @@ interface WavesProps {
 }
 
 const Waves: React.FC<WavesProps> = ({
-  lineColor = 'rgba(37, 99, 235, 0.2)',
-  backgroundColor = 'transparent',
+  lineColor = "rgba(37, 99, 235, 0.2)",
+  backgroundColor = "transparent",
   waveSpeedX = 0.0125,
   waveSpeedY = 0.005,
   waveAmpX = 40,
@@ -27,19 +27,37 @@ const Waves: React.FC<WavesProps> = ({
   maxCursorMove = 120,
   xGap = 12,
   yGap = 36,
-  className = '',
+  className = "",
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouseRef = useRef({ x: 0, y: 0, lx: 0, ly: 0, sx: 0, sy: 0, v: 0, vs: 0, a: 0, as: 0 });
+  const mouseRef = useRef({
+    x: 0,
+    y: 0,
+    lx: 0,
+    ly: 0,
+    sx: 0,
+    sy: 0,
+    v: 0,
+    vs: 0,
+    a: 0,
+    as: 0,
+  });
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     let w: number, h: number, nx: number, ny: number;
-    const points: { x: number; y: number; ox: number; oy: number; vx: number; vy: number }[][] = [];
+    const points: {
+      x: number;
+      y: number;
+      ox: number;
+      oy: number;
+      vx: number;
+      vy: number;
+    }[][] = [];
 
     const init = () => {
       w = canvas.width = window.innerWidth;
@@ -126,18 +144,35 @@ const Waves: React.FC<WavesProps> = ({
       mouseRef.current.y = e.clientY;
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('resize', init);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("resize", init);
     init();
     update();
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('resize', init);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("resize", init);
     };
-  }, [lineColor, backgroundColor, waveSpeedX, waveSpeedY, waveAmpX, waveAmpY, friction, tension, maxCursorMove, xGap, yGap]);
+  }, [
+    lineColor,
+    backgroundColor,
+    waveSpeedX,
+    waveSpeedY,
+    waveAmpX,
+    waveAmpY,
+    friction,
+    tension,
+    maxCursorMove,
+    xGap,
+    yGap,
+  ]);
 
-  return <canvas ref={canvasRef} className={`absolute inset-0 z-0 pointer-events-none ${className}`} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className={`absolute inset-0 z-0 pointer-events-none ${className}`}
+    />
+  );
 };
 
 export default Waves;

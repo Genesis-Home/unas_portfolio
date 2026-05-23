@@ -1,58 +1,56 @@
-import { Canvas } from "@react-three/fiber";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useState } from "react";
-import { Scene } from "./Scene";
-import {
-  Mail,
-  MapPin,
-  Phone,
-  Github as GitHub,
-  Linkedin as LinkedIn,
-  Terminal,
-  Code2,
-  Database,
-} from "lucide-react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { SplitText } from "./SplitText";
 import { ShinyText } from "./ShinyText";
 import Waves from "./Waves";
+import { Magnet } from "./Magnet";
+import unasImage from "../assets/unas_profile.png";
 
-export function Hero() {
+export const Hero = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springConfig = { damping: 25, stiffness: 150 };
+  const springConfig = useMemo(() => ({ damping: 25, stiffness: 150 }), []);
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
   const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-    const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
-    };
+    },
+    [mouseX, mouseY],
+  );
+
+  useEffect(() => {
+    setIsMounted(true);
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
+  }, [handleMouseMove]);
 
   return (
     <section
       id="hero"
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-slate-50"
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background tech-grid"
     >
-      {/* Background Animation from React Bits */}
+      {/* Radial Theme Glow */}
+      <div className="absolute inset-0 tech-radial-glow pointer-events-none z-0" />
+      <div className="absolute inset-0 tech-radial-glow-violet pointer-events-none z-0" />
+
+      {/* Cyberpunk Tech Waves Background */}
       <Waves
-        lineColor="rgba(37, 99, 235, 0.1)"
+        lineColor="rgba(59, 130, 246, 0.08)"
         backgroundColor="transparent"
-        waveSpeedX={0.01}
-        waveSpeedY={0.005}
-        waveAmpX={30}
-        waveAmpY={15}
+        waveSpeedX={0.008}
+        waveSpeedY={0.004}
+        waveAmpX={25}
+        waveAmpY={12}
       />
 
-      {/* Dynamic Cursor Blob */}
+      {/* Dynamic Cursor Spotlight Blob */}
       {isMounted && (
         <motion.div
-          className="absolute w-64 h-64 bg-primary/5 rounded-full blur-[80px] pointer-events-none z-0"
+          className="absolute w-80 h-80 bg-primary/10 rounded-full blur-[100px] pointer-events-none z-0"
           style={{
             x: cursorX,
             y: cursorY,
@@ -62,167 +60,275 @@ export function Hero() {
         />
       )}
 
-      <div className="container mx-auto px-6 z-10 grid lg:grid-cols-2 gap-16 items-center pt-24 pb-12">
-        <div className="flex flex-col justify-center order-2 lg:order-1 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 z-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center pt-28 pb-12">
+        {/* Left Side: Professional Copy & Metrics */}
+        <div className="flex flex-col justify-center order-1 relative z-10 text-left">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white border border-slate-100 shadow-sm mb-8">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-              </span>
-              <ShinyText
-                text="System Architect & Full-Stack Engineer"
-                className="text-xs font-bold uppercase tracking-widest text-slate-600"
-              />
+            {/* Biometric Profile Tag Row */}
+            <div className="flex items-center gap-4 sm:gap-5 mb-8">
+              <div className="relative group">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary to-accent opacity-30 blur-md group-hover:opacity-75 transition duration-500"></div>
+                <div className="relative w-14 sm:w-16 h-14 sm:h-16 rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center bg-[#090d16]/80 p-0.5">
+                  <img
+                    src={unasImage}
+                    alt="Syed Unas Systems Architect"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover rounded-[14px]"
+                  />
+                </div>
+                <div className="absolute -bottom-1 -right-1 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-emerald-500 border-2 border-[#030712] flex items-center justify-center shadow-[0_0_8px_#10b981]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#030712] animate-pulse"></span>
+                </div>
+              </div>
+              <div className="text-left min-w-0">
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 shadow-sm backdrop-blur-md">
+                  <span className="relative flex h-2 w-2 flex-shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary shadow-[0_0_6px_#3b82f6]"></span>
+                  </span>
+                  <ShinyText
+                    text="Senior Systems Architect & Full-Stack Engineer"
+                    className="text-[8px] xs:text-[10px] font-bold uppercase tracking-widest text-slate-400"
+                  />
+                </div>
+                <p className="text-[8px] xs:text-[9px] font-mono text-slate-500 uppercase tracking-widest mt-2 pl-1">
+                  EDGE NODE: KATY-TX-77449 // SYNC_OK
+                </p>
+              </div>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-black font-outfit mb-6 tracking-tight leading-[1.05] text-slate-950">
+            {/* Impact Title */}
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl font-black font-outfit mb-8 sm:mb-12 tracking-tight leading-[1.08] text-white">
               <SplitText
-                text="Engineering"
-                delay={50}
-                className="text-slate-950"
-              />{" "}
-              <br />
-              <SplitText text="Future Proof" delay={80} className="" /> <br />
-              <SplitText
-                text="Scalability"
-                delay={100}
-                className="text-slate-950"
+                text="I'm Syed Unas,"
+                delay={40}
+                className="text-white"
               />
             </h1>
 
+            {/* Senior Core Pitch */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="text-slate-600 text-xl max-w-xl mb-12 leading-relaxed font-light"
+              className="text-slate-400 text-sm xs:text-base sm:text-lg md:text-2xl max-w-xxl mb-10 sm:mb-16 leading-relaxed font-light"
             >
-              I'm <span className="text-slate-950 font-bold">Syed Unas</span>. I
-              bridge the gap between complex backend architectures and
-              high-performance frontend interfaces.
+              A Senior Full-Stack Engineer & Systems Architect with{" "}
+              <span className="text-primary font-bold">7+ years</span> of
+              experience developing scalable enterprise solutions, real-time
+              microservices, and AI/ML integrations across Real Estate,
+              E-commerce, and Automotive domains.
             </motion.p>
           </motion.div>
 
+          {/* Action CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-wrap gap-5 items-center mb-12"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center mb-12"
           >
-            <a
+            <motion.a
               href="#contact"
-              className="px-10 py-5 bg-primary text-white rounded-3xl font-bold hover:bg-primary/90 transition-all shadow-2xl shadow-primary/20 flex items-center gap-3 hover:-translate-y-1"
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              id="hero-action-contact"
+              className="px-5 sm:px-6 py-3.5 sm:py-4 bg-gradient-to-r from-primary to-accent text-white rounded-2xl font-bold shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/45 transition-all duration-300 flex items-center justify-center gap-2.5 text-sm sm:text-base"
             >
-              Start Building
-            </a>
-            <a
-              href="#experience"
-              className="px-10 py-5 bg-white text-slate-800 border border-slate-200 rounded-3xl font-bold hover:bg-slate-50 transition-all hover:-translate-y-1 shadow-sm"
+              <span>Initialize Connection</span>
+              <span className="text-lg">→</span>
+            </motion.a>
+            <motion.a
+              href="https://drive.google.com/file/d/1x5c6jODLmzYdqkSqke9oXYEmdS0gI7zM/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              id="hero-action-resume"
+              className="px-5 sm:px-6 py-3.5 sm:py-4 bg-[#090d16]/80 hover:bg-[#3b82f6]/10 text-white border border-[#3b82f6]/30 hover:border-[#3b82f6]/70 rounded-2xl font-bold transition-all duration-300 shadow-md backdrop-blur-sm flex items-center justify-center gap-2.5 group text-sm sm:text-base"
             >
-              View Architecture
-            </a>
-          </motion.div>
-
-          {/* New Dashboard Metrics */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-            className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-12"
-          >
-            {[
-              { label: "Latency", value: "18ms", color: "text-green-500" },
-              { label: "Uptime", value: "99.9%", color: "text-blue-500" },
-              {
-                label: "Deployment",
-                value: "Active",
-                color: "text-indigo-500",
-              },
-            ].map((metric, i) => (
-              <div
-                key={i}
-                className="bg-white/50 border border-slate-100 p-4 rounded-2xl"
+              <svg
+                className="w-5 h-5 text-primary group-hover:scale-110 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">
-                  {metric.label}
-                </p>
-                <p className={`text-lg font-black ${metric.color}`}>
-                  {metric.value}
-                </p>
-              </div>
-            ))}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+              <span>View Resume</span>
+            </motion.a>
+            <motion.a
+              href="#projects"
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              id="hero-action-projects"
+              className="px-5 sm:px-6 py-3.5 sm:py-4 bg-white/5 text-white border border-white/10 hover:border-primary/50 hover:bg-white/10 rounded-2xl font-bold transition-all duration-300 shadow-sm backdrop-blur-sm text-center text-sm sm:text-base"
+            >
+              Inspect Deployments
+            </motion.a>
           </motion.div>
-
-          {/* Floating Terminal (Simplified for Desktop) */}
+          {/* Senior Telemetry Metrics */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5 }}
-            className="hidden xl:block absolute -left-32 top-1/2 -translate-y-1/2 w-64 bg-slate-900 rounded-2xl p-4 shadow-2xl border border-white/10"
+            transition={{ delay: 1.2, duration: 0.8 }}
+            className="grid grid-cols-1 min-[360px]:grid-cols-3 gap-2 sm:gap-4 mb-4 max-w-xl"
           >
-            <div className="flex gap-1.5 mb-3">
-              <div className="w-2 h-2 rounded-full bg-rose-500"></div>
-              <div className="w-2 h-2 rounded-full bg-amber-500"></div>
-              <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-            </div>
-            <div className="font-mono text-[10px] space-y-1 text-slate-400">
-              <p className="text-primary">$ npm run deploy</p>
-              <p>Fetching assets...</p>
-              <p>Optimizing bundle...</p>
-              <p className="text-emerald-400">✓ Deployment ready</p>
-            </div>
+            {[
+              {
+                label: "Total Experience",
+                value: "7+ Years",
+                color: "text-primary",
+                shadow: "shadow-neon-blue",
+              },
+              {
+                label: "System SLA",
+                value: "99.99%",
+                color: "text-emerald-400",
+                shadow: "shadow-neon-emerald",
+              },
+              {
+                label: "Companies Supported",
+                value: "500+ Org",
+                color: "text-violet-400",
+                shadow: "shadow-neon-violet",
+              },
+            ].map((metric, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.93 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.3 + i * 0.1, duration: 0.6 }}
+                id={`hero-metric-${i}`}
+                className={`group bg-white/5 border border-white/10 p-2.5 xs:p-4 sm:p-5 rounded-2xl hover:bg-white/10 hover:border-primary/40 transition-all duration-400 flex flex-col justify-between h-20 sm:h-28 backdrop-blur-md`}
+              >
+                <p className="text-[7.5px] xs:text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-none group-hover:text-primary transition-colors mb-2">
+                  {metric.label}
+                </p>
+                <p
+                  className={`text-sm xs:text-base sm:text-xl font-black ${metric.color} leading-none group-hover:scale-105 transition-transform duration-300 origin-left`}
+                >
+                  {metric.value}
+                </p>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
 
-        {/* 3D Model Section */}
+        {/* Right Side: Showcase Portrait Container (Replacing 3D Workspace Scene) */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, delay: 0.5 }}
-          className="relative h-[450px] lg:h-[700px] w-full order-1 lg:order-2 z-0 lg:z-10 
-                     absolute lg:relative inset-0 opacity-20 lg:opacity-100 pointer-events-none lg:pointer-events-auto flex items-center justify-center overflow-visible"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.0, delay: 0.4 }}
+          className="relative w-full order-2 z-0 flex items-center justify-center py-6"
         >
-          <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent rounded-[60px] blur-3xl lg:blur-none"></div>
+          {/* Neon backlighting panels */}
+          <div className="absolute w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] bg-primary/10 rounded-full blur-[100px] pointer-events-none z-0" />
+          <div className="absolute w-[250px] sm:w-[350px] h-[250px] sm:h-[350px] bg-accent/10 rounded-full blur-[90px] pointer-events-none z-0" />
 
-          <div className="w-full h-full min-h-[450px] relative">
-            <Canvas
-              camera={{ position: [0, 0, 8], fov: 45 }}
-              className="w-full h-full"
-            >
-              <Scene />
-            </Canvas>
+          {/* Premium Glassmorphic Frame with Unas's Actual Portrait */}
+          <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[36px] sm:rounded-[48px] overflow-hidden border border-white/10 bg-[#090d16]/80 p-2 xs:p-3.5 shadow-2xl group z-10 backdrop-blur-xl">
+            {/* Ambient Tech Border Glow */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-accent/15 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700 rounded-[36px] sm:rounded-[48px] pointer-events-none" />
+
+            {/* Floating Bezel Ambient Shadow */}
+            <div className="absolute -inset-1.5 bg-gradient-to-r from-primary to-accent rounded-[40px] sm:rounded-[52px] blur-3xl opacity-10 group-hover:opacity-20 transition duration-1000" />
+
+            {/* Inner Portrait Screen */}
+            <Magnet padding={80} magnetStrength={2.5}>
+              <div className="relative w-full h-full rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white/5 bg-[#030712]">
+                <img
+                  src={unasImage}
+                  alt="Syed Unas - Senior Systems Architect & Full-Stack Engineer"
+                  loading="eager"
+                  decoding="async"
+                  className="w-full h-full object-cover scale-100 group-hover:scale-[1.04] transition-transform duration-[1200ms] ease-out"
+                />
+
+                {/* High-tech overlay filters */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/90 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-accent/5 pointer-events-none" />
+
+                {/* Glowing horizontal scanline animation */}
+                <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-40 shadow-[0_0_12px_#3b82f6] animate-[scanline_4s_linear_infinite] pointer-events-none" />
+              </div>
+            </Magnet>
+
+            {/* Futuristic Tech Overlay HUD badges */}
+            <div className="absolute bottom-4 xs:bottom-10 left-4 xs:left-10 right-4 xs:right-10 flex flex-col gap-1.5 xs:gap-2.5 z-20 text-left">
+              <div className="inline-flex items-center gap-1.5 xs:gap-2.5 px-2.5 xs:px-4 py-1.5 xs:py-2 rounded-xl xs:rounded-2xl bg-[#030712]/80 border border-white/10 shadow-lg backdrop-blur-md w-fit">
+                <span className="relative flex h-2 w-2 xs:h-2.5 xs:w-2.5 flex-shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 xs:h-2.5 xs:w-2.5 bg-emerald-500 shadow-[0_0_6px_#10b981]"></span>
+                </span>
+                <span className="font-mono text-[7px] xs:text-[9px] font-bold uppercase tracking-widest text-slate-300">
+                  SYSTEM STATUS: OPERATIONAL
+                </span>
+              </div>
+
+              <div className="p-2.5 xs:p-4 rounded-xl xs:rounded-2xl bg-[#030712]/85 border border-white/10 shadow-xl backdrop-blur-md">
+                <p className="font-mono text-[7px] xs:text-[8px] text-slate-500 uppercase tracking-widest leading-none mb-1.5 font-bold">
+                  CORE_ARCHITECT_IDENTITY
+                </p>
+                <h3 className="text-sm xs:text-base sm:text-lg font-black text-white font-outfit leading-none mb-1">
+                  Syed Unas
+                </h3>
+                <p className="text-[8px] xs:text-[10px] font-bold text-primary font-mono uppercase tracking-wider leading-none">
+                  Senior Full-Stack Engineer & Systems Architect
+                </p>
+              </div>
+            </div>
+
+            {/* Fine Corner Ornamental Brackets */}
+            <div className="absolute top-5 xs:top-7 left-5 xs:left-7 w-4 xs:w-5 h-4 xs:h-5 border-t-2 border-l-2 border-primary/50 rounded-tl-sm pointer-events-none" />
+            <div className="absolute top-5 xs:top-7 right-5 xs:right-7 w-4 xs:w-5 h-4 xs:h-5 border-t-2 border-r-2 border-primary/50 rounded-tr-sm pointer-events-none" />
+            <div className="absolute bottom-5 xs:bottom-7 left-5 xs:left-7 w-4 xs:w-5 h-4 xs:h-5 border-b-2 border-l-2 border-primary/50 rounded-bl-sm pointer-events-none" />
+            <div className="absolute bottom-5 xs:bottom-7 right-5 xs:right-7 w-4 xs:w-5 h-4 xs:h-5 border-b-2 border-r-2 border-primary/50 rounded-br-sm pointer-events-none" />
           </div>
 
-          {/* Dashboard Status Cards */}
-          <div className="hidden lg:block absolute top-[15%] -right-[5%] p-5 bg-white/90 backdrop-blur-md rounded-3xl border border-slate-100 shadow-2xl z-20 w-48 hover:-translate-y-1 transition-transform">
+          {/* Active Status Pod floating to the side */}
+          <div className="hidden lg:block absolute top-[12%] -right-[3%] p-5 bg-[#090d16]/90 backdrop-blur-md rounded-2xl border border-white/5 shadow-2xl z-20 w-52 hover:-translate-y-1 hover:border-primary/30 transition-all duration-300 text-left">
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                Active Process
+              <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#3b82f6]"></div>
+              <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">
+                TELEMETRY LOG
               </span>
             </div>
-            <div className="text-xs font-bold text-slate-800 mb-2">
-              Architecting Scale
+            <div className="text-xs font-bold text-white mb-2 font-mono">
+              AutoScaling Core Node
             </div>
-            <div className="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+            <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden mb-3">
               <motion.div
-                className="h-full bg-primary"
-                animate={{ width: ["0%", "85%"] }}
+                className="h-full bg-gradient-to-r from-primary to-accent"
+                animate={{ width: ["0%", "92%"] }}
                 transition={{
-                  duration: 2,
+                  duration: 2.5,
                   repeat: Infinity,
                   repeatType: "reverse",
+                  ease: "easeInOut",
                 }}
               />
+            </div>
+            <div className="flex justify-between font-mono text-[8px] text-slate-500">
+              <span>LOAD: OPTIMAL</span>
+              <span>92% RESILIENCE</span>
             </div>
           </div>
         </motion.div>
       </div>
 
+      {/* Down Scroll Prompt */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -233,16 +339,16 @@ export function Hero() {
           if (target) target.scrollIntoView({ behavior: "smooth" });
         }}
       >
-        <span className="text-[10px] uppercase tracking-[0.4em] mb-4 font-bold text-slate-500">
-          Inspect Architecture
+        <span className="text-[9px] uppercase tracking-[0.4em] mb-4 font-bold text-slate-500 font-mono">
+          Inspect Infrastructure
         </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="w-1 h-8 rounded-full bg-slate-200 overflow-hidden"
+          className="w-1 h-8 rounded-full bg-white/5 border border-white/10 overflow-hidden"
         >
           <motion.div
-            className="w-full h-1/2 bg-primary rounded-full"
+            className="w-full h-1/2 bg-primary rounded-full shadow-[0_0_4px_#3b82f6]"
             animate={{ transform: ["translateY(0%)", "translateY(100%)"] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
           />
@@ -250,4 +356,4 @@ export function Hero() {
       </motion.div>
     </section>
   );
-}
+};
