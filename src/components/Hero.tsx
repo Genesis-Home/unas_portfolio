@@ -218,11 +218,11 @@ export const Hero = () => {
                 id={`hero-metric-${i}`}
                 className={`group bg-white/5 border border-white/10 p-2.5 xs:p-4 sm:p-5 rounded-2xl hover:bg-white/10 hover:border-primary/40 transition-all duration-400 flex flex-col justify-between h-20 sm:h-28 backdrop-blur-md`}
               >
-                <p className="text-[7.5px] xs:text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-none group-hover:text-primary transition-colors mb-2">
+                <p className="text-[12px] xs:text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-none group-hover:text-primary transition-colors mb-2">
                   {metric.label}
                 </p>
                 <p
-                  className={`text-sm xs:text-base sm:text-xl font-black ${metric.color} leading-none group-hover:scale-105 transition-transform duration-300 origin-left`}
+                  className={`text-sm xs:text-base sm:text-2xl font-black ${metric.color} leading-none group-hover:scale-105 transition-transform duration-300 origin-left`}
                 >
                   {metric.value}
                 </p>
