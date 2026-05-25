@@ -331,7 +331,7 @@ export const projectsList: Project[] = [
     glowGradient: "from-amber-500/20 to-orange-500/20",
     iconName: "Smartphone",
     url: "https://play.google.com/store/apps/details?id=org.fossify.calendar",
-    image: "/fossify-calendar.png",
+    image: "/fossify-calendar.webp",
     flow: [
       { node: "Native UI", note: "Kotlin / Jetpack" },
       { node: "Local Store", note: "Room SQLite" },
@@ -357,7 +357,7 @@ export const projectsList: Project[] = [
     glowGradient: "from-blue-500/20 to-cyan-500/20",
     iconName: "Smartphone",
     url: "https://play.google.com/store/apps/details?id=org.fossify.filemanager",
-    image: "/fossify-filemanager.png",
+    image: "/fossiy-fileManager.webp",
     flow: [
       { node: "Native UI", note: "Kotlin / Jetpack" },
       { node: "Storage Bridge", note: "Scoped Storage API" },
@@ -470,7 +470,7 @@ export const projectsList: Project[] = [
     glowGradient: "from-violet-500/20 to-fuchsia-500/20",
     iconName: "Activity",
     url: "https://texttosong.ai/",
-    image: "/texttosong.jpg",
+    image: "/texttosong.png",
     flow: [
       { node: "Prompt Ingress", note: "Lyrics / Idea Input" },
       { node: "Composer Model", note: "AI Melody Engine" },
@@ -496,7 +496,7 @@ export const projectsList: Project[] = [
     glowGradient: "from-amber-500/20 to-orange-500/20",
     iconName: "Cpu",
     url: "https://www.zerodrift.ai/",
-    image: "/zerodrift.avif",
+    image: "/zerodrift.png",
     flow: [
       { node: "Compose Editor", note: "Rule Definition" },
       { node: "Guard Engine", note: "Real-Time Filter" },
@@ -522,7 +522,7 @@ export const projectsList: Project[] = [
     glowGradient: "from-amber-500/20 to-yellow-500/20",
     iconName: "Cpu",
     url: "https://gocloudcareers.com/",
-    image: "/gocloudcareers.jpg",
+    image: "/gocloudcareers.png",
     flow: [
       { node: "Course Portal", note: "WordPress LMS" },
       { node: "Live Class Tier", note: "Hybrid Instruction" },
@@ -548,7 +548,7 @@ export const projectsList: Project[] = [
     glowGradient: "from-blue-500/20 to-cyan-500/20",
     iconName: "Server",
     url: "https://smc.co/",
-    image: "/smc.jpg",
+    image: "/smc.png",
     flow: [
       { node: "GPU Compute Tier", note: "H100 / H200 / A100" },
       { node: "Network Fabric", note: "NDR InfiniBand" },
@@ -574,7 +574,7 @@ export const projectsList: Project[] = [
     glowGradient: "from-sky-500/20 to-cyan-500/20",
     iconName: "Globe",
     url: "https://cloud-7-storage.webflow.io/",
-    image: "/cloud7.svg",
+    image: "/cloud7.png",
     flow: [
       { node: "Upload Edge", note: "S3-Compatible API" },
       { node: "Auth Layer", note: "IAM Policy Engine" },
