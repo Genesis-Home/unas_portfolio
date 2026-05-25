@@ -14,7 +14,6 @@ import {
   ArrowRight,
   Brain,
   Cloud,
-  Terminal,
 } from "lucide-react";
 
 import { projectsList, type ProjectCategory } from "../data/projects";
@@ -30,7 +29,6 @@ const PROJECT_TABS: {
   { key: "mobile", label: "Mobile App", shortLabel: "Mobile", icon: Smartphone, iconAnim: "animate-pulse" },
   { key: "ai", label: "AI / ML", shortLabel: "AI/ML", icon: Brain, iconAnim: "animate-pulse" },
   { key: "cloud", label: "Cloud / DevOps", shortLabel: "Cloud", icon: Cloud, iconAnim: "animate-pulse" },
-  { key: "backend", label: "Backend API", shortLabel: "Backend", icon: Terminal, iconAnim: "animate-pulse" },
 ];
 
 const getCategoryLabel = (category: ProjectCategory) =>
