@@ -12,9 +12,29 @@ import {
   Globe,
   ArrowUp,
   ArrowRight,
+  Brain,
+  Cloud,
+  Terminal,
 } from "lucide-react";
 
-import { projectsList } from "../data/projects";
+import { projectsList, type ProjectCategory } from "../data/projects";
+
+const PROJECT_TABS: {
+  key: ProjectCategory;
+  label: string;
+  shortLabel: string;
+  icon: typeof Globe;
+  iconAnim: string;
+}[] = [
+  { key: "web", label: "Web App", shortLabel: "Web", icon: Globe, iconAnim: "animate-spin-slow" },
+  { key: "mobile", label: "Mobile App", shortLabel: "Mobile", icon: Smartphone, iconAnim: "animate-pulse" },
+  { key: "ai", label: "AI / ML", shortLabel: "AI/ML", icon: Brain, iconAnim: "animate-pulse" },
+  { key: "cloud", label: "Cloud / DevOps", shortLabel: "Cloud", icon: Cloud, iconAnim: "animate-pulse" },
+  { key: "backend", label: "Backend API", shortLabel: "Backend", icon: Terminal, iconAnim: "animate-pulse" },
+];
+
+const getCategoryLabel = (category: ProjectCategory) =>
+  PROJECT_TABS.find((t) => t.key === category)?.label ?? category;
 
 const getProjectIcon = (iconName: string, glowColor: string) => {
   const colorClass = glowColor.includes("rgba(59, 130, 246")
@@ -49,7 +69,7 @@ interface ProjectsProps {
 }
 
 export const Projects = ({ onSelectProject }: ProjectsProps) => {
-  const [activeTab, setActiveTab] = useState<"web" | "mobile">("web");
+  const [activeTab, setActiveTab] = useState<ProjectCategory>("web");
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   const filteredProjects = useMemo(
@@ -57,7 +77,7 @@ export const Projects = ({ onSelectProject }: ProjectsProps) => {
     [activeTab],
   );
 
-  const handleTabChange = useCallback((tab: "web" | "mobile") => {
+  const handleTabChange = useCallback((tab: ProjectCategory) => {
     setActiveTab(tab);
   }, []);
 
@@ -104,60 +124,43 @@ export const Projects = ({ onSelectProject }: ProjectsProps) => {
         </div>
 
         {/* Tab Filters */}
-        <div className="flex justify-center mb-16">
-          <div className="relative flex p-1 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md">
-            {/* Sliding Capsule Background */}
-            <motion.div
-              className="absolute top-1 bottom-1 rounded-xl bg-gradient-to-r from-primary to-accent pointer-events-none"
-              layoutId="activeFilterTab"
-              initial={false}
-              animate={{
-                left: activeTab === "web" ? "4px" : "calc(50% + 2px)",
-                width: "calc(50% - 6px)",
-              }}
-              transition={{ type: "spring", stiffness: 350, damping: 28 }}
-            />
-
-            <motion.button
-              whileHover={{ scale: 1.05, y: -1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => handleTabChange("web")}
-              className={`relative z-10 px-3 sm:px-8 py-2.5 sm:py-3 rounded-xl font-outfit text-[10px] sm:text-xs font-bold tracking-widest transition-all duration-300 uppercase flex items-center gap-2 font-mono cursor-pointer ${
-                activeTab === "web"
-                  ? "text-white"
-                  : "text-slate-400 hover:text-white"
-              }`}
-            >
-              <Globe
-                size={14}
-                className={
-                  activeTab === "web"
-                    ? "text-white animate-spin-slow"
-                    : "text-slate-400"
-                }
-              />
-              Web App
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05, y: -1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => handleTabChange("mobile")}
-              className={`relative z-10 px-3 sm:px-8 py-2.5 sm:py-3 rounded-xl font-outfit text-[10px] sm:text-xs font-bold tracking-widest transition-all duration-300 uppercase flex items-center gap-2 font-mono cursor-pointer ${
-                activeTab === "mobile"
-                  ? "text-white"
-                  : "text-slate-400 hover:text-white"
-              }`}
-            >
-              <Smartphone
-                size={14}
-                className={
-                  activeTab === "mobile"
-                    ? "text-white animate-pulse"
-                    : "text-slate-400"
-                }
-              />
-              Mobile App
-            </motion.button>
+        <div className="flex justify-center mb-16 px-2">
+          <div
+            className="relative flex p-1 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md overflow-x-auto max-w-full [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {PROJECT_TABS.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.key;
+              return (
+                <motion.button
+                  key={tab.key}
+                  whileHover={{ scale: 1.05, y: -1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleTabChange(tab.key)}
+                  className={`relative px-3 sm:px-5 py-2.5 sm:py-3 rounded-xl font-outfit text-[10px] sm:text-xs font-bold tracking-widest transition-all duration-300 uppercase flex items-center gap-1.5 sm:gap-2 font-mono cursor-pointer shrink-0 ${
+                    isActive ? "text-white" : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeFilterTab"
+                      className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary to-accent pointer-events-none"
+                      transition={{ type: "spring", stiffness: 350, damping: 28 }}
+                    />
+                  )}
+                  <span className="relative z-10 flex items-center gap-1.5 sm:gap-2">
+                    <Icon
+                      size={14}
+                      className={
+                        isActive ? `text-white ${tab.iconAnim}` : "text-slate-400"
+                      }
+                    />
+                    <span className="sm:hidden">{tab.shortLabel}</span>
+                    <span className="hidden sm:inline">{tab.label}</span>
+                  </span>
+                </motion.button>
+              );
+            })}
           </div>
         </div>
 
@@ -210,9 +213,7 @@ export const Projects = ({ onSelectProject }: ProjectsProps) => {
 
                         {/* Glass overlay badge for category */}
                         <span className="absolute top-3.5 left-3.5 z-20 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-xl border border-white/5 text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">
-                          {project.category === "web"
-                            ? "Web App"
-                            : "Mobile App"}
+                          {getCategoryLabel(project.category)}
                         </span>
 
                         {/* Top right icon badge */}

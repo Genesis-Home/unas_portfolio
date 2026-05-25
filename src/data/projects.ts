@@ -26,10 +26,12 @@ export interface ScreenData {
   hero?: boolean;
 }
 
+export type ProjectCategory = "web" | "mobile" | "ai" | "cloud" | "backend";
+
 export interface Project {
   id?: string;
   title: string;
-  category: "web" | "mobile";
+  category: ProjectCategory;
   subtitle: string;
   detailedCategory: string;
   description: string;
@@ -424,6 +426,240 @@ export const projectsList: Project[] = [
       { node: "Database Storage", note: "MongoDB Encrypted" },
     ],
     screens: CareConnectScreens as ScreenData[],
+  },
+  {
+    title: "NeuroSense Predictive Engine",
+    category: "ai",
+    subtitle: "Retail Customer Behavior AI",
+    detailedCategory: "Machine Learning Pipeline",
+    description:
+      "A production-grade predictive ML pipeline forecasting demand, churn, and personalized recommendations for retail clients. Built on TensorFlow and Pandas with collaborative-filtering and time-series ensemble models served via FastAPI microservices.",
+    metrics: [
+      { label: "Model Accuracy", value: "92.4% AUC" },
+      { label: "Inference Time", value: "< 80ms" },
+      { label: "Models Deployed", value: "14+ Live" },
+    ],
+    tech: ["TensorFlow", "Python", "Pandas", "NumPy", "FastAPI", "Docker"],
+    glowColor: "rgba(99, 102, 241, 0.25)",
+    glowGradient: "from-indigo-500/20 to-violet-500/20",
+    iconName: "Cpu",
+    url: "https://appmash.org/",
+    image: "/why-choose-us-image-1.png",
+    flow: [
+      { node: "Data Ingestion", note: "ETL via Pandas" },
+      { node: "Feature Store", note: "Versioned Vectors" },
+      { node: "Model Trainer", note: "TensorFlow GPU" },
+      { node: "Inference API", note: "FastAPI / Docker" },
+      { node: "Monitoring", note: "Drift Detection" },
+    ],
+  },
+  {
+    title: "VisionGuard CV Pipeline",
+    category: "ai",
+    subtitle: "Computer Vision Quality Inspection",
+    detailedCategory: "Real-Time Vision System",
+    description:
+      "An industrial-grade computer vision platform for manufacturing QA — detects micro-defects across assembly lines using OpenCV preprocessing and TensorFlow CNN inference, with edge deployment via ONNX.",
+    metrics: [
+      { label: "Defect Recall", value: "99.1% Catch" },
+      { label: "Edge Inference", value: "< 50ms" },
+      { label: "Throughput", value: "5k+ items/min" },
+    ],
+    tech: ["Python", "OpenCV", "TensorFlow", "ONNX", "Redis", "AWS SageMaker"],
+    glowColor: "rgba(139, 92, 246, 0.25)",
+    glowGradient: "from-violet-500/20 to-fuchsia-500/20",
+    iconName: "Activity",
+    url: "https://appmash.org/",
+    image: "/why-choose-us-image-1.png",
+    flow: [
+      { node: "Camera Stream", note: "GStreamer Capture" },
+      { node: "Pre-Processor", note: "OpenCV Pipeline" },
+      { node: "CNN Inference", note: "TensorFlow + ONNX" },
+      { node: "Alert Engine", note: "Redis Pub/Sub" },
+      { node: "Dashboard", note: "Real-Time Grafana" },
+    ],
+  },
+  {
+    title: "PromptForge Agent Studio",
+    category: "ai",
+    subtitle: "LLM Prompt Engineering Workbench",
+    detailedCategory: "Generative AI Platform",
+    description:
+      "A multi-agent orchestration platform for advanced LLM workflows — features prompt versioning, chained agent execution, evaluation harness, and token-cost telemetry. Built around the Calyptus AI Fluent methodology.",
+    metrics: [
+      { label: "Active Workflows", value: "200+ Live" },
+      { label: "Token Savings", value: "38% Reduction" },
+      { label: "Eval Runs", value: "50k+ Logged" },
+    ],
+    tech: ["Next.js", "TypeScript", "LangChain", "OpenAI API", "Pinecone", "PostgreSQL"],
+    glowColor: "rgba(245, 158, 11, 0.25)",
+    glowGradient: "from-amber-500/20 to-orange-500/20",
+    iconName: "Cpu",
+    url: "https://appmash.org/",
+    image: "/why-choose-us-image-1.png",
+    flow: [
+      { node: "Prompt IDE", note: "Next.js Editor" },
+      { node: "Agent Runtime", note: "LangChain Chains" },
+      { node: "Vector Memory", note: "Pinecone Index" },
+      { node: "Eval Harness", note: "Scored Test Suite" },
+      { node: "Telemetry Tier", note: "Token / Cost Logs" },
+    ],
+  },
+  {
+    title: "CloudFleet Analytics Hub",
+    category: "cloud",
+    subtitle: "Serverless Event-Driven Analytics",
+    detailedCategory: "Multi-Cloud Data Platform",
+    description:
+      "A serverless analytics platform deployed across AWS Lambda and Azure Functions, delivering real-time dashboards for sales insights and customer behavior. Uses Pandas and Boto3 for high-volume event processing.",
+    metrics: [
+      { label: "Events Processed", value: "12M+ / day" },
+      { label: "Cold Start", value: "< 300ms" },
+      { label: "Cost Reduction", value: "41% Saved" },
+    ],
+    tech: ["AWS Lambda", "Azure Functions", "Python", "Boto3", "DynamoDB", "Chart.js"],
+    glowColor: "rgba(245, 158, 11, 0.25)",
+    glowGradient: "from-amber-500/20 to-yellow-500/20",
+    iconName: "Server",
+    url: "https://appmash.org/",
+    image: "/why-choose-us-image-1.png",
+    flow: [
+      { node: "Event Ingress", note: "API Gateway" },
+      { node: "Lambda Workers", note: "Python Pandas" },
+      { node: "Azure Functions", note: "Cross-Cloud Sync" },
+      { node: "Storage Tier", note: "DynamoDB / Blob" },
+      { node: "Dashboard", note: "Chart.js Live" },
+    ],
+  },
+  {
+    title: "KubeOrbit Cluster Manager",
+    category: "cloud",
+    subtitle: "GitOps Kubernetes Orchestrator",
+    detailedCategory: "Container Orchestration",
+    description:
+      "A Kubernetes deployment automation platform with GitOps workflow — handles multi-cluster rollouts, canary releases, automated rollback, and integrated observability for enterprise-grade reliability.",
+    metrics: [
+      { label: "Clusters Managed", value: "25+ Live" },
+      { label: "Deploy Time", value: "< 90s" },
+      { label: "Cluster SLA", value: "99.99% Uptime" },
+    ],
+    tech: ["Kubernetes", "ArgoCD", "Helm", "Terraform", "Prometheus", "Grafana"],
+    glowColor: "rgba(59, 130, 246, 0.25)",
+    glowGradient: "from-blue-500/20 to-cyan-500/20",
+    iconName: "Server",
+    url: "https://appmash.org/",
+    image: "/why-choose-us-image-1.png",
+    flow: [
+      { node: "Git Source", note: "Manifest Repo" },
+      { node: "ArgoCD Sync", note: "Declarative Apply" },
+      { node: "Helm Charts", note: "Templated Deploy" },
+      { node: "Canary Engine", note: "Progressive Rollout" },
+      { node: "Observability", note: "Prometheus + Grafana" },
+    ],
+  },
+  {
+    title: "EdgeForge CDN Architect",
+    category: "cloud",
+    subtitle: "Multi-Region Edge Delivery Layer",
+    detailedCategory: "Edge Computing Network",
+    description:
+      "A globally distributed CDN orchestration platform with intelligent routing, image optimization at the edge, smart cache invalidation, and Worker-based dynamic responses for ultra-low-latency delivery.",
+    metrics: [
+      { label: "Edge POPs", value: "180+ Global" },
+      { label: "Cache Hit Rate", value: "98.6%" },
+      { label: "Time to Byte", value: "< 40ms" },
+    ],
+    tech: ["Cloudflare Workers", "Node.js", "Redis", "S3", "Terraform", "Lua"],
+    glowColor: "rgba(14, 165, 233, 0.25)",
+    glowGradient: "from-sky-500/20 to-cyan-500/20",
+    iconName: "Globe",
+    url: "https://appmash.org/",
+    image: "/why-choose-us-image-1.png",
+    flow: [
+      { node: "Edge Worker", note: "Cloudflare Runtime" },
+      { node: "Cache Layer", note: "Redis Tier" },
+      { node: "Origin Shield", note: "S3 Backed" },
+      { node: "Image Optimizer", note: "Real-Time Resize" },
+      { node: "Routing Tier", note: "Geo Aware Logic" },
+    ],
+  },
+  {
+    title: "StreamGate Event Bus",
+    category: "backend",
+    subtitle: "Kafka-Powered Event Streaming",
+    detailedCategory: "Distributed Messaging Core",
+    description:
+      "A high-throughput event streaming gateway for distributed microservices — guarantees ordering, replay capability, and exactly-once delivery semantics. Built on Kafka with NestJS-based producers and Avro schema enforcement.",
+    metrics: [
+      { label: "Throughput", value: "1M+ events/s" },
+      { label: "p99 Latency", value: "< 12ms" },
+      { label: "Topics", value: "500+ Active" },
+    ],
+    tech: ["Kafka", "NestJS", "TypeScript", "Redis", "Avro", "Docker"],
+    glowColor: "rgba(139, 92, 246, 0.25)",
+    glowGradient: "from-violet-500/20 to-purple-500/20",
+    iconName: "Database",
+    url: "https://appmash.org/",
+    image: "/why-choose-us-image-1.png",
+    flow: [
+      { node: "Producer SDK", note: "NestJS Client" },
+      { node: "Kafka Broker", note: "Multi-Partition" },
+      { node: "Schema Registry", note: "Avro Versioned" },
+      { node: "Consumer Pool", note: "Parallel Workers" },
+      { node: "Replay Engine", note: "Offset Rewind" },
+    ],
+  },
+  {
+    title: "PayLedger Transaction Core",
+    category: "backend",
+    subtitle: "Double-Entry Payments Engine",
+    detailedCategory: "Financial Backend System",
+    description:
+      "An enterprise-grade NestJS payments processing core with Stripe integration, double-entry ledger architecture, idempotent retries, and full ACID guarantees. Handles authorizations, refunds, and reconciliation at scale.",
+    metrics: [
+      { label: "Volume Processed", value: "$80M+ Total" },
+      { label: "API Latency", value: "< 45ms" },
+      { label: "Idempotency", value: "100% Safe" },
+    ],
+    tech: ["NestJS", "TypeScript", "PostgreSQL", "Stripe", "Redis", "RabbitMQ"],
+    glowColor: "rgba(16, 185, 129, 0.25)",
+    glowGradient: "from-emerald-500/20 to-green-500/20",
+    iconName: "Server",
+    url: "https://appmash.org/",
+    image: "/why-choose-us-image-1.png",
+    flow: [
+      { node: "API Gateway", note: "NestJS Endpoint" },
+      { node: "Stripe Bridge", note: "Authorization Layer" },
+      { node: "Ledger Tier", note: "Double-Entry Postgres" },
+      { node: "Queue Worker", note: "RabbitMQ Retry" },
+      { node: "Reconciler", note: "Scheduled Sweep" },
+    ],
+  },
+  {
+    title: "MeshAPI GraphQL Federation",
+    category: "backend",
+    subtitle: "Federated GraphQL Gateway",
+    detailedCategory: "API Mesh Platform",
+    description:
+      "An Apollo Federation gateway unifying disparate microservice subgraphs into a single, type-safe GraphQL schema. Features field-level authorization, query cost limiting, automatic persisted queries, and schema-check CI gating.",
+    metrics: [
+      { label: "Subgraphs Unified", value: "18 Services" },
+      { label: "Query Latency", value: "< 60ms" },
+      { label: "Schema Checks", value: "5k+ / week" },
+    ],
+    tech: ["Apollo Federation", "Node.js", "GraphQL", "Redis", "JWT", "Docker"],
+    glowColor: "rgba(244, 63, 94, 0.25)",
+    glowGradient: "from-rose-500/20 to-pink-500/20",
+    iconName: "Database",
+    url: "https://appmash.org/",
+    image: "/why-choose-us-image-1.png",
+    flow: [
+      { node: "Gateway Edge", note: "Apollo Router" },
+      { node: "Subgraph Pool", note: "Federated Services" },
+      { node: "Auth Filter", note: "JWT Field-Level" },
+      { node: "Cost Guard", note: "Complexity Limiter" },
+      { node: "Cache Tier", note: "Redis Persisted Queries" },
+    ],
   },
 ];
 
