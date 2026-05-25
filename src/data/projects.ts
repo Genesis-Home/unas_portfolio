@@ -46,6 +46,58 @@ export interface Project {
 
 export const projectsList: Project[] = [
   {
+    title: "Waabi",
+    category: "web",
+    subtitle: "Autonomous Trucking & Physical AI Platform",
+    detailedCategory: "Autonomous Mobility Platform",
+    description:
+      "A flagship corporate platform for Waabi's generative AI-powered autonomous driving technology. Features immersive product storytelling for Waabi Driver and Waabi World simulation, investor-grade content delivery, and high-performance media pipelines for autonomous trucking and robotaxi showcases.",
+    metrics: [
+      { label: "Capital Raised", value: "$1B+ Series" },
+      { label: "Key Partners", value: "Uber / NVIDIA / Volvo" },
+      { label: "Deployment", value: "Highway + Streets" },
+    ],
+    tech: ["Next.js", "React", "TypeScript", "DatoCMS", "GSAP", "TailwindCSS"],
+    glowColor: "rgba(59, 130, 246, 0.25)",
+    glowGradient: "from-blue-500/20 to-sky-500/20",
+    iconName: "Cpu",
+    url: "https://waabi.ai/",
+    image: "/waabi.jpg",
+    flow: [
+      { node: "Marketing Frontend", note: "Next.js SSR" },
+      { node: "Headless CMS", note: "DatoCMS Content API" },
+      { node: "Media Pipeline", note: "Adaptive Video / CDN" },
+      { node: "Motion Layer", note: "GSAP Scroll Scenes" },
+      { node: "Edge Delivery", note: "Global Cache Network" },
+    ],
+  },
+  {
+    title: "NextSense",
+    category: "web",
+    subtitle: "Neurotech E-Commerce & Sleep Wellness Platform",
+    detailedCategory: "Health & Neurotechnology Platform",
+    description:
+      "A premium e-commerce and brand experience platform for NextSense smart EEG earbuds. Showcases real-time brain-reading wearables with clinically validated sleep optimization, integrated checkout, subscription flows, and immersive product storytelling.",
+    metrics: [
+      { label: "Verified Users", value: "2,847+ Active" },
+      { label: "Deep Sleep Gain", value: "Up to 2x" },
+      { label: "EEG Sampling", value: "1,000 Hz" },
+    ],
+    tech: ["Shopify", "React", "Liquid", "Node.js", "Stripe", "TailwindCSS"],
+    glowColor: "rgba(139, 92, 246, 0.25)",
+    glowGradient: "from-violet-500/20 to-indigo-500/20",
+    iconName: "Activity",
+    url: "https://nextsense.io/",
+    image: "/nextsense.png",
+    flow: [
+      { node: "Storefront UI", note: "Shopify + React" },
+      { node: "Product Catalog", note: "Smartbuds & Accessories" },
+      { node: "Checkout Engine", note: "Stripe / Shop Pay" },
+      { node: "Subscription Layer", note: "Trial & Warranty Logic" },
+      { node: "Analytics Tier", note: "Clinical Data Reporting" },
+    ],
+  },
+  {
     title: "USA Home Listings",
     category: "web",
     subtitle: "Lead Gen & Marketing Automation Platform",
